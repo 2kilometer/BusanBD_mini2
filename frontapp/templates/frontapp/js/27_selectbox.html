@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: FrontApp-27_selectbox :::</title> 
+    <script type="text/javascript">
+        // selectbox 하나 선택
+        function selectOne(){
+            // alert("ok...");
+            fm = document.getElementById("fm");
+            alert(fm.mem_addr_one.value);
+        }
+
+        // selectbox 여러개 선택
+        function selectMulti(){
+            // alert("ok....");
+            fm = document.getElementById("fm");
+            // alert(fm.mem_addr_multi.options[0].value);
+            // alert(fm.mem_addr_multi.options.length);
+            // alert(fm.mem_addr_multi.options[3].selected);
+            
+            // select박스 선택되어 있는지 확인...
+            chkbool = false;
+            for(i=0; i<fm.mem_addr_multi.options.length; i++){
+                if(fm.mem_addr_multi.options[i].selected == true){
+                    chkbool = true;
+                }
+            }
+            // 최종 확인
+            if(chkbool == false){
+                alert("한개이상 선택해주세요!!");
+                return true;
+            }
+        }
+
+        // 멀티 셀렉트 박스 전송받은 데이터로 선택해 놓기
+        function initSelectBox(mem_addr, mem_addr_list){
+            fm = document.getElementById("fm");
+
+            // 한개 셀렉트박스 선택
+            for(i=0; i<fm.mem_addr_one.options.length; i++){                
+                if(fm.mem_addr_one.options[i].value == mem_addr){
+                    fm.mem_addr_one.options[i].selected = true;
+                    break;
+                }
+            }
+
+            // 여러개 셀렉트박스 선택
+            for(i=0; i<fm.mem_addr_multi.options.length; i++){
+                for(j=0; j<mem_addr_list.length; j++){
+                    if(fm.mem_addr_multi.options[i].value == mem_addr_list[j]){
+                        fm.mem_addr_multi.options[i].selected = true;
+                        break;
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="initSelectBox('{{mem_addr}}', {{mem_addr_list | safe}});">
+    ** 받아온 지역값 : {{mem_addr}} 
+    <br>
+    ** 받아온 지역값(리스트) : {{mem_addr_list}} 
+    <hr/>
+
+    <p>
+        <!-- color : 글자 색상 -->
+        <a href="/front/">
+            [FrontApp-Index 바로가기]
+        </a>
+    </p>
+    <!-- 수평선 넣기 태그 -->
+    <hr/>  
+    <p>
+        27_selectbox 페이지 입니다.
+    </p>
+
+    <form id="fm" method="post" action="#">
+        <!-- select 박스 생성하기 -->
+        * 지역선택(한개만 선택가능) : 
+        <select name="mem_addr_one"
+                style="width: 100px; height: 50px;">
+            <option value="서울">서울</option>
+            <option value="부산">부산</option>
+            <option value="광주">광주</option>
+            <option value="대전">대전</option>
+        </select>
+        <hr/>
+
+        * 지역선택(여러개 선택가능) : 
+        <select name="mem_addr_multi"
+                style="width: 100px; height: 100px;"
+                multiple>
+            <option value="서울">서울</option>
+            <option value="부산">부산</option>
+            <option value="광주">광주</option>
+            <option value="대전">대전</option>
+        </select>
+        <hr/>
+        <!-- 한개  -->
+        <input type="button" value="한개선택" onclick="selectOne()">
+        <input type="button" value="여러개선택" onclick="selectMulti()">
+    </form>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>:::비동기방식(jquery):::</title>
+
+        <!-- jquery 라이브러리 불러들이기 -->
+        <script
+            text="text/javascript"
+            src="{%static 'nonmodelapp/js/jquery-3.7.0.min.js'%}"
+        ></script>
+        <script text="text/javascript">
+            // 동기방식 요청처리
+            function gonext(url) {
+                location.href = "/nonmodel/" + url;
+            }
+
+            // 비동기방식 요청처리
+            function gonextjquery(url) {
+                // load() : url을 서버로 요청한 후 응답결과를 읽어들임
+                // $(id) : load()된 응답결과를 id 공간에 출력 시킴
+                $("#load_view").load("/nonmodel/" + url);
+            }
+        </script>
+    </head>
+    <body>
+        <h3>비동기방식(jquery)처리하기</h3>
+        <hr />
+        <h3>동기 방식의 페이지 처리 방식(화면전환됨)</h3>
+        <button onclick="gonext('load_view1/')">제이쿼리1</button>
+        <button onclick="gonext('load_view2/')">제이쿼리2</button>
+        <button onclick="gonext('load_view3/')">제이쿼리3</button>
+
+        <hr />
+        <h3>비동기 방식의 페이지 처리 방식(화면전환안됨)</h3>
+        <button onclick="gonextjquery('load_view1/')">제이쿼리1</button>
+        <button onclick="gonextjquery('load_view2/')">제이쿼리2</button>
+        <button onclick="gonextjquery('load_view3/')">제이쿼리3</button>
+        <button onclick="gonextjquery('cart_list/')">cart_list</button>
+
+        <hr />
+        <h3>비동기 방식의 응답 결과 보여주기</h3>
+        <div id="load_view">
+            이곳은 비동기 방식의 응답 결과를 보여주는 공간 입니다.
+        </div>
+    </body>
+</html>

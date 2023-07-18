@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품검색에 따른 주문정보 저장하기</title>
+    <script type="text/javascript">
+        function initLprodSelect(lprod_gu){
+            fm = document.getElementById("fm");
+            for(i=0; i<fm.lprod_gu.options.length; i++){                
+                if(fm.lprod_gu.options[i].value == lprod_gu){
+                    fm.lprod_gu.options[i].selected = true;
+                    break;
+                }
+            }
+        }
+
+        function initProdSelect(prod_id){
+            fm = document.getElementById("fm");
+            for(i=0; i<fm.prod_id.options.length; i++){                
+                if(fm.prod_id.options[i].value == prod_id){
+                    fm.prod_id.options[i].selected = true;
+                    break;
+                }
+            }
+        }
+
+        function goChange(){
+            fm = document.getElementById("fm");
+            fm.action = "/oracle/product/";
+            fm.submit();
+        }
+
+        function goSearch(){
+            fm = document.getElementById("fm");
+            fm.change.value = "True";
+            fm.action = "/oracle/product/";
+            fm.submit();
+        }
+
+        function goCartInsert(){            
+            fm = document.getElementById("fm");
+            fm.action = "/oracle/product_insert/";
+            fm.submit();
+        }
+    </script>
+</head>
+<body onload="initLprodSelect('{{lprod_gu}}'); initProdSelect('{{prod_id}}')">
+<form id="fm" method="post" action="#">
+    {% csrf_token %}    
+    <input type="hidden" name="change" value="False">
+
+    <h3>상품검색에 따른 주문정보 저장하기</h3>
+    <hr>
+    * 상품분류선택 : 
+    <select name="lprod_gu" onchange="goChange()">
+        {% for row in lprod_selbox %}
+        <option value="{{ row.lprod_gu }}">{{ row.lprod_nm }}</option>
+        {% endfor %}
+    </select>
+     
+    * 상품선택 : 
+    <select name="prod_id">
+        {% for row in prod_selbox %}
+            <option value="{{ row.prod_id }}">{{ row.prod_name }}</option>
+        {% endfor %}
+    </select>
+
+    <input type="button" value="검색" onclick="goSearch()">
+
+    <hr>
+    <!-- 검색 버튼이 클릭 되었을 때만 보여주기 -->
+    {% if change == "False" %}
+        <h3>상품 검색 결과가 없습니다!!</h3>
+
+    {% else %}
+    <table border="1">
+        <tr>
+            <th>상품명</th>
+            <th>판매가격</th>
+        </tr>
+        <tr>
+            <td>{{prod_view.prod_name}}</td>
+            <td>{{prod_view.prod_sale}}</td>
+        </tr>
+    </table>
+    <br>
+    * 주문수량 : 
+    <select name="cart_qty">
+        <option value="1">1개</option>
+        <option value="2">2개</option>
+        <option value="3">3개</option>
+        <option value="4">4개</option>
+        <option value="5">5개</option>
+    </select>
+    <hr>
+    <input type="button" value="주문하기" onclick="goCartInsert()">
+    {% endif %}
+</form>    
+</body>
+</html>

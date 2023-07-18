@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>::: MAINApp-Main 페이지 :::</title>
+        <script type="text/javascript">
+            //로그아웃 처리하기
+            function goLogout() {
+                location.href = "/nonmodel/logout_chk/";
+            }
+        </script>
+    </head>
+    <body>
+        <!-- Login / Logout 처리하기 -->
+        {% if request.session.ses_mem_id == None %}
+        <!-- Login 화면 구성 -->
+        <!-- ** 로그인 처리하는 views.py는 nonmodelapp에서 진행 -->
+        <form id="fm" method="post" action="/nonmodel/login_chk/">
+            {% csrf_token %} *아이디 :
+            <input type="text" name="mem_id" size="15" required /> &nbsp;&nbsp;
+            *패스워드 : <input type="text" name="mem_pass" size="15" required />
+            &nbsp;&nbsp;
+            <input type="submit" value="로그인" />
+        </form>
+
+        {% else %}
+
+        <!-- Logout 화면 구성-->
+        {{request.session.ses_mem_id}} ({{request.session.ses_mem_name}})님
+        환영합니다! &nbsp;&nbsp;
+        <button onclick="goLogout()">로그아웃</button>
+
+        {% endif %}
+
+        <!--  
+        * h 태그
+         - 숫자가 작을 수록 폰트 사이즈가 커짐..
+         - 숫자가 클수록 폰트 사이즈가 작아짐..
+         - 자동으로 줄바꿈 됩니다.
+    -->
+        <h3>FirstApp</h3>
+        <!--
+        * p 태그 : 문단을 의미함
+         - 자동으로 줄바꿈 됩니다.
+    -->
+        <p>
+            <!--
+            - href에 url 입력 방법...
+            - 첫번째 슬래시(/) : 127.0.0.1:8000을 의미
+                              : root url 이라고 합니다.
+            - 첫번째 슬래시 다음부터 url패턴 이름을 넣습니다.
+            - 마지막에는 꼭 슬래시(/) 넣어 주어야 합니다.
+
+            - a 태그 : 페이지 전환 이벤트 태그(클릭하면 이동하게 됨)
+                - 자동으로 줄바꿈 안됩니다.
+        -->
+            * <a href="/first/">[FirstApp Index로 가기]</a>
+        </p>
+
+        <h3>SecondApp</h3>
+        <p>* <a href="/second/">[SecondApp Index로 가기]</a></p>
+
+        <h3>FrontApp</h3>
+        <p>* <a href="/front/">[FrontApp Index로 가기]</a></p>
+
+        <h3>OracleApp</h3>
+        <p>* <a href="/oracle/">[OracleApp Index로 가기]</a></p>
+
+        <h3>nonmodelApp</h3>
+        <p>* <a href="/nonmodel/">[nonmodelApp Index로 가기]</a></p>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OracleApp ::: 회원 상세 조회하기</title>
+    <script type="text/javascript">
+        // 목록가기
+        function goList(){
+            // alert("goList");
+            // history.go(-1);
+            location.href = "/oracle/mem_list/";
+        }
+
+        // 수정페이지가기
+        function goUpdateView(){
+            // alert("goUpdateView");
+            location.href = "/oracle/mem_update_view/?mem_id={{mem_id}}";
+        }
+
+        // 삭제하기
+        function goDelete(){
+            alert("goDelete");
+        }
+    </script>
+</head>
+<body>
+    ------------------{{ mem_id }}
+    <h3>회원관리 - 상세조회</h3>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>아이디</th>
+            <th>패스워드</th>
+            <th>이름</th>
+            <th>주소1</th>
+        </tr>
+        <tr>
+            <td>{{ mem_view.mem_id }}</td>
+            <td>{{ mem_view.mem_pass }}</td>
+            <td>{{ mem_view.mem_name }}</td>
+            <td>{{ mem_view.mem_add1 }}</td>
+        </tr>
+    </table>
+    <hr>
+    <button onclick="goList()">목록</button>
+    <button onclick="goUpdateView()">수정</button>
+    <button onclick="goDelete()">탈퇴</button>
+</body>
+</html>

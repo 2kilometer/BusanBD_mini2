@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracleapp ::: 상품정보-상세조회</title>
+    <script type="text/javascript">
+        function goList(){
+            location.href = "/oracle/prod_list/"
+        }
+
+        function goUpdateView(){
+            url = "/oracle/prod_update_view/";
+            url += "?prod_id={{prod_id}}";
+
+            location.href = url;
+        }
+
+        function goDelete(){
+            url = "/oracle/prod_delete/";
+            url += "?prod_id={{prod_id}}";
+
+            location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <h3>상품정보 - 상세</h3>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>상품코드</th>
+            <th>상품명</th>
+            <th>상품분류코드</th>
+            <th>매입가격</th>
+            <th>소비자가격</th>
+            <th>판매가격</th>
+        </tr>
+        <tr>
+            <td>{{ prod_view.prod_id }}</td>
+            <td>{{ prod_view.prod_name }}</td>
+            <td>{{ prod_view.prod_lgu }}</td>
+            <td>{{ prod_view.prod_cost }}</td>
+            <td>{{ prod_view.prod_price }}</td>
+            <td>{{ prod_view.prod_sale }}</td>
+        </tr>
+    </table>
+    <hr>
+    <button onclick="goList()">목록</button>
+    <button onclick="goUpdateView()">수정</button>
+    <button onclick="goDelete()">삭제</button>
+</body>
+</html>

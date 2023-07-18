@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: FrontApp-18_jsInputForm :::</title>  
+
+    <script type="text/javascript">
+        /* 로그인 버튼 처리하기.. */
+        // POST 방식으로 전송하기
+        function goLogin(){
+            // 함수 잘 호출되는지 확인만 해보기(경고창 띄우기)
+            // alert("호출 잘 됩니다.");
+
+            // form 태그 사이의 모든 접근 권한을 받아오기
+            fm = document.getElementById("fm");
+            // form 태그 내부에 있는 name이 mem_id인 value의 값을 가지고 오기
+            // alert(fm.mem_id.value);
+            // alert(fm.mem_pass.value);
+            mem_id   = fm.mem_id.value;
+            mem_pass = fm.mem_pass.value;
+            // alert(mem_id);
+
+            // 텍스트 박스의 값이 비워있는 경우 경고창 띄우기..
+            if(mem_id == ""){
+                alert("아이디를 입력해 주세요!!");
+
+                // 커서의 위치를 지정하기...
+                fm.mem_id.focus();
+                // 위 내용이 처리될때 까지 아래 더이상 처리 못하게 리턴시킴
+                return
+            }
+            if(mem_pass == ""){
+                alert("패스워드를 입력해 주세요!!");
+
+                // 커서의 위치를 지정하기...
+                fm.mem_pass.focus();
+                return
+            }
+
+            /* form 태그 영역 안에 있는 name과 value의 값들을 
+               서버로 전송시키기
+                - 서버에서는 name의 값을 key로 사용
+                -           value의 값을 값으로 사용
+                - {key : value} 형태로 넘어감
+                - {mem_id : a001, mem_pass : asdf1,
+                   mem_id2 : b001, mem_pass2 : dfsdsf}
+                - 서버에서는 딕셔너리 문법을 사용해서 key를 이용해서 값 추출
+
+                ** 서버로 전송하는 방법 2가지 (데이터가 보이는지 않보이는지만 차이가 있음)
+                 - 전송방식은 form 태그 안에 method 속성의 값으로 정의합니다.
+                 - post 방식 : 전송 데이터를 보이지 않게 보냄(스트리밍 방식으로 전송)
+                            : key, value 방식을 get방식과 동일함
+                 - get 방식 : url 주소창에 전송 데이터가 보임(key, value 방식)
+             */
+
+            /* post 방식으로 전송하기 */
+            // 데이터를 전송 또는 이동 할 url 지정
+            // ** Forbidden 오류 : 서버가 정상적으로 들어오는 URL인지 검증함
+            //    --> form 태그 안에 csrf_token을 정의해야함
+            //    --> 현재 html 페이지에 토큰값을 생성시킴
+            //        (생성 시점은 해당 페이지를 서버에서 응답할 때)
+            //    --> 생성한 토큰값이 서버로 전송되면 인증해서 페이지 처리해줌
+            fm.action = "/front/19_login/";
+            // 서버로 전송하기
+            fm.submit();
+        }
+
+        /* GET 방식으로 전송하기 */
+        function goLogin_get() {
+            // alert("ok......");
+            // form 태그 정보(권한) 가지고 오기
+            fm = document.getElementById("fm");
+            mem_id = fm.mem_id.value;
+            mem_pass = fm.mem_pass.value;
+
+            //alert(mem_id);
+            //alert(mem_pass);
+
+            // get 방식으로 넘기기 위한 URL 만들기
+            url = "/front/19_login/";
+            url = url + "?mem_id=" + mem_id;
+            url = url + "&mem_pass=" + mem_pass;
+
+            //alert(url);
+
+            // 전송시키기 : get 방식
+            // - location : 위치 지정
+            // - href : 어디로
+            // - url : 이곳으로
+            location.href = url;
+        }
+    </script>
+
+</head>
+<body>
+    <p>
+        <!-- color : 글자 색상 -->
+        <a href="/front/">
+            [FrontApp-Index 바로가기]
+        </a>
+    </p>
+    <!-- 수평선 넣기 태그 -->
+    <hr/>  
+    <p>
+        18_jsInputForm 페이지 입니다.
+    </p>
+    <hr>
+    <form id="fm" name="fm" method="post" action="#">
+        {% csrf_token %}
+
+        <!-- type=text : 텍스트로 입력 받고자 할때 
+             name : 값은 본인이 정의함(보통은 저장할 DB 컬럼명과 동일하게)
+             value : 속성은 안써도 됨...
+             **(중요) 입력된 값은 서버로 전송됨 (name은 key, value는 값(value))
+                      데이터 전송시에는 딕셔너리 개념이 적용됨 
+        -->
+        <!-- input 태그를 텍스트 박스라고 칭합니다.(한 줄만 입력가능) -->
+        아이디 : <input type="text" name="mem_id" value="a001">
+        <br/>
+        <!-- type=password : 작성 시 외부에서 볼수 없도록 점(별표시)으로 표시됨 -->
+        패스워드 : <input type="password" name="mem_pass" value="asdf">
+        <br/>
+        <!--
+            input 태그의 value 속성에 값을 넣고자 합니다.
+            views.py에서 변수 mem_id = "b001", mem_pass = "1234"로 정의해서
+            value 속성에 값으로 넣어주세요..
+        -->
+        <!-- input 태그를 텍스트 박스라고 칭합니다.(한 줄만 입력가능) -->
+        아이디 : <input type="text" name="mem_id2" value="{{mem_id}}">
+        <br/>
+        <!-- type=password : 작성 시 외부에서 볼수 없도록 점(별표시)으로 표시됨 -->
+        패스워드 : <input type="password" name="mem_pass2" value="{{mem_pass}}">
+        <hr/>
+        <!-- 버튼 만들기 : 마우스로 클릭됩니다. -->
+        <!--
+            * input 태그를 이용해서 버튼을 만들경우 
+              - type = button 정의
+              - value = 버튼에 쓰여질 문자
+              - onclick = 자바스크립트 함수 이름 정의
+                          자바스크립트 함수 정의는 head 태그 영역에 정의
+                        : 이벤트 발생 시킴(클릭 이벤트)
+        -->
+        <input type="button" value="로그인-POST" onclick="goLogin()">
+        <input type="button" value="로그인-GET" onclick="goLogin_get()">
+    </form>
+
+
+
+
+
+
+
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</body>
+</html>

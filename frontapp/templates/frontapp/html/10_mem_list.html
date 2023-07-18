@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: FrontApp-08_table :::</title>
+    <style>
+        table {
+            /* css 주석은 (슬래시 + 별) */
+            /* 테두리 선 스타일 
+                - 첫번째 : 선의 굵기
+                - 두번째 : 실선
+                - 세번째 : 선 색상
+            */
+            border: 5px solid black;
+
+            /* 테이블은 기본 2줄라인의 테두리선을 그리기에
+                - 한줄로 바꿔줍니다.
+            */
+            border-collapse: collapse;
+        }
+
+        th, td {
+            /* 안쪽 여백
+                - 픽셀값 1개만 넣는 경우 : 위쪽, 오른쪽, 아래쪽, 왼쪽 모두 같은값 적용
+                - 4개를 넣으면, 위쪽, 오른쪽, 아래쪽, 왼쪽 순서로 적용
+                - 2개를 넣으면, 첫번째 값은 위/아래, 두번째 값은 왼쪽/오른쪽 적용
+            */
+            padding: 15px 15px;
+            /* 텍스트 가운데 정렬 */
+            text-align: center;
+        }
+
+        th {
+            /* 배경색 */
+            background-color: yellow;
+        }
+    </style> 
+</head>
+<body>
+    <p>
+        <a href="/front/">
+            [FrontApp-Index 바로가기]
+        </a>
+    </p>    
+    <!-- 수평선 넣기 태그 -->
+    <hr/>  
+    <p>
+        10_mem_list 페이지 입니다.
+    </p>
+    <hr/>
+    
+    <table border="1">
+        <tr>
+            <th width="100">회원이름</th>
+            <th width="100">주문일자</th>
+            <th width="400">상품명</th>
+        </tr>
+        {% for dict in list_data %}
+            <tr>
+                <td>{{dict.mem_name}}</td>
+                <td>{{dict.cart_date}}</td>
+                <td>{{dict.prod_name}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</body>
+</html>

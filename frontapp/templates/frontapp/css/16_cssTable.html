@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: FrontApp-16_cssTable :::</title>   
+    <style>
+        table {
+            /* 테두리를 한줄로 */
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        /* 짝수 tr행에 배경색 입히기
+            (tr태그 전체 중에 : 제목부분도 tr임) */
+        tr:nth-child(even){
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <!-- color : 글자 색상 -->
+        <a href="/front/">
+            [FrontApp-Index 바로가기]
+        </a>
+    </p>
+    <!-- 수평선 넣기 태그 -->
+    <hr/>  
+    <p>
+        16_cssTable 페이지 입니다.
+    </p>
+    <hr>
+
+    <table border="1">
+        <!-- 제목 : 번호, 이름, 주소 -> 값들은 자유롭게, 데이터 행은 4개
+             - 테이블 스타일
+               * 테이블은 : 테두리를 한줄로 만들기, 너비는 100%로
+               * th와 td는 : 안쪽여백 8px, 글자 정렬은 중앙
+        -->
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>홍길동1</td>
+            <td>부산 해운대구 수영동</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>홍길동2</td>
+            <td>부산 해운대구 수영동</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>홍길동3</td>
+            <td>부산 해운대구 수영동</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>홍길동4</td>
+            <td>부산 해운대구 수영동</td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</body>
+</html>

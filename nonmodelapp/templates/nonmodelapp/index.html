@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: NonmodelApp-Index 페이지 :::</title>
+    <script type="text/javascript">
+        // 로그아웃 처리하기
+        function goLogout(){
+            location.href = "/nonmodel/logout_chk/";
+        }
+    </script>
+</head>
+<body>
+    <!-- Login / Logout 처리하기 -->
+    {% if request.session.ses_mem_id == None %}
+        <!-- Login 화면 구성 -->
+        <!--  ** 로그인 처리하는 viwes.py는 nonmodelapp에서 진행 -->
+        <form id="fm" method="post" action="/nonmodel/login_chk/">
+            {% csrf_token %}
+            *아이디 : <input type="text" name="mem_id" size="15" required>
+            &nbsp;&nbsp;
+            *패스워드 : <input type="password" name="mem_pass" size="15" required>
+            &nbsp;&nbsp;
+            <input type="submit" value="로그인">
+        </form>
+    {% else %}
+        <!-- Logout 화면구성 -->
+        {{ request.session.ses_mem_id }}
+        ({{ request.session.ses_mem_name }})님 환영합니다!
+        &nbsp;&nbsp;
+        <button onclick="goLogout()">로그아웃</button>
+    {% endif %}
+
+    <p>
+        <a href="/">[MainApp으로 바로가기]</a>
+        
+    </p>
+    <p>
+        <!-- 페이징 처리하기 시작 -->
+        * 페이징 처리하기 : 
+        <a href="/nonmodel/cart_list/">[cart_list 페이지 바로가기]</a>
+        <br/><br/>
+
+        <!-- File Up-Download 처리하기 시작 -->
+        * 파일 업로드 페이지 처리하기 : 
+        <a href="/nonmodel/file_upload_form/">[file_upload_form 페이지 바로가기]</a>
+        <br/><br/>
+
+        <!-- 데이터 시각화 이미지를 웹에서 표현하기 -->
+        * 데이터 시각화 이미지를 웹에서 표현하기 : 
+        <a href="/nonmodel/data_view/">[data_view 페이지 바로가기]</a>
+        <br/><br/>
+
+        <!-- 지도맵 시각화 웹에서 표현하기 -->
+        * 지도맵 시각화 웹에서 표현하기 : 
+        <a href="/nonmodel/map_view/">[map_view 페이지 바로가기]</a>
+        <br/><br/>
+
+        <!-- jquery -->
+        * 지도맵 시각화 웹에서 표현하기 : 
+        <a href="/nonmodel/load_view/">[jquery 페이지 바로가기]</a>
+        <br/><br/>
+    </p>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</body>
+</html>

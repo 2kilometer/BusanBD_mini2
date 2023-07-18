@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:::NonmodelApp - File Upload From :::</title>
+</head>
+<body>
+    <h3>File Upload From </h3>
+    <hr>
+    <!-- File upload를 위해서는 
+         * form 태그 필요
+         * form 태그 속성중에 전송방식은 post로,
+         * 파일 데이터를 전송하기 위해 enctype 속성을 추가해야함 -->
+    <form id="fm" method="post" action="/nonmodel/file_upload/"
+                    enctype="multipart/form-data">
+        {% csrf_token %}
+
+        *제 목 : <input type="text" name="title" size="20" required>
+        <br><br>
+        
+        *첨부파일 : <input type="file" name="file_nm">
+        <hr>
+        
+        <input type="submit" value="File Upload">
+    </form>
+</body>
+</html>

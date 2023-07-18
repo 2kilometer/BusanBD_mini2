@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: FrontApp-24_checkbox :::</title>  
+    <script type="text/javascript">
+        function goSelect(){
+            //alert("ok..");
+            fm = document.getElementById("fm");
+
+            chkbool = false;
+            // chknum = 0;
+            // alert(fm.mem_addr[0].value);
+            for(i=0; i<fm.mem_addr.length; i++){
+                // alert(fm.mem_addr[i].checked);
+                if(fm.mem_addr[i].checked == true){
+                    chkbool = true;
+                    // chknum++;
+                    // chknum = chknum + 1
+                }
+            }
+
+            // if(chkbool == 0)
+            if(chkbool == false){
+                alert("체크박스를 선택해 주세요!!");
+                return true;
+            }
+
+            fm.action = "/front/25_checkbox2/";
+            fm.submit();
+        }
+
+        // 페이지 전체 초기화
+        function allReload(){
+            // 브라우저에서 새로고침(F5)와 동일한 기능
+            location.reload();
+        }
+
+        // checkbox만 초기화 하기
+        function checkboxReload(){
+            // alert("ok..");
+            fm = document.getElementById("fm");
+
+            // 체크박스 반복
+            for(i=0; i<fm.mem_addr.length; i++){
+                // alert(fm.mem_addr[i].checked);
+                if(fm.mem_addr[i].checked == true){
+                    fm.mem_addr[i].checked = false;
+                    // break 안됨 : 다 찾아야함
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>
+        <!-- color : 글자 색상 -->
+        <a href="/front/">
+            [FrontApp-Index 바로가기]
+        </a>
+    </p>
+    <!-- 수평선 넣기 태그 -->
+    <hr/>  
+    <p>
+        24_checkbox 페이지 입니다.
+    </p>
+    <hr/>
+    <form id="fm" method="post" action="#">
+        {% csrf_token %}
+        지역 : <input type="text" value="">
+        <br/>
+        <!-- checkbox 생성하기 -->
+        지역선택 : 
+        서울<input type="checkbox" name="mem_addr" value="서울"> 
+        부산<input type="checkbox" name="mem_addr" value="부산"> 
+        광주<input type="checkbox" name="mem_addr" value="광주"> 
+        대전<input type="checkbox" name="mem_addr" value="대전"> 
+
+        <hr>
+        <!-- form 태그에서 사용하는 버튼 형태 : type을 이용해서 submit 사용가능
+            type이 submit인 경우 form태그의 action 페이지로 바로 이동 가능
+            * input 태그를 이용하여 버튼을 만드는 경우에는 form 태그 안에 넣습니다.
+            * 버튼 이름은 value 속성에 넣습니다. -->
+        <input type="button" value="검색하기" onclick="goSelect()">
+
+    </form>
+    
+    <!-- 일반버튼 : 어디서든 만들어도됨.. 닫는 태그가 있음
+        * 태그와 태그사이에 버튼 이름을 넣습니다.-->
+    <button onclick="goSelect()">검색하기(button)</button>
+    <br/>
+    <!--
+        button type='submit' name='' 
+        - 자기 자신 페이지를 리로드(reload) 시킴
+        - 따라서, button 태그는 form 태그 밖에다가 정의해야함
+    -->
+    <button onclick="allReload()">전체 초기화</button>
+    <button onclick="checkboxReload()">체크박스만 초기화</button>
+
+
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</body>
+</html>

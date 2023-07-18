@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracleapp ::: 상품분류정보-수정페이지 조회</title>
+    <script type="text/javascript">
+        function goBack(){
+            history.go(-1);
+        }
+
+        function goUpdate(){
+            fm = document.getElementById("fm");
+            fm.action = "/oracle/lprod_update/";
+            fm.submit();
+        }
+    </script>
+</head>
+<body>
+<form id="fm" method="post" action="#">
+    {% csrf_token %}
+    <input type="hidden" name="lprod_gu" value="{{ lprod_gu }}">
+
+    <h3>상품분류정보 - 수정 페이지</h3>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>상품분류ID</th>
+            <th>상품분류코드(GU)</th>
+            <th>상품분류명</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" name="lprod_id" 
+                        value="{{ lprod_view.lprod_id }}">
+            </td>
+            <td>{{ lprod_view.lprod_gu }}</td>
+            <td>
+                <input type="text" name="lprod_nm" 
+                        value="{{ lprod_view.lprod_nm }}">
+            </td>
+        </tr>
+    </table>
+</form>    
+    <hr>
+    <button onclick="goBack()">취소</button>
+    <button onclick="goUpdate()">수정</button>
+</body>
+</html>

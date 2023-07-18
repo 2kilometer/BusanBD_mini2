@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracleapp ::: 주문정보-상세조회</title>
+    <script type="text/javascript">
+        function goList(){
+            // alert("goList");
+            location.href = "/oracle/cart_list/"
+        }
+
+        function goUpdateView(){
+            //alert("goUpdateView");
+            url = "/oracle/cart_update_view/";
+            url += "?cart_no={{cart_no}}";
+            url += "&cart_prod={{cart_prod}}";
+
+            //alert(url);
+            location.href = url;
+        }
+
+        function goDelete(){
+            // alert("goDelete");
+            url = "/oracle/cart_delete/";
+            url += "?cart_no={{cart_no}}";
+            url += "&cart_prod={{cart_prod}}";
+
+            //alert(url);
+            location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <h3>주문정보 - 상세</h3>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>주문번호</th>
+            <th>회원아이디</th>
+            <th>주문상품번호</th>
+            <th>주문수량</th>
+        </tr>
+        <tr>
+            <td>{{ cart_view.cart_no }}</td>
+            <td>{{ cart_view.cart_member }}</td>
+            <td>{{ cart_view.cart_prod }}</td>
+            <td>{{ cart_view.cart_qty }}</td>
+        </tr>
+    </table>
+    <hr>
+    <button onclick="goList()">목록</button>
+    <button onclick="goUpdateView()">수정</button>
+    <button onclick="goDelete()">삭제</button>
+</body>
+</html>

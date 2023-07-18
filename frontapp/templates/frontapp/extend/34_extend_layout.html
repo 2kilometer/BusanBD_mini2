@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: FrontApp-34_extend_layout :::</title>
+    <link rel="stylesheet" 
+            href="{% static 'frontapp/css/main.css' %}">
+</head>
+<body>
+    <!-- Layout 구성하기 -->
+
+    <!-- 상단 영역 -->
+    <div id="header">
+        {% include 'frontapp/inc/hearder.html' %}
+    </div>
+    <!-- 카테고리-네비게이션 영역 -->
+    <div id="nav">
+        {% include 'frontapp/inc/nav.html' %}
+    </div>
+    
+    <!-- 본문 영역 -->
+    {% block content %}
+        Hello World .... 이곳은 블록영역 <br>
+        (이곳의 내용은 임시로 작성만...<br>
+        실제 내용은 외부 파일에서 정의됨)
+    {% endblock  %}
+
+
+    <!-- 하단 영역 -->
+    <div id="footer">
+        {% include 'frontapp/inc/footer.html' %}
+    </div>
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+</body>
+</html>

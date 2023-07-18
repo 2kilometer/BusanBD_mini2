@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>::: FrontApp-29_bootstrap_table :::</title>
+    <!-- Bootstrap 스타일(css) 적용하기 -->
+    <link rel="stylesheet" 
+            href="{% static 'frontapp/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- jQuery 자바스크립트(js) 적용하기 -->
+    <script type="text/javascript"
+            src="{% static 'frontapp/js/jquery-3.7.0.min.js' %}"></script>
+</head>
+<body>
+    <p>
+        <!-- color : 글자 색상 -->
+        <a href="/front/">
+            [FrontApp-Index 바로가기]
+        </a>
+    </p>
+    <!-- 수평선 넣기 태그 -->
+    <hr/>  
+    <p class="h3">
+        29_bootstrap_table 페이지 입니다.
+    </p>
+    <hr>
+    <!-- 부트스트랩에서 제공하는 테이블 코드 -->
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+    </table>
+    <hr>
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+    </table>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <!-- Bootstrap 자바스크립트(js) 적용하기 -->
+    <script type="text/javascript"
+            src="{% static 'frontapp/bootstrap/js/bootstrap.bundle.min.js' %}">
+    </script>
+</body>
+</html>
