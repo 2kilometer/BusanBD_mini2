@@ -2,6 +2,7 @@
 import os
 import sys
 import urllib.request
+import pandas as pd
 client_id = "l9u8XefecwXfibq5OoWU"
 client_secret = "r6mCAuQK43"
 url = "https://openapi.naver.com/v1/datalab/search";
