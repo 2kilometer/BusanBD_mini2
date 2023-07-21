@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Website</title>
+        <style>
+            select {
+                width: 200px;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-bottom: 10px;
+                flex-grow: 1;
+            }
+
+            button {
+                padding: 10px 20px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                flex-grow: 1;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            label {
+                margin-bottom: 5px;
+                font-weight: bold;
+                flex-shrink: 0;
+            }
+        </style>
+        <script>
+            function checkAndAddNewSelectBox() {
+                var locationSelect = document.getElementById('location');
+                var ageSelect = document.getElementById('age');
+                var genderSelect = document.getElementById('gender');
+
+                if (locationSelect.value && ageSelect.value && genderSelect.value) {
+                    var newSelect = document.createElement('select');
+                    var option1 = document.createElement('option');
+                    option1.text = 'Option 1';
+                    var option2 = document.createElement('option');
+                    option2.text = 'Option 2';
+
+                    newSelect.add(option1);
+                    newSelect.add(option2);
+
+                    document.body.appendChild(newSelect);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        {% include 'mainapp/inc/navbar.html' %}
+        <form action="">
+            {% include 'mainapp/inc/register.html' %}
+            <div>
+                <br />
+                <label for="location">지역:</label>
+                <select id="location" name="location" onchange="checkAndAddNewSelectBox()">
+                    <option value="서울">서울</option>
+                    <option value="경기">경기</option>
+                    <option value="부산">부산</option>
+                    <option value="대구">대구</option>
+                    <option value="대전">대전</option>
+                    <option value="인천">인천</option>
+                    <option value="광주">광주</option>
+                    <option value="제주">제주</option>
+                    <option value="강원">강원</option>
+                    <option value="울산">울산</option>
+                </select>
+
+                <br />
+
+                <label for="age">연령:</label>
+                <select id="age" name="age" onchange="checkAndAddNewSelectBox()">
+                    <option value="10대">10대</option>
+                    <option value="20대">20대</option>
+                    <option value="30대">30대</option>
+                    <option value="40대">40대</option>
+                    <option value="50대">50대</option>
+                    <option value="60대">60대이상</option>
+                </select>
+
+                <br />
+
+                <label for="gender" onchange="checkAndAddNewSelectBox()">성별:</label>
+                <select id="gender" name="gender" onchange="checkAndAddNewSelectBox()">
+                    <option value="남성">남성</option>
+                    <option value="여성">여성</option>
+                </select>
+
+                <br />
+
+                <button type="submit">가입</button>
+            </div>
+        </form>
+    </body>
+</html>

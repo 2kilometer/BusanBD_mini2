@@ -22,8 +22,6 @@ from django.urls import path, include
 # - 라이브러리 읽어들이는 것과 동일
 
 ### 아래는 사용 안함(각 앱에서 처리하게 했음)
-from firstapp import views as views1
-from secondapp import views as views2
 from mainapp import views as views3
 
 ### 사용자가 요청할 수 있는 URL을 정의합니다.
@@ -39,28 +37,12 @@ urlpatterns = [
     # - include() : 원하는 파일의 코드를 읽어들일 때 사용됨
     #             : include가 실행되는 순간
     #               해당 파일의 코드에서 처리가 됨
-    
+    path('', include('mainapp.urls')),
     path('oracle/', include('oracleapp.urls')),
     path('front/', include('frontapp.urls')),
-    path('first/', include('firstapp.urls')),
-    path('second/', include('secondapp.urls')),
     path('nonmodel/', include('nonmodelapp.urls')),
     
     
-    ### 아래는 사용안함(각 앱에서 처리하게 했음).......xxxxxx    
-    # - http://127.0.0.1:8000/index2/
-    path('index2/', views2.getIndex2),
-    
-    # - http://127.0.0.1:8000/index1/
-    path('index1/', views1.getIndex1),
-    
-    ### mainapp의 index함수 호출 영역...
-    # - http://127.0.0.1:8000/index/
-    path('index/', views3.index),
-    # - http://127.0.0.1:8000/
-    path('', views3.index),
-    # - http://127.0.0.1:8000/index.html
-    path('index.html/', views3.index),
     
     
     path('admin/', admin.site.urls),

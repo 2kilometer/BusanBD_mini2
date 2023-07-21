@@ -36,8 +36,6 @@ INSTALLED_APPS = [
     'oracleapp',
     'frontapp',
     'mainapp',
-    'secondapp',
-    'firstapp',
     
     'django.contrib.admin',
     'django.contrib.auth',
