@@ -20,41 +20,41 @@ keywords = ['유산균', '오메가3', '비오틴', '양배추즙', '글루타�
              '숙취해소제', '로즈마리추출물', '비타민d추천', '정관장에브리타임', '벌집꿀', '위건강', '폴리코사놀', '기타건강즙/과일즙',
              '링곤베리퓨레', '여주환']
 
-ages = ["10", "20", "30", "40", "50", "60"]
 
 genders = ["f", "m"]
 
 # Open a file to write the results
 with open("results.txt", "w") as file:
     for keyword in keywords:
-        for age in ages:
-            for gender in genders:
-                # Create the request body
-                body = json.dumps({
-                    "startDate": "2018-01-01",
-                    "endDate": "2023-07-10",
-                    "timeUnit": "month",
-                    "category": "50000006",
-                    "keyword": [{"name": "식품/건강식품", "param": [keyword]}],
-                    "gender": gender,
-                    "ages": [age],
-                })
+        for gender in genders:
+            # Create the request body
+            body = json.dumps({
+                "startDate": "2018-01-01",
+                "endDate": "2023-07-10",
+                "timeUnit": "month",
+                "category": "50000006",
+                "keyword": [{"name": "식품/건강식품", "param": [keyword]}],
+                "gender": gender,
+                "ages": ["10","20","30","40","50","60"],
+            })
                 
                 
-                # Create the request
-                request = urllib.request.Request(url)
-                request.add_header("X-Naver-Client-Id", client_id)
-                request.add_header("X-Naver-Client-Secret", client_secret)
-                request.add_header("Content-Type","application/json")
+                
+            
+            # Create the request
+            request = urllib.request.Request(url)
+            request.add_header("X-Naver-Client-Id", client_id)
+            request.add_header("X-Naver-Client-Secret", client_secret)
+            request.add_header("Content-Type","application/json")
 
-                # Send the request
-                response = urllib.request.urlopen(request, data=body.encode("utf-8"))
-                rescode = response.getcode()
+            # Send the request
+            response = urllib.request.urlopen(request, data=body.encode("utf-8"))
+            rescode = response.getcode()
 
-                if rescode == 200:
-                    response_body = response.read()
-                    result = response_body.decode('utf-8')
-                    file.write(f"Keyword: {keyword}, Age: {age}, Gender: {gender}\n")
-                    file.write(result + "\n")
-                else:
-                    file.write(f"Error Code: {rescode} for keyword: {keyword}, Age: {age}, Gender: {gender}\n")
+            if rescode == 200:
+                response_body = response.read()
+                result = response_body.decode('utf-8')
+                file.write(f"Keyword: {keyword}, Age: {age}, Gender: {gender}\n")
+                file.write(result + "\n")
+            else:
+                file.write(f"Error Code: {rescode} for keyword: {keyword}, Age: {age}, Gender: {gender}\n")

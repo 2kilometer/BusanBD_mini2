@@ -3,19 +3,16 @@ import sys
 import urllib.request
 client_id = "l9u8XefecwXfibq5OoWU"
 client_secret = "r6mCAuQK43"
-url = "https://openapi.naver.com/v1/datalab/shopping/category/keywords";
+url = "https://openapi.naver.com/v1/datalab/shopping/category/keyword/age";
 
 body = (
     '{'
-        '"startDate": "2018-01-01",'
+        '"startDate": "2023-01-01",'
         '"endDate": "2023-07-10",'
         '"timeUnit": "month",'
         '"category": "50000006",'
-        '"keyword": ['
-            '{"name": "식품/건강식품", "param": ["마그네슘"]}'
-        '],'
-        '"gender": "f",'
-        '"ages": ["10", "20"]'
+        '"keyword": "마그네슘",'
+        '"ages": ["10","20","30","40","50","60"]'
     '}'
 )
 
