@@ -5,6 +5,31 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Website</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <script type="text/javascript" src="{% static 'nonmodelapp/js/jquery-3.7.0.min.js' %}"></script>
+        <script>
+        $(document).ready(function(){
+            $(".chosen-select").on('mousedown', function(e){
+                e.preventDefault();
+                
+                var select = this;
+                var scroll = select.scrollTop;
+                
+                e.target.selected = !e.target.selected;
+                
+                setTimeout(function(){select.scrollTop = scroll}, 0);
+                
+                $(select).focus();
+            }).mousemove(function(e){e.preventDefault()});
+            $(".chosen-select").chosen({
+                no_results_text: "검색 결과가 없습니다",
+                width: "95%",
+                search_contains: true
+            });
+        });
+        </script>
         <style>
             select {
                 width: 200px;
@@ -39,63 +64,60 @@
             }
         </style>
         <script>
+            
             var selectCount = 0; // 추가된 셀렉트 박스의 수를 추적하는 변수
-    
-            async function newbox() {
+
+            function newbox() {
                 var locationSelect = document.getElementById("location");
                 var ageSelect = document.getElementById("age");
                 var genderSelect = document.getElementById("gender");
-    
+
                 if (
-                    locationSelect.value &&
                     ageSelect.value &&
                     genderSelect.value &&
                     selectCount === 0
                 ) {
                     document.getElementById("showlist").style.display = "block";
-    
+
                     selectCount++; // 추가된 셀렉트 박스의 수를 증가시킴
                 }
+            }
+
+            function upload(url) {
+                // load() : url을 서버로 요청한 후 응답결과를 읽어들임
+                // $(id) : load()된 응답결과를 id 공간에 출력 시킴
+                fm = document.getElementById("fm");
+                fm.action = "/register/";
+                // 전송시키기
+                fm.submit();
+                $("#load_view").load("/register/" + url);
+            }
+            function upload(url) {
+                // POST 방식으로 서버에 데이터 전송
+                $.post("/regiseter/", {dataKey: "dataValue"}, function(response) {
+                    // 서버로부터의 응답 결과를 이용하여 처리
+                    $("#load_view").html(response);
+                });
             }
         </script>
     </head>
     <body>
         {% include 'mainapp/inc/navbar.html' %}
-        <form action="">
+        <form id="fm" name="fm" method="post" action="#">
+            {% csrf_token %}
             {% include 'mainapp/inc/register.html' %}
             <div>
-                <br />
-                <label for="location">지역:</label>
-                <select
-                    id="location"
-                    name="location"
-                    onchange="newbox()"
-                    required
-                >
-                    <option value="">-- 선택하세요 --</option>
-                    <option value="서울">서울</option>
-                    <option value="경기">경기</option>
-                    <option value="부산">부산</option>
-                    <option value="대구">대구</option>
-                    <option value="대전">대전</option>
-                    <option value="인천">인천</option>
-                    <option value="광주">광주</option>
-                    <option value="제주">제주</option>
-                    <option value="강원">강원</option>
-                    <option value="울산">울산</option>
-                </select>
-
-                <br />
-
                 <label for="age">연령:</label>
-                <select id="age" name="age" onchange="newbox()" required>
+                <select id="age" name="age" onchange="newbox(); upload();" required>
                     <option value="">-- 선택하세요 --</option>
+                    <option value="10세 미만">10세 미만</option>
                     <option value="10대">10대</option>
                     <option value="20대">20대</option>
                     <option value="30대">30대</option>
                     <option value="40대">40대</option>
                     <option value="50대">50대</option>
-                    <option value="60대">60대이상</option>
+                    <option value="60대">60대</option>
+                    <option value="70대">70대 이상</option>
                 </select>
 
                 <br />
@@ -106,13 +128,37 @@
                     <option value="남성">남성</option>
                     <option value="여성">여성</option>
                 </select>
-
-                <br />
-            </div>
-            <div id="showlist">{% include 'mainapp/inc/option.html' %}</div>
-            <div>
+                <div id="showlist">
+                    <div>
+                        <label for="gender" onchange="newbox()">당신이 아픈 곳은:</label>
+                        <select id="dis_middle" name="dis_middle" required>
+                            {% for dis in dis_middle %}
+                            <option value="middle_id">{{dis.dis_middle}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <label for="gender" onchange="newbox()">취약 질병:</label>
+                        <select id="disease" name="disease" required>
+                            {% for dis in dis_age %}
+                            <option value="dis_id">{{dis.dis_id}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>
+                        <label for="disease" onchange="newbox()">질병을 검색하세요:</label>
+                        <select id="disease" name="disease" class="chosen-select" multiple required>
+                            {% for dis in dis_list %}
+                            <option value="{{dis.dis_id}}">{{dis.dis_id}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <br />
+                </div>
                 <button type="submit">가입</button>
             </div>
         </form>
     </body>
 </html>
+
+

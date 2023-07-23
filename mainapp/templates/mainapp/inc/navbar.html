@@ -1,37 +1,69 @@
-<style>
-    ul {
-        display: flex;
-        justify-content: space-around;
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-    }
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .navbar {
+                width: 95%;
+                background: #fff;
+                padding: 20px 40px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .navbar .nav-links .logo {
+                color: #7ac142;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                font-size: 18px;
+                font-weight: bold;
+                text-decoration: none;
+            }
+            .navbar .nav-links {
+                list-style: none;
+                display: flex;
+                width: 100%;
+            }
+            .navbar .nav-links li {
+                list-style: none;
+                font-size: 18px;
+                margin-left: 20px;
+            }
+            .navbar .nav-links a {
+                color: rgba(0, 0, 0, 0.5);
+                text-decoration: none;
+                transition: color 0.2s ease-out;
+            }
+            .navbar .nav-links a:hover {
+                color: #7ac142;
+            }
+            
+            .navbar .nav-links {
+                justify-content: space-between;
+                flex-grow: 1;
+            }
+            .navbar .nav-links ul {
+                display: flex;
+                padding: 0;
+                margin-left: auto;
+            }
 
-    li {
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-    li a:hover {
-        background-color: #111;
-    }
-</style>
-<ul>
-    <li><a href="/">메인화면</a></li>
-    <li><a href="/register/">회원가입</a></li>
-    <li><a href="/data_info/">데이터 출처</a></li>
-    <li><a href="/recom/">영양제 추천</a></li>
-    <li><a href="/statistic/">통계</a></li>
-</ul>
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="nav-links">
+                <li><a href="/" class="logo">Main page</a></li>
+                <ul>
+                    <li><a href="/register">회원가입</a></li>
+                    <li><a href="/recom">영양제 추천</a></li>
+                    <li><a href="/statistic">통계</a></li>
+                </ul>
+            </ul>
+        </nav>
+        <!-- Include the rest of your page content here -->
+    </body>
+</html>
