@@ -8,10 +8,15 @@ from . import views
 # - url 하나당, views의 함수 한개를 호출할 수 있도록 매핑합니다.
 # - url을 정의한다고 해서, 패턴(pattern)정의라고 합니다.
 urlpatterns = [
+    # - https://127.0.0.1:8000/login_chk/
+    path('login_chk/', views.login_chk),
+    # - https://127.0.0.1:8000/logout_chk/
+    path('logout_chk/', views.logout_chk),
     # - https://127.0.0.1:8000/
     path('', views.index),
-     # - https://127.0.0.1:8000/register/
+    # - https://127.0.0.1:8000/register/
     path('register/', views.Register),
+    # - https://127.0.0.1:8000/register1/
     path('register1/', views.Register1),
     # - https://127.0.0.1:8000//
     path('data_info/', views.Data_info),

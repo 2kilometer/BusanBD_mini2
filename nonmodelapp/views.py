@@ -173,7 +173,7 @@ def login_chk(request) :
         msg = """
             <script type='text/javascript'>
                 alert('회원정보가 일치하기 않습니다. 다시입력해 주세요!');
-                location.href = '/';
+                location.href = '/front/login/';
             </script>
         """
         return HttpResponse(msg)
