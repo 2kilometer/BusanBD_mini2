@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .DB_Sql import disease
 from .DB_Sql import sign_in
 from .DB_Sql import user
+from .DB_Sql import recom
 from django.core.paginator import Paginator
 from .models import Users, Userdis, Prod, Disease
 
@@ -142,6 +143,12 @@ def Recom(request):
     return render(request,
                   "mainapp/recom.html",
                   {"user_list" : user_list})
+
+def Recom_dis(request):
+    return render(request,
+                  "mainapp/recom_dis.html",
+                  )
+
 
 def Statistic(request):
     return render(request,

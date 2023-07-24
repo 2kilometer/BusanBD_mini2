@@ -40,6 +40,13 @@
             }
         </style>
         <script type="text/javascript">
+
+            var ses_user_id = "{{ request.session.ses_user_id }}";
+            function recom_dis(){
+                //alert(ses_user_id);
+                $("#load_view").load(`/recom_dis/?id=${ses_user_id}`);
+            }
+            
             function goLogout() {
                 location.href = "/logout_chk/";
             }
@@ -97,7 +104,11 @@
             {% else %}
                 {{ request.session.ses_user_id }}님 환영합니다!
                 &nbsp;&nbsp;
-                <button onclick="goLogout()">로그아웃</button>
+                <button onclick="goLogout()">로그아웃</button>            
+                <br>
+                <button onclick="recom_dis()">당신의 질병에 따른 추천 영양제</button>
+                <button onclick="">당신의 나이에 추천하는 영양제</button>
+
                 
             {% endif %}
         </div>
