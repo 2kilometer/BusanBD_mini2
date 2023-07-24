@@ -1,44 +1,57 @@
 from django.shortcuts import render
-from .DB_Sql import disease
+from .DB_Sql import disease, user
+from django.http import HttpResponse
+from django.core.paginator import Paginator
+from .models import Users, Userdis, Prod, Disease
 
 # Create your views here.
 
 # mainapp에서 최초 호출 함수로 사용..
-def setCartInsert (request) :
-    try :
-        cart_member = request.POST.get("cart_member")
-        cart_no = request.POST.get("cart_no")
-        cart_prod = request.POST.get("cart_prod")
-        cart_qty = request.POST.get("cart_qty")
-        
-        Cart.objects.filter(cart_no = cart_no,
-                            cart_prod = cart_prod).create(cart_member = cart_member,
-                                                          cart_no = cart_no,
-                                                          cart_prod = cart_prod,
-                                                          cart_qty = cart_qty)
-
-        msg = """
-            <script type = 'text/javascript'>
-                alert('정상적으로 입력되었습니다');
-                location.href = '/oracle/cart_list/';
-            </script>
-        """
-        return HttpResponse (msg)
-    
-    except :
-        msg = """
-            <script type = 'text/javascript'>
-                alert('오류발생');
-                history.go(-1);
-            </script>
-        """
-        return HttpResponse (msg)
 
 def index(request):
     return render(request,
                   "mainapp/index.html",
                   {})
 
+def logout_chk (request) :
+    request.session.flush()
+    
+    msg = """
+        <script type='text/javascript'>
+            alert('로그아웃 되었습니다.');
+            location.href = '/';
+        </script>
+    """
+    return HttpResponse (msg)
+
+def login_chk (request) :
+    user_id = request.POST.get("user_id","")
+    user_pw = request.POST.get("user_pw","")
+    
+    mem_view = user.getLoginChk(user_id, user_pw)
+
+    if mem_view.get("result") == "None" :
+        msg = """
+            <script type='text/javascript'>
+                alert('회원정보가 일치하지 않습니다. 다시 입력해 주세요!');
+                location.href = '/';
+            </script>
+        """
+        return HttpResponse(msg)
+    
+    msg = " {} / {} ".format(mem_view["user_id"],
+                                  mem_view["user_pw"])
+    
+    request.session["ses_user_id"] = user_id
+
+    msg = """
+        <script type='text/javascript'>
+            alert('환영합니다. 로그인 되었습니다.');
+            location.href = '/';
+        </script>
+    """
+    
+    return HttpResponse (msg)
 
 def Register(request):
     

@@ -1,7 +1,6 @@
 from django.db import models
 from django.db.models.fields import CharField
 from django.db.models.fields import IntegerField
-from django.db.models.fields import DateField 
 
 # Create your models here.
 class Users (models.Model) :
