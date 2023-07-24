@@ -13,23 +13,41 @@ def index(request):
 
 
 def Register(request):
-    age = request.POST.get("age", "")
+    
     dis_list = disease.dis_list()
     dis_middle = disease.dis_middle()
-    if age != "":
-        dis_age = disease.dis_age(age)
-    else:
-        dis_age = disease.dis_age('10대')
+    
     return render(request,
                   "mainapp/register.html",
                   {"dis_list" : dis_list,
                    "dis_middle" : dis_middle,
-                   "dis_age" : dis_age,})
+                   })
 
-def Register1(request) :    
-    return render(request,
-                  "mainapp/register.html",
-                  {})
+# def Register1(request) :    
+#     age = request.POST.get("age", "")
+#     if age != "":
+#         dis_age = disease.dis_age(age)
+#     else:
+#         dis_age = disease.dis_age('10대')
+#     return render(request,
+#                   "mainapp/register1.html",
+#                   {"dis_age" : dis_age,})
+def Register1(request):
+    # POST 데이터로부터 나이(age) 가져오기
+    age = request.POST.get("age", "")
+
+    # 디버깅을 위해 전체 POST 데이터 출력
+    print("POST 데이터:", request.POST)
+
+    # 디버깅을 위해 나이(age) 값 출력
+    print("나이:", age)
+
+    if age != "":
+        dis_age = disease.dis_age(age)
+    else:
+        dis_age = disease.dis_age('10대')
+
+    return render(request, "mainapp/register1.html", {"dis_age": dis_age})
 
 
 def Data_info(request):
