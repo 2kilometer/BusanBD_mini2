@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Website</title>
+    </head>
+    <body>
+        <div>
+            <label>취약 질병:</label>
+            <select id="disease" name="disease" required>
+                {% for dis in dis_age %}
+                <option value="dis_id">{{dis.dis_id}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </body>
+</html>
