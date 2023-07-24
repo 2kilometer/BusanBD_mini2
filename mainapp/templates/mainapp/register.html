@@ -28,6 +28,20 @@
                 search_contains: true
             });
         });
+        $(document).ready(function(){
+            $('.dis_middle').mousedown(function(e){
+                e.preventDefault();
+
+                var select = this;
+                var scroll = select.scrollTop;
+
+                e.target.selected = !e.target.selected;
+
+                setTimeout(function(){select.scrollTop = scroll;}, 0);
+
+                $(select).focus();
+            }).mousemove(function(e){e.preventDefault()});
+        });
         </script>
         <style>
             select {
@@ -63,7 +77,19 @@
             }
         </style>
         <script>
-            
+            function go_sign() {
+                fm = document.getElementById("fm");
+                fm.action = "/sign_in/";
+                fm.submit();
+            }
+
+            function sign_dis() {
+                fm = document.getElementById("fm");
+                fm.action = "/sign_dis/";
+                fm.submit();
+            }
+
+
             var selectCount = 0; // 추가된 셀렉트 박스의 수를 추적하는 변수
 
             function newbox() {
@@ -82,31 +108,29 @@
                 }
             }
             $(document).ready(function(){
-                $('#age').on('change', function(){
-                    $.ajax({
-                        type : 'post',
-                        url : '/register1/',
-                        data : queryString,
-                        dataType : 'json',
-                        error: function(xhr, status, error){
-                            alert(error);
-                        },
-                        success : function(json){
-                            alert(json)
-                        }
-                    });
-                    $("#load_view").load("/register1/");
-                })
+                $('#age, #gender').on('change', function(){
+                    var age = $("#age").val();
+                    var gender = $("#gender").val();
+                    $("#load_view").load(`/register1/?age=${age}&gender=${gender}`);
+                });
             });
+            
         </script>
     </head>
+    
     <body>
         {% include 'mainapp/inc/navbar.html' %}
         <form id="fm" name="fm" method="post" action="#">
             {% csrf_token %}
-            {% include 'mainapp/inc/register.html' %}
             <div>
-                <label for="age">연령:</label>
+                <label>이메일:</label>
+                <input type="email" id="email" name="email" required />
+                <br />
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+            <div>
+                <label>연령:</label>
                 <select id="age" name="age" onchange="newbox()" required>
                     <option value="">-- 선택하세요 --</option>
                     <option value="10세 미만">10세 미만</option>
@@ -121,7 +145,7 @@
 
                 <br />
 
-                <label for="gender" onchange="newbox()">성별:</label>
+                <label >성별:</label>
                 <select id="gender" name="gender" onchange="newbox()" required>
                     <option value="">-- 선택하세요 --</option>
                     <option value="남성">남성</option>
@@ -129,18 +153,25 @@
                 </select>
                 <div id="showlist">
                     <div>
-                        <label for="gender" onchange="newbox()">당신이 아픈 곳은:</label>
-                        <select id="dis_middle" name="dis_middle" required>
+                        <label>스트레스:</label>
+                        <select id="stress" name="stress" required>
+                            <option value="max">많음</option>
+                            <option value="min">적음</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>당신이 아픈 곳은:</label>
+                        <select id="dis_middle" name="dis_middle" class="dis_middle" multiple>
                             {% for dis in dis_middle %}
-                            <option value="middle_id">{{dis.dis_middle}}</option>
+                            <option value="{{dis.dis_middle}}">{{dis.dis_middle}}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div id = "load_view">
                     </div>
                     <div>
-                        <label for="disease" onchange="newbox()">질병을 검색하세요:</label>
-                        <select id="disease" name="disease" class="chosen-select" multiple required>
+                        <label>질병을 검색하세요:</label>
+                        <select id="dis_id" name="dis_id" class="chosen-select" multiple>
                             {% for dis in dis_list %}
                             <option value="{{dis.dis_id}}">{{dis.dis_id}}</option>
                             {% endfor %}
@@ -148,7 +179,7 @@
                     </div>
                     <br />
                 </div>
-                <button type="submit">가입</button>
+                <button onclick="go_sign()">가입</button>
             </div>
         </form>
     </body>

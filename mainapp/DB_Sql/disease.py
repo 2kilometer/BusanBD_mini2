@@ -49,7 +49,7 @@ def dis_list():
     return list_dict
 
 
-def dis_age(age):
+def dis_age(age ,gender):
     dsn = cx_Oracle.makedsn('localhost', 1521, 'xe')
     conn = cx_Oracle.connect('minipro', 'dbdb', dsn)
     cursor = conn.cursor()
@@ -60,10 +60,10 @@ def dis_age(age):
             """
     else :  
         sql = """
-            select dis_id
+            select distinct(dis_id), dis_gender
             from disease
-            where dis_age1 = '{}'
-        """.format(age)    
+            where dis_age1 = '{}' and (dis_gender = '{}' or dis_gender = 'nan')
+        """.format(age , gender)    
     cursor.execute(sql)
     rows = cursor.fetchall()
     
@@ -130,3 +130,8 @@ def dis_middle():
     conn.close()
     
     return list_dict
+
+
+
+
+

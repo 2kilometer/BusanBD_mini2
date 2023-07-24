@@ -5,6 +5,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Website</title>
+        <link href="/static/css/css.css" rel="stylesheet" type="text/css">
         <style>
             select {
                 width: 200px;
@@ -38,78 +39,78 @@
                 display: none;
             }
         </style>
-        <script>
-            var selectCount = 0; // 추가된 셀렉트 박스의 수를 추적하는 변수
-    
-            function newbox() {
-                var locationSelect = document.getElementById("location");
-                var ageSelect = document.getElementById("age");
-                var genderSelect = document.getElementById("gender");
-    
-                if (
-                    locationSelect.value &&
-                    ageSelect.value &&
-                    genderSelect.value &&
-                    selectCount === 0
-                ) {
-                    document.getElementById("showlist").style.display = "block";
-    
-                    selectCount++; // 추가된 셀렉트 박스의 수를 증가시킴
-                }
+        <script type="text/javascript">
+
+            var ses_user_id = "{{ request.session.ses_user_id }}";
+            function recom_dis(){
+                //alert(ses_user_id);
+                $("#load_view").load(`/recom_dis/?id=${ses_user_id}`);
+            }
+            
+            function goLogout() {
+                location.href = "/logout_chk/";
             }
         </script>
     </head>
     <body>
         {% include 'mainapp/inc/navbar.html' %}
-        <form action="">
-            {% include 'mainapp/inc/register.html' %}
-            <div>
-                <br />
-                <label for="location">지역:</label>
-                <select
-                    id="location"
-                    name="location"
-                    onchange="newbox()"
-                    required
-                >
-                    <option value="">-- 선택하세요 --</option>
-                    <option value="서울">서울</option>
-                    <option value="경기">경기</option>
-                    <option value="부산">부산</option>
-                    <option value="대구">대구</option>
-                    <option value="대전">대전</option>
-                    <option value="인천">인천</option>
-                    <option value="광주">광주</option>
-                    <option value="제주">제주</option>
-                    <option value="강원">강원</option>
-                    <option value="울산">울산</option>
-                </select>
+        <div id="container" class="container1">
+            {% if request.session.ses_user_id == None %}
+                <div class="content">
+                    <form id="frmNIDLogin" name="frmNIDLogin" target="_top" AUTOCOMPLETE="off"
+                            action="/login_chk/" method="POST">
+                            {% csrf_token %}
+                        <input type="hidden" name= "user_age" value="">
+                        <ul class="panel_wrap">
+                            <li class="panel_item" style="display: block;">
+                                <div class="panel_inner" role="tabpanel" aria-controls="loinid">
+                                    <div class="login_panal">
+                                        <h3>ID 로그인</h3>
+                                    </div>
+                                    <div class="id_pw_wrap">
+                                        <div class="input_row" id="id_line">
+                                            <input type="text" id="id" name="user_id" placeholder="아이디" title="아이디"
+                                                    class="input_text" maxlength="41" value="">
+                                        </div>
+                                        <div class="input_row" id="pw_line">
+                                            <input type="password" id="pw" name="user_pw" placeholder="비밀번호" title="비밀번호"
+                                                    class="input_text" maxlength="16">
+                                        </div>
+                                    </div>
+                                    <div class="login_keep_wrap" id="login_keep_wrap">
+                                        <div class="keep_check">
+                                            <input type="checkbox" id="keep" name="nvlong"
+                                                    class="input_keep" value="off">
+                                            <label for="keep" class="keep_text">로그인 상태 유지</label>
+                                        </div>
+                                    </div>
+                                    <div class="btn_login_wrap">
+                                        <button type="submit" class="btn_login" id="log.login">
+                                            <span class="btn_text">로그인</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                    <div>
+                        <ul class="find_wrap" id="find_wrap">
+                            <li>
+                                아이디가 없으신가요?<a href="/register/" class="find_text">회원가입</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% else %}
+                {{ request.session.ses_user_id }}님 환영합니다!
+                &nbsp;&nbsp;
+                <button onclick="goLogout()">로그아웃</button>            
+                <br>
+                <button onclick="recom_dis()">당신의 질병에 따른 추천 영양제</button>
+                <button onclick="">당신의 나이에 추천하는 영양제</button>
 
-                <br />
-
-                <label for="age">연령:</label>
-                <select id="age" name="age" onchange="newbox()" required>
-                    <option value="">-- 선택하세요 --</option>
-                    <option value="10대">10대</option>
-                    <option value="20대">20대</option>
-                    <option value="30대">30대</option>
-                    <option value="40대">40대</option>
-                    <option value="50대">50대</option>
-                    <option value="60대">60대이상</option>
-                </select>
-
-                <br />
-
-                <label for="gender" onchange="newbox()">성별:</label>
-                <select id="gender" name="gender" onchange="newbox()" required>
-                    <option value="">-- 선택하세요 --</option>
-                    <option value="남성">남성</option>
-                    <option value="여성">여성</option>
-                </select>
-
-                <br />
-                <button type="submit">가입</button>
-            </div>
-        </form>
+                
+            {% endif %}
+        </div>
     </body>
 </html>
