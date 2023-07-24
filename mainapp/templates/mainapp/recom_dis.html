@@ -5,33 +5,23 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
         <title>My Website</title>
         <script>
-            $(document).ready(function(){
-                $('#dis_id2').mousedown(function(e){
-                    e.preventDefault();
-
-                    var select = this;
-                    var scroll = select.scrollTop;
-
-                    e.target.selected = !e.target.selected;
-
-                    setTimeout(function(){select.scrollTop = scroll;}, 0);
-
-                    $(select).focus();
-                }).mousemove(function(e){e.preventDefault()});
-            });
         </script>
     </head>
     <body>
         <div>
-            <label>취약 질병:</label>
-            <select id="dis_id2" name="dis_id2" multiple>
-                {% for dis in dis_age %}
-                <option value="{{dis.dis_id}}">{{dis.dis_id}}</option>
-                {% endfor %}
-            </select>
+            <label>당신에게 추천하는 ///:</label>
+                <select onchange="info()" id = "prod_name" name = "prod_name">
+                    <option value="null">선택하면 약 정보가 나옵니다</option>
+                    {% for dis in merged_list %}
+                    <option value="{{dis.prod_name}}">{{dis.prod_name}}</option>
+                    {% endfor %}
+                </select>
         </div>
+        {{prod_info}}
     </body>
 </html>
 

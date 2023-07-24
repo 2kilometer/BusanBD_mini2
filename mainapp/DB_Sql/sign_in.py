@@ -34,7 +34,25 @@ def ud_dis (ud_id, ud_dis):
     
     cursor.close()
     conn.close()
+
+def ud_dis (md_id, md_middle):
+    dsn = cx_Oracle.makedsn('localhost', 1521, 'xe')
+    conn = cx_Oracle.connect('minipro', 'dbdb', dsn)
+    cursor = conn.cursor()
     
+    sql = """
+        INSERT INTO usermiddle(md_id, md_middle) 
+        VALUES('{}' ,'{}')
+    """.format(md_id, md_middle)
+    cursor.execute(sql)
+    
+    conn.commit()  # 변경 내용을 데이터베이스에 커밋
+
+    
+    cursor.close()
+    conn.close()
+
+
     
 def middle (id, middle):
     dsn = cx_Oracle.makedsn('localhost', 1521, 'xe')
