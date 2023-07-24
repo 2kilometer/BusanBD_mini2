@@ -4,7 +4,35 @@ from .DB_Sql import disease
 # Create your views here.
 
 # mainapp에서 최초 호출 함수로 사용..
+def setCartInsert (request) :
+    try :
+        cart_member = request.POST.get("cart_member")
+        cart_no = request.POST.get("cart_no")
+        cart_prod = request.POST.get("cart_prod")
+        cart_qty = request.POST.get("cart_qty")
+        
+        Cart.objects.filter(cart_no = cart_no,
+                            cart_prod = cart_prod).create(cart_member = cart_member,
+                                                          cart_no = cart_no,
+                                                          cart_prod = cart_prod,
+                                                          cart_qty = cart_qty)
 
+        msg = """
+            <script type = 'text/javascript'>
+                alert('정상적으로 입력되었습니다');
+                location.href = '/oracle/cart_list/';
+            </script>
+        """
+        return HttpResponse (msg)
+    
+    except :
+        msg = """
+            <script type = 'text/javascript'>
+                alert('오류발생');
+                history.go(-1);
+            </script>
+        """
+        return HttpResponse (msg)
 
 def index(request):
     return render(request,
