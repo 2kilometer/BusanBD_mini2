@@ -5,6 +5,43 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Website</title>
+<<<<<<< HEAD
+=======
+        <link href="/static/css/css.css" rel="stylesheet" type="text/css">
+        <style>
+            select {
+                width: 200px;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                margin-bottom: 10px;
+                flex-grow: 1;
+            }
+
+            button {
+                padding: 10px 20px;
+                background-color: #4caf50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                flex-grow: 1;
+            }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+            label {
+                margin-bottom: 5px;
+                font-weight: bold;
+                flex-shrink: 0;
+            }
+            #showlist {
+                display: none;
+            }
+        </style>
+>>>>>>> a11982e650fa23c7aca4b95bcb6399555361be7a
         <script>
             {% include 'mainapp/inc/navbar.html' %}
             <script type="text/javascript">
@@ -13,9 +50,15 @@
                     location.href = "/nonmodel/logout_chk/";
                 }
         </script>
+        <script type="text/javascript">
+            function goLogout() {
+                location.href = "/logout_chk/";
+            }
+        </script>
     </head>
     <body>
         {% include 'mainapp/inc/navbar.html' %}
+<<<<<<< HEAD
         <!-- Login / Logout 처리하기 -->
         {% if request.session.ses_mem_id == None %}
         <!-- Login 화면 구성 -->
@@ -36,5 +79,56 @@
         {% endif %}
 
             <br /><br />
+=======
+        <div id="container" class="container1">
+            {% if request.session.ses_user_id == None %}
+                <div class="content">
+                    <form id="frmNIDLogin" name="frmNIDLogin" target="_top" AUTOCOMPLETE="off"
+                            action="/login_chk/" method="POST">
+                            {% csrf_token %}
+                        <ul class="panel_wrap">
+                            <li class="panel_item" style="display: block;">
+                                <div class="panel_inner" role="tabpanel" aria-controls="loinid">
+                                    <div class="id_pw_wrap">
+                                        <div class="input_row" id="id_line">
+                                            <input type="text" id="id" name="user_id" placeholder="아이디" title="아이디"
+                                                    class="input_text" maxlength="41" value="">
+                                        </div>
+                                        <div class="input_row" id="pw_line">
+                                            <input type="password" id="pw" name="user_pw" placeholder="비밀번호" title="비밀번호"
+                                                    class="input_text" maxlength="16">
+                                        </div>
+                                    </div>
+                                    <div class="login_keep_wrap" id="login_keep_wrap">
+                                        <div class="keep_check">
+                                            <input type="checkbox" id="keep" name="nvlong"
+                                                    class="input_keep" value="off">
+                                            <label for="keep" class="keep_text">로그인 상태 유지</label>
+                                        </div>
+                                    </div>
+                                    <div class="btn_login_wrap">
+                                        <button type="submit" class="btn_login" id="log.login">
+                                            <span class="btn_text">로그인</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                    <div>
+                        <ul class="find_wrap" id="find_wrap">
+                            <li>
+                                아이디가 없으신가요?<a href="/register/" class="find_text">회원가입</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            {% else %}
+                {{ request.session.ses_user_id }}님 환영합니다!
+                &nbsp;&nbsp;
+                <button onclick="goLogout()">로그아웃</button>
+            {% endif %}
+        </div>
+>>>>>>> a11982e650fa23c7aca4b95bcb6399555361be7a
     </body>
 </html>
