@@ -96,7 +96,23 @@ def sign(request):
         age = request.POST.get("age")
         gender   = request.POST.get("gender")
         stress   = request.POST.get("stress")
+        dis_id   = request.POST.getlist("dis_id")
+        dis_id2   = request.POST.getlist("dis_id2")
+        dis_middle   = request.POST.getlist("dis_middle")
         sign_in.sign_up(email, password, age, gender, stress)
+
+        # 두 리스트를 합칩니다
+        total_dis_id = dis_id + dis_id2
+
+        # 중복 항목을 제거하기 위해 set으로 변환하고, 다시 list로 변환합니다
+        sum_dis = list(set(total_dis_id))
+        dis_middle = list(set(dis_middle))
+        
+        for i in range(len(sum_dis)):
+            sign_in.ud_dis(email ,sum_dis[i])
+            
+        for d in range(len(dis_middle)):
+            sign_in.middle(email ,dis_middle[d])
         
     except :        
         ### 오류처리
@@ -105,7 +121,7 @@ def sign(request):
                 alert('오류발생{},{},{},{},{}');
                 history.go(-1);
             </script>
-        """.format(email, password, age, gender, stress)   
+        """.format(id, password, age, gender, stress)   
         return HttpResponse(msg)
     
     ### 정상처리
