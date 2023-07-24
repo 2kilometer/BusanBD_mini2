@@ -1,10 +1,7 @@
 from django.db import models
 from django.db.models.fields import CharField
 from django.db.models.fields import IntegerField
-<<<<<<< HEAD
 from django.db.models.fields import DateField 
-=======
->>>>>>> a11982e650fa23c7aca4b95bcb6399555361be7a
 
 # Create your models here.
 class Users (models.Model) :

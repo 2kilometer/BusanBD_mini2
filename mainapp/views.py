@@ -1,14 +1,10 @@
 from django.shortcuts import render
-<<<<<<< HEAD
 from django.http import HttpResponse
 from .DB_Sql import disease
 from .DB_Sql import sign_in
-=======
-from .DB_Sql import disease, user
-from django.http import HttpResponse
+from .DB_Sql import user
 from django.core.paginator import Paginator
 from .models import Users, Userdis, Prod, Disease
->>>>>>> a11982e650fa23c7aca4b95bcb6399555361be7a
 
 # Create your views here.
 
