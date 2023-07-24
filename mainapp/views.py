@@ -138,9 +138,10 @@ def Data_info(request):
                   {})
 
 def Recom(request):
+    user_list = Users.objects.all()
     return render(request,
                   "mainapp/recom.html",
-                  {})
+                  {"user_list" : user_list})
 
 def Statistic(request):
     return render(request,

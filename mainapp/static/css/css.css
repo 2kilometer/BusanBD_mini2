@@ -31,11 +31,13 @@
 }
 .find_wrap {
     width: 300px;
+    position: relative;
+    left: 8%
 }
 .find_text {
     text-align: center;
     position: relative;
-    left: 3%;
+    left: 4%;
     font-size: 13px; color: #166c16;
     text-decoration: none;
 }
