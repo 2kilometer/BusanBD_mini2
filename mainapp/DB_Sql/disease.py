@@ -60,7 +60,7 @@ def dis_age(age):
             """
     else :  
         sql = """
-            select dis_id
+            select distinct(dis_id)
             from disease
             where dis_age1 = '{}'
         """.format(age)    
