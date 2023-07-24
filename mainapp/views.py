@@ -198,7 +198,14 @@ def prodprod(request):
                   "mainapp/prodprod.html",
                   {"prod_info": prod_info})
 
-
+def naver(request):
+    id = request.GET.get("id", "")
+    
+    naver_info = recom.naver(id)
+    
+    return render(request,
+                  "mainapp/naver.html",
+                  {"naver_info": naver_info})
 
 ##질병 추가하기 함수
 def Insert_view(request):

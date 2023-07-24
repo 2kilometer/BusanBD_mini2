@@ -13,13 +13,12 @@
     </head>
     <body>
         <div>
-            <label>당신에게 추천하는 ///:</label>
-                <select onchange="info()" id = "prod_name" name = "prod_name">
-                    <option value="null">선택하면 약 정보가 나옵니다</option>
-                    {% for dis in merged_list %}
-                    <option value="{{dis.prod_name}}">{{dis.prod_name}}</option>
-                    {% endfor %}
-                </select>
+            <label>연령대 별 네이버 트랜드:</label>
+            <select onchange="" id = "naver_prod" name = "naver_prod">
+                {% for dis in naver_info %}
+                <option value="{{dis.naver_info}}">{{dis.rank}}{{dis.keyword}}</option>
+                {% endfor %}
+            </select>
         </div>
     </body>
 </html>

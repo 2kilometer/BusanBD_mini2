@@ -208,3 +208,70 @@ def prod_info(id):
     conn.close()
     
     return list_dict
+
+def prod_info(id):
+    dsn = cx_Oracle.makedsn('localhost', 1521, 'xe')
+    conn = cx_Oracle.connect('minipro', 'dbdb', dsn)
+    cursor = conn.cursor()
+    sql = """
+            select distinct prod_eff , prod_min, prod_max, prod_unit, prod_warn
+            from prod
+            where prod_name = :id
+        """
+    cursor.execute(sql, {"id": id})
+    rows = cursor.fetchall()
+
+    cols = [col[0].lower() for col in cursor.description]
+
+    list_dict = [{cols[i]: row[i] for i in range(len(cols))} for row in rows]
+
+    cursor.close()
+    conn.close()
+
+    return list_dict
+
+
+def naver(id):
+    dsn = cx_Oracle.makedsn('localhost', 1521, 'xe')
+    conn = cx_Oracle.connect('minipro', 'dbdb', dsn)
+    cursor = conn.cursor()
+
+    sql = """
+        select user_age
+        from users
+        where user_id = :id
+    """
+    cursor.execute(sql, {"id": id})
+    row = cursor.fetchone()
+    user_age = row[0]
+
+    if user_age == '20대':
+        sql = """
+        select rank, keyword 
+        from naver_table
+        where age1 = :user_age or age2 = :user_age or age3 = :user_age
+        """
+    elif user_age == '50대':
+        sql = """
+        select rank, keyword 
+        from naver_table
+        where age1 = :user_age or age2 = :user_age
+        """
+    else:
+        sql = """
+        select rank, keyword 
+        from naver_table
+        where age1 = :user_age 
+        """
+
+    cursor.execute(sql, {"user_age": user_age})
+    rows = cursor.fetchall()
+
+    cols = [col[0].lower() for col in cursor.description]
+
+    list_dict = [{cols[i]: row[i] for i in range(len(cols))} for row in rows]
+
+    cursor.close()
+    conn.close()
+
+    return list_dict

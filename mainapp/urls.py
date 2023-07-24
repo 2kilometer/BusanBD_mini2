@@ -34,5 +34,7 @@ urlpatterns = [
     # - https://127.0.0.1:8000//
     path('prodprod/', views.prodprod),
     # - https://127.0.0.1:8000//
+    path('naver/', views.naver),
+    # - https://127.0.0.1:8000//
     path('statistic/', views.Statistic),
 ]

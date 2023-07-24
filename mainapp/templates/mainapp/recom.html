@@ -66,6 +66,10 @@
                 var prod = $("#prod_name").val();
                 $("#prodprod").load(`/prodprod/?prod_name=${prod}`);
             }
+
+            function naver(){
+                $("#naver").load(`/naver/?id=${ses_user_id}`);
+            }
         </script>
     </head>
     <body>
@@ -134,7 +138,9 @@
                 </div>
                 <div id="prodprod">
                 </div>
-                <button onclick="">나이에 따른 추천 ///</button>
+                <button onclick="naver()">네이버 트랜드별 나이에 따른 추천 ///</button>
+                <div id = "naver">
+                </div>
                 
             {% endif %}
         </div>
