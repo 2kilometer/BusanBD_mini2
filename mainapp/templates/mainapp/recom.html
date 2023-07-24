@@ -6,18 +6,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Website</title>
         <script>
+            {% include 'mainapp/inc/navbar.html' %}
+            <script type="text/javascript">
+                // 로그아웃 처리하기
+                function goLogout(){
+                    location.href = "/nonmodel/logout_chk/";
+                }
         </script>
     </head>
     <body>
         {% include 'mainapp/inc/navbar.html' %}
-        <form action="/register" method="post">
-            <label for="email">이메일 주소:</label>
-            <input type="email" id="email" name="email" required><br><br>
-        
-            <label for="password">비밀번호:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <button>로그인</button>
+        <!-- Login / Logout 처리하기 -->
+        {% if request.session.ses_mem_id == None %}
+        <!-- Login 화면 구성 -->
+        <!--  ** 로그인 처리하는 viwes.py는 nonmodelapp에서 진행 -->
+        <form id="fm" method="post" action="/nonmodel/login_chk/">
+            {% csrf_token %} *아이디 :
+            <input type="text" name="mem_id" size="15" required /> &nbsp;&nbsp;
+            *패스워드 :
+            <input type="password" name="mem_pass" size="15" required />
+            &nbsp;&nbsp;
+            <input type="submit" value="로그인" />
         </form>
-        <a href="/register/"><button>회원가입</button></a>
+        {% else %}
+        <!-- Logout 화면구성 -->
+        {{ request.session.ses_mem_id }} ({{ request.session.ses_mem_name }})님
+        환영합니다! &nbsp;&nbsp;
+        <button onclick="goLogout()">로그아웃</button>
+        {% endif %}
+
+            <br /><br />
     </body>
 </html>

@@ -4,14 +4,31 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>My Website</title>
+        <script>
+            $(document).ready(function(){
+                $('#dis_id2').mousedown(function(e){
+                    e.preventDefault();
+
+                    var select = this;
+                    var scroll = select.scrollTop;
+
+                    e.target.selected = !e.target.selected;
+
+                    setTimeout(function(){select.scrollTop = scroll;}, 0);
+
+                    $(select).focus();
+                }).mousemove(function(e){e.preventDefault()});
+            });
+        </script>
     </head>
     <body>
         <div>
             <label>취약 질병:</label>
-            <select id="dis_id" name="disease">
+            <select id="dis_id2" name="dis_id2" multiple>
                 {% for dis in dis_age %}
-                <option value="dis_id">{{dis.dis_id}}</option>
+                <option value="{{dis.dis_id}}">{{dis.dis_id}}</option>
                 {% endfor %}
             </select>
         </div>

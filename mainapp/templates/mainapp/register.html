@@ -28,6 +28,20 @@
                 search_contains: true
             });
         });
+        $(document).ready(function(){
+            $('.dis_middle').mousedown(function(e){
+                e.preventDefault();
+
+                var select = this;
+                var scroll = select.scrollTop;
+
+                e.target.selected = !e.target.selected;
+
+                setTimeout(function(){select.scrollTop = scroll;}, 0);
+
+                $(select).focus();
+            }).mousemove(function(e){e.preventDefault()});
+        });
         </script>
         <style>
             select {
@@ -69,6 +83,12 @@
                 fm.submit();
             }
 
+            function sign_dis() {
+                fm = document.getElementById("fm");
+                fm.action = "/sign_dis/";
+                fm.submit();
+            }
+
 
             var selectCount = 0; // 추가된 셀렉트 박스의 수를 추적하는 변수
 
@@ -87,13 +107,14 @@
                     selectCount++; // 추가된 셀렉트 박스의 수를 증가시킴
                 }
             }
-            
             $(document).ready(function(){
-                $('#age').on('change', function(){
-                    age = document.getElementById("age").value;
-                    $("#load_view").load(`/register1/?age=${age}`);
-                })
+                $('#age, #gender').on('change', function(){
+                    var age = $("#age").val();
+                    var gender = $("#gender").val();
+                    $("#load_view").load(`/register1/?age=${age}&gender=${gender}`);
+                });
             });
+            
         </script>
     </head>
     <body>
@@ -139,9 +160,9 @@
                     </div>
                     <div>
                         <label>당신이 아픈 곳은:</label>
-                        <select id="dis_middle" name="dis_middle" required>
+                        <select id="dis_middle" name="dis_middle" class="dis_middle" multiple>
                             {% for dis in dis_middle %}
-                            <option value="middle_id">{{dis.dis_middle}}</option>
+                            <option value="{{dis.dis_middle}}">{{dis.dis_middle}}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -157,7 +178,8 @@
                     </div>
                     <br />
                 </div>
-                <button onclick="go_sign()">가입</button>
+                <button onclick="sign_dis()">질병 저장</button>
+                <button onclick="go_sign">가입</button>
             </div>
         </form>
     </body>

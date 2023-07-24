@@ -29,6 +29,7 @@ def Register(request):
 def Register1(request):
     # POST 데이터로부터 나이(age) 가져오기
     age = request.GET.get("age", "")
+    gender = request.GET.get("gender", "")
 
     # 디버깅을 위해 전체 POST 데이터 출력
     print("POST 데이터:", request.POST)
@@ -36,17 +37,18 @@ def Register1(request):
     # 디버깅을 위해 나이(age) 값 출력
     print("나이:", age)
 
-    if age != "":
-        dis_age = disease.dis_age(age)
+    if age != "" and gender != "":
+        dis_age = disease.dis_age(age, gender)
     
     else :
         dis_age = age
+    
 
     return render(request, "mainapp/register1.html", {"dis_age": dis_age})
 
 
 
-def sign_in(request):
+def sign(request):
     try :
         email   = request.POST.get("email")
         password   = request.POST.get("password")
@@ -74,6 +76,42 @@ def sign_in(request):
     """   
     return HttpResponse(msg)
 
+def sign_dis(request):
+    try :
+        id   = request.POST.get("email")
+        dis_id   = request.POST.getlist("dis_id")
+        dis_id2   = request.POST.getlist("dis_id2")
+        dis_middle   = request.POST.getlist("dis_middle")
+
+        # 두 리스트를 합칩니다
+        total_dis_id = dis_id + dis_id2
+
+        # 중복 항목을 제거하기 위해 set으로 변환하고, 다시 list로 변환합니다
+        sum_dis = list(set(total_dis_id))
+        dis_middle = list(set(dis_middle))
+        
+        for i in range(len(sum_dis)):
+            sign_in.ud_dis(id ,sum_dis[i])
+            
+        for d in range(len(dis_middle)):
+            sign_in.middle(id ,dis_middle[d])
+        
+    except :        
+        ### 오류처리
+        msg = """
+            <script type='text/javascript'>
+                alert('오류발생{},{},{},{}');
+            </script>
+        """.format(id, dis_id,dis_id2, dis_middle)   
+        return HttpResponse(msg)
+    
+    ### 정상처리
+    msg = """
+        <script type='text/javascript'>
+            alert('정상적으로 입력되었습니다!!{},{},{},{}');
+        </script>
+    """.format(id, dis_id,dis_id2, dis_middle)
+    return HttpResponse(msg)
 
 
 def Data_info(request):
