@@ -53,6 +53,7 @@
                     <form id="frmNIDLogin" name="frmNIDLogin" target="_top" AUTOCOMPLETE="off"
                             action="/login_chk/" method="POST">
                             {% csrf_token %}
+                        <input type="hidden" name= "user_age" value="">
                         <ul class="panel_wrap">
                             <li class="panel_item" style="display: block;">
                                 <div class="panel_inner" role="tabpanel" aria-controls="loinid">
