@@ -28,19 +28,19 @@ def login_chk (request) :
     user_id = request.POST.get("user_id","")
     user_pw = request.POST.get("user_pw","")
     
-    mem_view = user.getLoginChk(user_id, user_pw)
+    user_view = user.getLoginChk(user_id, user_pw)
 
-    if mem_view.get("result") == "None" :
+    if user_view.get("result") == "None" :
         msg = """
             <script type='text/javascript'>
                 alert('회원정보가 일치하지 않습니다. 다시 입력해 주세요!');
-                location.href = '/';
+                location.href = '/recom/';
             </script>
         """
         return HttpResponse(msg)
     
-    msg = " {} / {} ".format(mem_view["user_id"],
-                                  mem_view["user_pw"])
+    msg = " {} / {} ".format(user_view["user_id"],
+                                  user_view["user_pw"])
     
     request.session["ses_user_id"] = user_id
 
