@@ -1,0 +1,41 @@
+.content {
+    width: 250px;
+    position: absolute;
+    top: 45%;
+    left: 44%;
+    transform: translate(-50%, -50%);
+}
+.id_pw_wrap {
+    width: 300px;
+    position: relative;
+}
+.input_text {
+    width: 100%;
+    padding: 10px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 12px; color: #000000;
+    outline: none;
+}
+.btn_login_wrap {
+    margin-top: 30px;
+}
+.btn_login {
+    width: 300px; height: 50px;
+    background: #166cea;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+}
+.find_wrap {
+    width: 300px;
+}
+.find_text {
+    text-align: center;
+    position: relative;
+    left: 3%;
+    font-size: 13px; color: #166c16;
+    text-decoration: none;
+}
