@@ -17,7 +17,6 @@ def index(request):
 
 def logout_chk (request) :
     request.session.flush()
-    
     msg = """
         <script type='text/javascript'>
             alert('로그아웃 되었습니다.');
@@ -132,44 +131,6 @@ def sign(request):
         </script>
     """   
     return HttpResponse(msg)
-
-def sign_dis(request):
-    try :
-        id   = request.POST.get("email")
-        dis_id   = request.POST.getlist("dis_id")
-        dis_id2   = request.POST.getlist("dis_id2")
-        dis_middle   = request.POST.getlist("dis_middle")
-
-        # 두 리스트를 합칩니다
-        total_dis_id = dis_id + dis_id2
-
-        # 중복 항목을 제거하기 위해 set으로 변환하고, 다시 list로 변환합니다
-        sum_dis = list(set(total_dis_id))
-        dis_middle = list(set(dis_middle))
-        
-        for i in range(len(sum_dis)):
-            sign_in.ud_dis(id ,sum_dis[i])
-            
-        for d in range(len(dis_middle)):
-            sign_in.middle(id ,dis_middle[d])
-        
-    except :        
-        ### 오류처리
-        msg = """
-            <script type='text/javascript'>
-                alert('오류발생{},{},{},{}');
-            </script>
-        """.format(id, dis_id,dis_id2, dis_middle)   
-        return HttpResponse(msg)
-    
-    ### 정상처리
-    msg = """
-        <script type='text/javascript'>
-            alert('정상적으로 입력되었습니다!!{},{},{},{}');
-        </script>
-    """.format(id, dis_id,dis_id2, dis_middle)
-    return HttpResponse(msg)
-
 
 def Data_info(request):
     return render(request,

@@ -19,7 +19,6 @@ urlpatterns = [
     # - https://127.0.0.1:8000/register1/
     path('register1/', views.Register1),
     path('sign_in/', views.sign),
-    path('sign_dis/', views.sign_dis),
     # - https://127.0.0.1:8000//
     path('data_info/', views.Data_info),
     # - https://127.0.0.1:8000//
