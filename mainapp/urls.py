@@ -12,6 +12,7 @@ urlpatterns = [
     path('', views.index),
      # - https://127.0.0.1:8000/register/
     path('register/', views.Register),
+    path('register1/', views.Register1),
     # - https://127.0.0.1:8000//
     path('data_info/', views.Data_info),
     # - https://127.0.0.1:8000//
