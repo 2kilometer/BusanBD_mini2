@@ -16,4 +16,8 @@ urlpatterns = [
     path('testimonial/', views.testimonial),
     # - http://127.0.0.1:8000/nonmodel/index/
     path('treatment/', views.treatment),
+    # - https://127.0.0.1:8000/register1/
+    path('register1/', views.Register1),
+    # - https://127.0.0.1:8000/register1/
+    path('sign_in/', views.sign),
 ]
