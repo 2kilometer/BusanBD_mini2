@@ -19,9 +19,13 @@ def about(request):
                   {})
     
 def contact(request):
+    
+    dis_list = disease.dis_list()
+    dis_middle = disease.dis_middle()
     return render(request,
                   "nonmodelapp/contact.html",
-                  {})
+                  {"dis_list" : dis_list,
+                   "dis_middle" : dis_middle,})
 
 def doctor(request):
     return render(request,
