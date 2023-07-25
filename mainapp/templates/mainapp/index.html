@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>My Website</title>
-    </head>
-    <body>
-        {% include 'mainapp/inc/navbar.html' %}
-    </body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Website</title>
+    <script type="text/javascript">
+        function goLogout() {
+            location.href = "/logout_chk/";
+        }
+    </script>
+</head>
+<body>
+    {% include 'mainapp/inc/navbar.html' %}
+    {% if request.session.ses_user_id == None %}
+        <form id="fm" method="post" action="/login_chk/">
+            {% csrf_token %}
+            *아이디 : <input type="text" name="user_id" size="15" required>
+            &nbsp;&nbsp;
+            *패스워드 : <input type="password" name="user_pw" size="15" required>
+            &nbsp;&nbsp;
+            <input type="submit" value="로그인">
+        </form>
+    {% else %}
+        {{ request.session.ses_user_id }}님 환영합니다!
+        &nbsp;&nbsp;
+        <button onclick="goLogout()">로그아웃</button>
+    {% endif %}
+</body>
 </html>
