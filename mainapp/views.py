@@ -5,7 +5,6 @@ from .DB_Sql import sign_in
 from .DB_Sql import user
 from .DB_Sql import recom
 from django.core.paginator import Paginator
-from .models import Users, Userdis, Prod, Disease
 
 # Create your views here.
 
