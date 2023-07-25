@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+        <title>My Website</title>
+        <script>
+        </script>
+    </head>
+    <body>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>효과</th>
+                    <th>최소 섭취량</th>
+                    <th>최대 섭취량</th>
+                    <th>섭취량 단위</th>
+                    <th>주의사항</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prod in prod_info %}
+                <tr>
+                    <td>{{prod.prod_eff}}</td>
+                    <td>{{prod.prod_min}}</td>
+                    <td>{{prod.prod_max}}</td>
+                    <td>{{prod.prod_unit}}</td>
+                    <td>{{prod.prod_warn}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
+

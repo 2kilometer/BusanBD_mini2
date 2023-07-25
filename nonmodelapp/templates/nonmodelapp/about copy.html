@@ -28,52 +28,14 @@
   <link href="/static/css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="/static/css/responsive.css" rel="stylesheet" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 </head>
-<!-- style 안보이게 하기-->
-<style>
-  #showlist {
-  display: none;}
-</style>
-<!-- 자바스크립트 처리시작-->
-<script type="text/javascript">
-
-  var ses_user_id = "{{ request.session.ses_user_id }}";
-  function recom_dis(){
-      $("#recom_view").load(`/nonmodel/recom_dis/?id=${ses_user_id}`);
-  }
-  
-  function goLogout() {
-      location.href = "/logout_chk/";
-  }
-
-  function insert(){
-      $("#insert_view").load(`/nonmodel/insert_view/?id=${ses_user_id}`);
-  }
-
-  function insert2(){
-      $("#insert_view2").load(`/nonmodel/insert_view2/?id=${ses_user_id}`);
-  }
-  
-  
-  function info(){
-      var prod = $("#prod_name").val();
-      $("#prodprod").load(`/nonmodel/prodprod/?prod_name=${prod}`);
-  }
-
-  function naver(){
-      $("#naver").load(`/nonmodel/naver/?id=${ses_user_id}`);
-  }
-</script>
 <body class="sub_page">
   <div class="hero_area">
     <header class="header_section">
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="/nonmodel/index/">
+            <a class="navbar-brand" href="index.html">
               <img src="/static/nonmodelapp/images/logo.png" alt="">
             </a>
 
@@ -87,19 +49,22 @@
                   <li class="nav-item ">
                     <a class="nav-link" href="/nonmodel/index/">Home <span class="sr-only">(current)</span></a>
                   </li>
-                  <li class="nav-item">
+                  <li class="nav-item active">
                     <a class="nav-link" href="/nonmodel/about/"> About</a>
                   </li>
-                  <li class="nav-item active">
+                  <li class="nav-item">
                     <a class="nav-link" href="/nonmodel/treatment/">Treatment</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/nonmodel/doctor/">Doctors</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/nonmodel/testimonial/">Testimonial</a>
+                  </li>
                 </ul>
               </div>
               <div class="quote_btn-container">
-                <a href="/nonmodel/login/">
+                <a href="">
                   <i class="fa fa-user" aria-hidden="true"></i>
                   <span>
                     Login
@@ -123,28 +88,34 @@
       </div>
     </header>
   </div>
-  <!-- treatment section -->
-  <section class="treatment_section layout_padding">
-    <button onclick="insert2()">당신의 아픈곳을 확인하고 없으면 추가하세요</button>
-    <button onclick="insert()">당신의 질병을 확인하고 없으면 추가하세요</button>
-    <div id = "insert_view">
-    </div>
-    <div id = "insert_view2">
-    </div>
-
-    <br>
-    <button onclick="recom_dis()">당신의 의 정보로 추천하는 ///</button>
-    <div id="recom_view">
-    </div>
-    <div id="prodprod">
-    </div>
-    <button onclick="naver()">네이버 트랜드별 나이에 따른 추천 ///</button>
-    <div id = "naver">
+  <!-- about section -->
+  <section class="about_section layout_padding">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="/static/nonmodelapp/images/about-img.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About <span>Hospital</span>
+              </h2>
+            </div>
+            <p>
+              has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors
+            </p>
+            <a href="">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-
-  <!-- end treatment section -->
-
+  <!-- end about section -->
   <!-- info section -->
   <section class="info_section ">
     <div class="container">
@@ -195,14 +166,17 @@
                 <a href="/nonmodel/index/">
                   Home
                 </a>
-                <a href="/nonmodel/about/">
+                <a class="active" href="/nonmodel/about/">
                   About
                 </a>
-                <a href="/nonmodel/treatment/" class="active">
+                <a href="/nonmodel/treatment/">
                   Treatment
                 </a>
                 <a href="/nonmodel/doctor/">
                   Doctors
+                </a>
+                <a href="/nonmodel/testimonial/">
+                  Testimonial
                 </a>
               </div>
             </div>
