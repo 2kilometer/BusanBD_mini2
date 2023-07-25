@@ -869,6 +869,17 @@ a:focus {
   color: #101010;
 }
 
+.contact_section .form_container select {
+  width: 100%;
+  border: 1px solid #00c6a9;
+  height: 50px;
+  margin-bottom: 25px;
+  padding-left: 15px;
+  background-color: transparent;
+  outline: none;
+  color: #101010;
+}
+
 .contact_section .form_container input::-webkit-input-placeholder {
   color: #00c6a9;
 }
