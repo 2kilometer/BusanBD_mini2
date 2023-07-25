@@ -16,6 +16,35 @@ from nonmodelapp.data_view.data_view import Data_View
 from nonmodelapp.map_view.map_view import Map_View
 
 # Create your views here.
+def tempTreatView (request) :
+    return render (request,
+                   "nonmodelapp/temp/treatment.html",
+                   {})
+     
+def tempTestiView (request) :
+    return render (request,
+                   "nonmodelapp/temp/testimonial.html",
+                   {})
+    
+def tempAboutView (request) :
+    return render (request,
+                   "nonmodelapp/temp/about.html",
+                   {})
+     
+def tempContView (request) :
+    return render (request,
+                   "nonmodelapp/temp/contact.html",
+                   {})
+     
+def tempDoctView (request) :
+    return render (request,
+                   "nonmodelapp/temp/doctor.html",
+                   {})
+     
+def tempIndexView(request) :
+    return render (request,
+                   "nonmodelapp/temp/index.html",
+                   {})
 
 ##############jquery##########################
 def load_view(request):
