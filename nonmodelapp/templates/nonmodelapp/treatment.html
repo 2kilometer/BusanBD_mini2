@@ -42,7 +42,7 @@
 
   var ses_user_id = "{{ request.session.ses_user_id }}";
   function recom_dis(){
-      $("#recom_view").load(`/recom_dis/?id=${ses_user_id}`);
+      $("#recom_view").load(`/nonmodel/recom_dis/?id=${ses_user_id}`);
   }
   
   function goLogout() {
@@ -50,21 +50,21 @@
   }
 
   function insert(){
-      $("#insert_view").load(`/insert_view/?id=${ses_user_id}`);
+      $("#insert_view").load(`/nonmodel/insert_view/?id=${ses_user_id}`);
   }
 
   function insert2(){
-      $("#insert_view2").load(`/insert_view2/?id=${ses_user_id}`);
+      $("#insert_view2").load(`/nonmodel/insert_view2/?id=${ses_user_id}`);
   }
   
   
   function info(){
       var prod = $("#prod_name").val();
-      $("#prodprod").load(`/prodprod/?prod_name=${prod}`);
+      $("#prodprod").load(`/nonmodel/prodprod/?prod_name=${prod}`);
   }
 
   function naver(){
-      $("#naver").load(`/naver/?id=${ses_user_id}`);
+      $("#naver").load(`/nonmodel/naver/?id=${ses_user_id}`);
   }
 </script>
 <body class="sub_page">
