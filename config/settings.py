@@ -105,6 +105,7 @@ DATABASES = {
 DATABASE_ROUTERS = [
     ### 앱이름.router파일이름.클래스이름(클래스이름은 바뀔수 있음)
     # 예시 : 'firstapp.router.DBRouter',
+    'nonmodelapp.router.DBRouter',
     'oracleapp.router.DBRouter',
     'mainapp.router.DBRouter',
 ]

@@ -16,14 +16,14 @@ class Users (models.Model) :
     
     class Meta :
         db_table = "users"
-        app_label = "mainapp"
+        app_label = "nonmodelapp"
         managed = False
         
 class Disease (models.Model) :
     dis_rank = CharField (max_length=500, null=False)
     dis_code = CharField (max_length=500, null=False)
     dis_top = CharField (max_length=300, null=False)
-    dis_m_num = IntegerField (max_length=10 ,null=False)
+    dis_m_num = IntegerField (null=False)
     dis_middle = CharField (max_length=300, null=False)
     dis_id = CharField (primary_key=True, max_length=1000, null=False)
     dis_age1 = CharField (max_length=50, null=False)
@@ -33,13 +33,13 @@ class Disease (models.Model) :
     
     class Meta :
         db_table = "disease"
-        app_label = "mainapp"
+        app_label = "nonmodelapp"
         managed = False
         
 class Prod (models.Model) :
     prod_name = CharField (primary_key=True, max_length=1000, null=False)
     prod_eff = CharField (max_length=1000, null=False)
-    prod_m_num = IntegerField (max_length=10 ,null=False)
+    prod_m_num = IntegerField (null=False)
     prod_middle = CharField (max_length=300, null=False)
     prod_min = CharField (max_length=300, null=False)
     prod_max = CharField (max_length=300, null=False)
@@ -48,7 +48,7 @@ class Prod (models.Model) :
     
     class Meta :
         db_table = "prod"
-        app_label = "mainapp"
+        app_label = "nonmodelapp"
         managed = False
         
 class Userdis (models.Model) :
@@ -58,5 +58,5 @@ class Userdis (models.Model) :
     
     class Meta :
         db_table = "userdis"
-        app_label = "mainapp"
+        app_label = "nonmodelapp"
         managed = False
