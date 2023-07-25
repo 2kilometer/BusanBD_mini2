@@ -28,6 +28,88 @@
   <link href="/static/css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="/static/css/responsive.css" rel="stylesheet" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+  
+  <!-- 안보여주기 style-->
+  <style>
+      #showlist {
+        display: none;
+    }
+  </style>
+
+  <!-- 자바스크립트 처리시작 -->
+  <script>
+    $(document).ready(function(){
+        $(".chosen-select").on('mousedown', function(e){
+            e.preventDefault();
+            
+            var select = this;
+            var scroll = select.scrollTop;
+            
+            e.target.selected = !e.target.selected;
+            
+            setTimeout(function(){select.scrollTop = scroll}, 0);
+            
+            $(select).focus();
+        }).mousemove(function(e){e.preventDefault()});
+        $(".chosen-select").chosen({
+            no_results_text: "검색 결과가 없습니다",
+            width: "95%",
+            search_contains: true
+        });
+    });
+    $(document).ready(function(){
+        $('.dis_middle').mousedown(function(e){
+            e.preventDefault();
+
+            var select = this;
+            var scroll = select.scrollTop;
+
+            e.target.selected = !e.target.selected;
+
+            setTimeout(function(){select.scrollTop = scroll;}, 0);
+
+            $(select).focus();
+        }).mousemove(function(e){e.preventDefault()});
+    });
+    </script>
+
+
+    <script>
+      function go_sign() {
+          fm = document.getElementById("fm");
+          fm.action = "/nonmodel/sign_in/";
+          fm.submit();
+      }
+
+      var selectCount = 0; // 추가된 셀렉트 박스의 수를 추적하는 변수
+
+      function newbox() {
+          ageSelect = document.getElementById("age");
+          genderSelect = document.getElementById("gender");
+
+          if (
+              ageSelect.value &&
+              genderSelect.value &&
+              selectCount === 0
+          ) {
+      
+              document.getElementById("showlist").style.display = "block";
+
+              selectCount++; // 추가된 셀렉트 박스의 수를 증가시킴
+          }
+      }
+      $(document).ready(function(){
+          $('#age, #gender').on('change', function(){
+              var age = $("#age").val();
+              var gender = $("#gender").val();
+              $("#load_view").load(`/nonmodel/register1/?age=${age}&gender=${gender}`);
+          });
+      });
+      
+  </script>
 </head>
 <body class="sub_page">
   <div class="hero_area">
@@ -100,25 +182,70 @@
       <div class="row">
         <div class="col-md-7">
           <div class="form_container">
-            <form action="">
+            <form id="fm" name="fm" method="post" action="#">
+              {% csrf_token %}    
               <div>
-                <input type="email" id="email" name="email" required placeholder="Email"/>
-              </div>
-              <div>
-                <input type="email" placeholder="Email" />
+                <input type="email" id="email" name="email" required placeholder="Email을 입력하세요"/>
               </div>
               <div>
-                <input type="text" placeholder="Phone Number" />
+                <input type="password" id="password" name="password" required placeholder="Password를 입력하세요"/>
               </div>
               <div>
-                <input type="text" class="message-box" placeholder="Message" />
+                <label>연령:</label>
+                <select id="age" name="age" onchange="newbox()" required>
+                    <option value="">-- 선택하세요 --</option>
+                    <option value="10세 미만">10세 미만</option>
+                    <option value="10대">10대</option>
+                    <option value="20대">20대</option>
+                    <option value="30대">30대</option>
+                    <option value="40대">40대</option>
+                    <option value="50대">50대</option>
+                    <option value="60대">60대</option>
+                    <option value="70대">70대 이상</option>
+                </select>
               </div>
-              <div class="btn_box">
-                <button>
-                  SEND
-                </button>
+              <div>
+                <label >성별:</label>
+                <select id="gender" name="gender" onchange="newbox()" required>
+                    <option value="">-- 선택하세요 --</option>
+                    <option value="남성">남성</option>
+                    <option value="여성">여성</option>
+                </select>
               </div>
+              <div id="showlist">
+                <div>
+                    <label>스트레스:</label>
+                    <select id="stress" name="stress" required>
+                        <option value="max">많음</option>
+                        <option value="min">적음</option>
+                    </select>
+                </div>
+                <div>
+                    <label>당신이 아픈 곳은:</label>
+                    <select id="dis_middle" name="dis_middle" class="dis_middle" multiple>
+                        {% for dis in dis_middle %}
+                        <option value="{{dis.dis_middle}}">{{dis.dis_middle}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div id = "load_view">
+                </div>
+                <div>
+                    <label>질병을 검색하세요:</label>
+                    <select id="dis_id" name="dis_id" class="chosen-select" multiple>
+                        {% for dis in dis_list %}
+                        <option value="{{dis.dis_id}}">{{dis.dis_id}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br />
+            </div>
             </form>
+            <div class="btn_box">
+              <button onclick="go_sign()">
+                가입하기
+              </button>
+            </div>
           </div>
         </div>
         <div class="col-md-5">
