@@ -267,6 +267,6 @@ def naver(request):
     naver_info = recom.naver(id)
     
     return render(request,
-                  "nonmodealapp/naver.html",
+                  "nonmodelapp/naver.html",
                   {"naver_info": naver_info,
                    "id" : id})
