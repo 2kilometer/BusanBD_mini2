@@ -31,6 +31,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+  <script type="text/javascript">
+    function goLogout() {
+        location.href = "/nonmodel/logout_chk/";
+    }
+</script>
 </head>
 <!-- style 안보이게 하기-->
 <style>
@@ -99,18 +104,26 @@
                 </ul>
               </div>
               <div class="quote_btn-container">
-                <a href="/nonmodel/login/">
-                  <i class="fa fa-user" aria-hidden="true"></i>
-                  <span>
-                    Login
+                {% if request.session.ses_user_id == None %}
+                  <a href="/nonmodel/login/">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>
+                      Login
+                    </span>
+                  </a>
+                  <a href="/nonmodel/contact/">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span>
+                      Sign Up
+                    </span>
+                  </a>
+                {% else %}
+                  <span style="color: white;">
+                    {{ request.session.ses_user_id }}님 환영합니다!
                   </span>
-                </a>
-                <a href="/nonmodel/contact/">
-                  <i class="fa fa-user" aria-hidden="true"></i>
-                  <span>
-                    Sign Up
-                  </span>
-                </a>
+                  &nbsp;&nbsp;&nbsp;&nbsp;
+                  <button class="btn btn-outline-success" onclick="goLogout()" style="color: white;">로그아웃</button>
+                {% endif %}
                 <form class="form-inline">
                   <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
                     <i class="fa fa-search" aria-hidden="true"></i>
