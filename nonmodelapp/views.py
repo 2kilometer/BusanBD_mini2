@@ -7,6 +7,46 @@ from .DB_Sql import recom
 from django.core.paginator import Paginator
 from .models import Users, Userdis, Prod, Disease
 
+####  함수 작성 ####
+
+def logout_chk (request) :
+    request.session.flush()
+    msg = """
+        <script type='text/javascript'>
+            alert('로그아웃 되었습니다.');
+            location.href = '/nonmodel/index/';
+        </script>
+    """
+    return HttpResponse (msg)
+
+def login_chk (request) :
+    user_id = request.POST.get("user_id","")
+    user_pw = request.POST.get("user_pw","")
+    
+    user_view = user.getLoginChk(user_id, user_pw)
+
+    if user_view.get("result") == "None" :
+        msg = """
+            <script type='text/javascript'>
+                alert('회원정보가 일치하지 않습니다. 다시 입력해 주세요!');
+                location.href = '/nonmodel/login/';
+            </script>
+        """
+        return HttpResponse(msg)
+    
+    msg = " {} / {} ".format(user_view["user_id"],
+                             user_view["user_pw"])
+    
+    request.session["ses_user_id"] = user_id
+
+    msg = """
+        <script type='text/javascript'>
+            alert('환영합니다. 로그인 되었습니다.');
+            location.href = '/nonmodel/index/';
+        </script>
+    """
+    
+    return HttpResponse (msg)
 
 def index(request):
     return render(request,
@@ -32,9 +72,9 @@ def doctor(request):
                   "nonmodelapp/doctor.html",
                   {})
     
-def testimonial(request):
+def login(request):
     return render(request,
-                  "nonmodelapp/testimonial.html",
+                  "nonmodelapp/login.html",
                   {})
 
 def treatment(request):

@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>ForHealth :: 로그인</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="{% static '/nonmodelapp/css/loginstyle.css' %}">
+  <script type="text/javascript">
+    $('.button').on('click', function () {
+      $('.login').addClass('loading').delay(2200).queue(function () {
+          $(this).addClass('active')
+      });
+  });
+  </script>
+</head>
+<body>
+  <div class="login">
+    <div class="form">
+      <form id="fm" method="post" action="/nonmodel/login_chk/">
+        {% csrf_token %}
+        <h2>ID 로그인</h2>
+        <div class="form-field">
+          <label for="login-mail"><i class="fa fa-user"></i></label>
+          <input id="login-mail" type="text" name="user_id" placeholder="ID" required>
+          <svg>
+            <use href="#svg-check" />
+          </svg>
+        </div>
+        <div class="form-field">
+          <label for="login-password"><i class="fa fa-lock"></i></label>
+          <input id="login-password" type="password" name="user_pw" placeholder="Password" required>
+          <svg>
+            <use href="#svg-check" />
+          </svg>
+        </div>
+        <button type="submit" class="button">
+          <div class="arrow-wrapper">
+            <span class="arrow"></span>
+          </div>
+          <p class="button-text">SIGN IN</p>
+        </button>
+      </form>
+    </div>
+    <div class="finished">
+      <svg>
+        <use href="#svg-check" />
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
