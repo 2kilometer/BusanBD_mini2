@@ -16,58 +16,35 @@ from nonmodelapp.data_view.data_view import Data_View
 from nonmodelapp.map_view.map_view import Map_View
 
 # Create your views here.
-def tempTreatView (request) :
+def TreatView (request) :
     return render (request,
-                   "nonmodelapp/temp/treatment.html",
+                   "nonmodelapp/treatment.html",
                    {})
      
-def tempTestiView (request) :
+def TestiView (request) :
     return render (request,
-                   "nonmodelapp/temp/testimonial.html",
+                   "nonmodelapp/testimonial.html",
                    {})
     
-def tempAboutView (request) :
+def AboutView (request) :
     return render (request,
-                   "nonmodelapp/temp/about.html",
+                   "nonmodelapp/about.html",
                    {})
      
-def tempContView (request) :
+def ContView (request) :
     return render (request,
-                   "nonmodelapp/temp/contact.html",
+                   "nonmodelapp/contact.html",
                    {})
      
-def tempDoctView (request) :
+def DoctView (request) :
     return render (request,
-                   "nonmodelapp/temp/doctor.html",
+                   "nonmodelapp/doctor.html",
                    {})
      
-def tempIndexView(request) :
+def IndexView(request) :
     return render (request,
-                   "nonmodelapp/temp/index.html",
+                   "nonmodelapp/index.html",
                    {})
-
-##############jquery##########################
-def load_view(request):
-     return render(request,
-                  "nonmodelapp/jquery_load/load_view.html",
-                  )
-     
-     
-def load_view1(request):
-     return render(request,
-                  "nonmodelapp/jquery_load/load_view1.html",
-                  )
-
-
-def load_view2(request):
-     return render(request,
-                  "nonmodelapp/jquery_load/load_view2.html",
-                  )
-     
-def load_view3(request):
-     return render(request,
-                  "nonmodelapp/jquery_load/load_view3.html",
-                  )
 
 
 

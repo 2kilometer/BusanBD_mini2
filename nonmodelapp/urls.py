@@ -9,15 +9,15 @@ from . import views
 # - url을 정의한다고 해서, 패턴(pattern)정의라고 합니다.
 urlpatterns = [
     # - http://127.0.0.1:8000/nonmodel/temptreat/
-    path('temptreat/', views.tempTreatView),
-    # - http://127.0.0.1:8000/nonmodel/temptesti/
-    path('temptesti/', views.tempTestiView),
-    # - http://127.0.0.1:8000/nonmodel/tempabout/
-    path('tempabout/', views.tempAboutView),
-    # - http://127.0.0.1:8000/nonmodel/tempcont/
-    path('tempcont/', views.tempContView),
-    # - http://127.0.0.1:8000/nonmodel/tempdoct/
-    path('tempdoct/', views.tempDoctView),
-    # - http://127.0.0.1:8000/nonmodel/tempindex/
-    path('tempindex/', views.tempIndexView)
+    path('treat/', views.TreatView),
+    # - http://127.0.0.1:8000/nonmodel/testi/
+    path('testi/', views.TestiView),
+    # - http://127.0.0.1:8000/nonmodel/about/
+    path('about/', views.AboutView),
+    # - http://127.0.0.1:8000/nonmodel/cont/
+    path('cont/', views.ContView),
+    # - http://127.0.0.1:8000/nonmodel/doct/
+    path('doct/', views.DoctView),
+    # - http://127.0.0.1:8000/nonmodel/index/
+    path('index/', views.IndexView)
 ]
