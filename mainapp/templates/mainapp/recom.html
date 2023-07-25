@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Website</title>
         <link href="/static/css/css.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
         <style>
             select {
                 width: 200px;
@@ -43,12 +46,29 @@
 
             var ses_user_id = "{{ request.session.ses_user_id }}";
             function recom_dis(){
-                //alert(ses_user_id);
-                $("#load_view").load(`/recom_dis/?id=${ses_user_id}`);
+                $("#recom_view").load(`/recom_dis/?id=${ses_user_id}`);
             }
             
             function goLogout() {
                 location.href = "/logout_chk/";
+            }
+
+            function insert(){
+                $("#insert_view").load(`/insert_view/?id=${ses_user_id}`);
+            }
+
+            function insert2(){
+                $("#insert_view2").load(`/insert_view2/?id=${ses_user_id}`);
+            }
+            
+            
+            function info(){
+                var prod = $("#prod_name").val();
+                $("#prodprod").load(`/prodprod/?prod_name=${prod}`);
+            }
+
+            function naver(){
+                $("#naver").load(`/naver/?id=${ses_user_id}`);
             }
         </script>
     </head>
@@ -104,11 +124,23 @@
             {% else %}
                 {{ request.session.ses_user_id }}님 환영합니다!
                 &nbsp;&nbsp;
-                <button onclick="goLogout()">로그아웃</button>            
-                <br>
-                <button onclick="recom_dis()">당신의 질병에 따른 추천 영양제</button>
-                <button onclick="">당신의 나이에 추천하는 영양제</button>
+                <button onclick="goLogout()">로그아웃</button>
+                <button onclick="insert2()">당신의 아픈곳을 확인하고 없으면 추가하세요</button>
+                <button onclick="insert()">당신의 질병을 확인하고 없으면 추가하세요</button>
+                <div id = "insert_view">
+                </div>
+                <div id = "insert_view2">
+                </div>
 
+                <br>
+                <button onclick="recom_dis()">당신의 의 정보로 추천하는 ///</button>
+                <div id="recom_view">
+                </div>
+                <div id="prodprod">
+                </div>
+                <button onclick="naver()">네이버 트랜드별 나이에 따른 추천 ///</button>
+                <div id = "naver">
+                </div>
                 
             {% endif %}
         </div>

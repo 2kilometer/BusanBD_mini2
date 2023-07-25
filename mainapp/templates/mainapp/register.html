@@ -121,7 +121,7 @@
     <body>
         {% include 'mainapp/inc/navbar.html' %}
         <form id="fm" name="fm" method="post" action="#">
-            {% csrf_token %}
+            {% csrf_token %}    
             <div>
                 <label>이메일:</label>
                 <input type="email" id="email" name="email" required />

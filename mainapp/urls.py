@@ -26,5 +26,15 @@ urlpatterns = [
     # - https://127.0.0.1:8000//
     path('recom_dis/', views.Recom_dis),
     # - https://127.0.0.1:8000//
+    path('dis_add/', views.dis_add),
+    # - https://127.0.0.1:8000//
+    path('insert_view/', views.Insert_view),
+    # - https://127.0.0.1:8000//
+    path('insert_view2/', views.Insert_view2),
+    # - https://127.0.0.1:8000//
+    path('prodprod/', views.prodprod),
+    # - https://127.0.0.1:8000//
+    path('naver/', views.naver),
+    # - https://127.0.0.1:8000//
     path('statistic/', views.Statistic),
 ]
