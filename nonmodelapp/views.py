@@ -1,5 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .DB_Sql import disease
+from .DB_Sql import sign_in
+from .DB_Sql import user
+from .DB_Sql import recom
+from django.core.paginator import Paginator
+from .models import Users, Userdis, Prod, Disease
+
 
 def index(request):
     return render(request,
