@@ -16,19 +16,15 @@ def contact(request):
                   "nonmodelapp/contact.html",
                   {})
 
-
 def doctor(request):
     return render(request,
                   "nonmodelapp/doctor.html",
                   {})
     
-
 def testimonial(request):
     return render(request,
                   "nonmodelapp/testimonial.html",
                   {})
-    
-    
 
 def treatment(request):
     return render(request,
