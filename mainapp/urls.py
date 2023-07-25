@@ -22,8 +22,6 @@ urlpatterns = [
     # - https://127.0.0.1:8000//
     path('data_info/', views.Data_info),
     # - https://127.0.0.1:8000//
-    path('recom/', views.Recom),
-    # - https://127.0.0.1:8000//
     path('recom_dis/', views.Recom_dis),
     # - https://127.0.0.1:8000//
     path('dis_add/', views.dis_add),
