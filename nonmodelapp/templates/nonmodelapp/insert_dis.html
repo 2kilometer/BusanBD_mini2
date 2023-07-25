@@ -33,16 +33,16 @@
 
             function userdis_in() {
                 fm = document.getElementById("fm");
-                fm.action = "/dis_add/";
+                fm.action = "/nonmodel/dis_add/";
                 fm.submit();
             }
 
 
-    // 배열을 쿼리 문자열로 변환합니다.
-    var queryString = $.param({ 'dis_id': selectedValues }, true);
+            // 배열을 쿼리 문자열로 변환합니다.
+            var queryString = $.param({ 'dis_id': selectedValues }, true);
 
-    // 쿼리 문자열을 URL에 추가하고 요청을 보냅니다.
-    $("#insert_view").load(`/sign/?id=${ses_user_id}&${queryString}`);
+            // 쿼리 문자열을 URL에 추가하고 요청을 보냅니다.
+            $("#insert_view").load(`/nonmodel/sign/?id=${ses_user_id}&${queryString}`);
         </script>
     </head>
     <body>
