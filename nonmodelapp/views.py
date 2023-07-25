@@ -100,3 +100,103 @@ def sign(request):
         </script>
     """   
     return HttpResponse(msg)
+
+def Recom_dis(request):
+    id = request.GET.get("id", "")
+    recom_pill = recom.user_info(id)
+    recom_pill2 = recom.user_info2(id)
+    
+    merged_list = recom_pill
+    for pill in recom_pill2:
+        if pill not in merged_list:
+            merged_list.append(pill)
+    
+    return render(request,
+                  "nonmodelapp/recom_dis.html",
+                  {"merged_list": merged_list})
+    
+    
+def dis_add(request):
+    try:
+        user_dis   = request.POST.getlist("user_dis","")
+        user_id   = request.POST.get("user_id","")
+        dis_middle   = request.POST.get("dis_middle","")
+        if user_dis != "":
+            for i in range(len(user_dis)):
+                sign_in.ud_dis(user_id ,user_dis[i])
+        if dis_middle != "":
+            for i in range(len(dis_middle)):
+                sign_in.ud_dis(user_id , dis_middle[i])
+    except :        
+        ### 오류처리
+        msg = """
+            <script type='text/javascript'>
+                alert('오류발생{}/{}');
+            </script>
+        """.format(user_dis, user_id)  
+        return HttpResponse(msg)
+    
+    ### 정상처리
+    msg = """
+        <script type='text/javascript'>
+            alert('정상적으로 입력되었습니다!!');
+            location.href='/recom/';
+        </script>
+    """   
+    return HttpResponse(msg)
+
+
+##질병 추가하기 함수
+def Insert_view(request):
+    id = request.GET.get("id", "")
+    dis_all = disease.dis_list()
+    
+    if id != "" :
+        dis_id = recom.insert_dis(id)
+    
+    else :
+        dis_id = dis_id
+     # dis_id 리스트에서 'ud_dis' 키의 값을 추출하여 새 리스트 생성
+    dis_id_values = [dis['ud_dis'] for dis in dis_id]
+
+    # Create a new list containing only elements of dis_all that are not in dis_id_values
+    dis_new = [dis for dis in dis_all if dis['dis_id'] not in dis_id_values]
+
+    return render(request, "nonmodelapp/insert_dis.html", {"dis_list": dis_id,
+                                                       "dis_new" : dis_new})
+    
+    
+def Insert_view2(request):
+    id = request.GET.get("id", "")
+    dis_all = disease.dis_middle()
+    
+    if id != "" :
+        dis_id = recom.insert_middle(id)
+    
+    else :
+        dis_id = dis_id
+     # dis_id 리스트에서 'ud_dis' 키의 값을 추출하여 새 리스트 생성
+     
+    dis_id_values = [dis['md_middle'] for dis in dis_id]
+     
+    dis_new = [dis for dis in dis_all if dis['dis_middle'] not in dis_id_values]
+
+    return render(request, "nonmodelapp/insert_dis2.html", {"dis_list": dis_id,
+                                                       "dis_new" : dis_new})
+    
+def prodprod(request):
+    prod_name = request.GET.get("prod_name", "")
+    prod_info = recom.prod_info(prod_name)
+
+    return render(request,
+                    "nonmodelapp/prodprod.html",
+                    {"prod_info": prod_info})
+
+def naver(request):
+    id = request.GET.get("id", "")
+    
+    naver_info = recom.naver(id)
+    
+    return render(request,
+                  "nonmodealapp/naver.html",
+                  {"naver_info": naver_info})
