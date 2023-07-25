@@ -171,7 +171,8 @@ def dis_add(request):
         ### 오류처리
         msg = """
             <script type='text/javascript'>
-                alert('오류발생{}/{}');
+                alert('잘못된 값을 입력하셨습니다.');
+                history.go(-1);
             </script>
         """.format(user_dis, user_id)  
         return HttpResponse(msg)
@@ -180,7 +181,7 @@ def dis_add(request):
     msg = """
         <script type='text/javascript'>
             alert('정상적으로 입력되었습니다!!');
-            location.href='/recom/';
+            location.href='/nonmodel/treatment';
         </script>
     """   
     return HttpResponse(msg)
@@ -239,4 +240,5 @@ def naver(request):
     
     return render(request,
                   "nonmodealapp/naver.html",
-                  {"naver_info": naver_info})
+                  {"naver_info": naver_info,
+                   "id" : id})
