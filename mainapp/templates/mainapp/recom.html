@@ -5,9 +5,10 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>My Website</title>
-<<<<<<< HEAD
-=======
         <link href="/static/css/css.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
         <style>
             select {
                 width: 200px;
@@ -41,54 +42,51 @@
                 display: none;
             }
         </style>
->>>>>>> a11982e650fa23c7aca4b95bcb6399555361be7a
-        <script>
-            {% include 'mainapp/inc/navbar.html' %}
-            <script type="text/javascript">
-                // 로그아웃 처리하기
-                function goLogout(){
-                    location.href = "/nonmodel/logout_chk/";
-                }
-        </script>
         <script type="text/javascript">
+
+            var ses_user_id = "{{ request.session.ses_user_id }}";
+            function recom_dis(){
+                $("#recom_view").load(`/recom_dis/?id=${ses_user_id}`);
+            }
+            
             function goLogout() {
                 location.href = "/logout_chk/";
+            }
+
+            function insert(){
+                $("#insert_view").load(`/insert_view/?id=${ses_user_id}`);
+            }
+
+            function insert2(){
+                $("#insert_view2").load(`/insert_view2/?id=${ses_user_id}`);
+            }
+            
+            
+            function info(){
+                var prod = $("#prod_name").val();
+                $("#prodprod").load(`/prodprod/?prod_name=${prod}`);
+            }
+
+            function naver(){
+                $("#naver").load(`/naver/?id=${ses_user_id}`);
             }
         </script>
     </head>
     <body>
         {% include 'mainapp/inc/navbar.html' %}
-<<<<<<< HEAD
-        <!-- Login / Logout 처리하기 -->
-        {% if request.session.ses_mem_id == None %}
-        <!-- Login 화면 구성 -->
-        <!--  ** 로그인 처리하는 viwes.py는 nonmodelapp에서 진행 -->
-        <form id="fm" method="post" action="/nonmodel/login_chk/">
-            {% csrf_token %} *아이디 :
-            <input type="text" name="mem_id" size="15" required /> &nbsp;&nbsp;
-            *패스워드 :
-            <input type="password" name="mem_pass" size="15" required />
-            &nbsp;&nbsp;
-            <input type="submit" value="로그인" />
-        </form>
-        {% else %}
-        <!-- Logout 화면구성 -->
-        {{ request.session.ses_mem_id }} ({{ request.session.ses_mem_name }})님
-        환영합니다! &nbsp;&nbsp;
-        <button onclick="goLogout()">로그아웃</button>
-        {% endif %}
-
-            <br /><br />
-=======
         <div id="container" class="container1">
             {% if request.session.ses_user_id == None %}
                 <div class="content">
                     <form id="frmNIDLogin" name="frmNIDLogin" target="_top" AUTOCOMPLETE="off"
                             action="/login_chk/" method="POST">
                             {% csrf_token %}
+                        <input type="hidden" name= "user_age" value="">
                         <ul class="panel_wrap">
                             <li class="panel_item" style="display: block;">
                                 <div class="panel_inner" role="tabpanel" aria-controls="loinid">
+                                    <div class="login_panal">
+                                        <h3>ID 로그인</h3>
+                                    </div>
                                     <div class="id_pw_wrap">
                                         <div class="input_row" id="id_line">
                                             <input type="text" id="id" name="user_id" placeholder="아이디" title="아이디"
@@ -127,8 +125,24 @@
                 {{ request.session.ses_user_id }}님 환영합니다!
                 &nbsp;&nbsp;
                 <button onclick="goLogout()">로그아웃</button>
+                <button onclick="insert2()">당신의 아픈곳을 확인하고 없으면 추가하세요</button>
+                <button onclick="insert()">당신의 질병을 확인하고 없으면 추가하세요</button>
+                <div id = "insert_view">
+                </div>
+                <div id = "insert_view2">
+                </div>
+
+                <br>
+                <button onclick="recom_dis()">당신의 의 정보로 추천하는 ///</button>
+                <div id="recom_view">
+                </div>
+                <div id="prodprod">
+                </div>
+                <button onclick="naver()">네이버 트랜드별 나이에 따른 추천 ///</button>
+                <div id = "naver">
+                </div>
+                
             {% endif %}
         </div>
->>>>>>> a11982e650fa23c7aca4b95bcb6399555361be7a
     </body>
 </html>

@@ -1,14 +1,10 @@
 from django.shortcuts import render
-<<<<<<< HEAD
 from django.http import HttpResponse
 from .DB_Sql import disease
 from .DB_Sql import sign_in
-=======
-from .DB_Sql import disease, user
-from django.http import HttpResponse
+from .DB_Sql import user
+from .DB_Sql import recom
 from django.core.paginator import Paginator
-from .models import Users, Userdis, Prod, Disease
->>>>>>> a11982e650fa23c7aca4b95bcb6399555361be7a
 
 # Create your views here.
 
@@ -21,7 +17,6 @@ def index(request):
 
 def logout_chk (request) :
     request.session.flush()
-    
     msg = """
         <script type='text/javascript'>
             alert('로그아웃 되었습니다.');
@@ -95,21 +90,68 @@ def Register1(request):
 
 def sign(request):
     try :
-        email   = request.POST.get("email")
-        password   = request.POST.get("password")
-        age = request.POST.get("age")
-        gender   = request.POST.get("gender")
-        stress   = request.POST.get("stress")
-        sign_in.sign_up(email, password, age, gender, stress)
+        email   = request.POST.get("email","")
+        password   = request.POST.get("password","")
+        age = request.POST.get("age","")
+        gender   = request.POST.get("gender","")
+        stress   = request.POST.get("stress","")
+        dis_id   = request.POST.getlist("dis_id","")
+        dis_id2   = request.POST.getlist("dis_id2","")
+        dis_middle   = request.POST.getlist("dis_middle","")
+        
+        if email != "":
+            sign_in.sign_up(email, password, age, gender, stress)
+            
+            total_dis_id = dis_id + dis_id2
+            
+            sum_dis = list(set(total_dis_id))
+            
+            dis_middle = list(set(dis_middle))
+            
+            for i in range(len(sum_dis)):
+                sign_in.ud_dis(email ,sum_dis[i])
+            
+            for d in range(len(dis_middle)):
+                sign_in.middle(email ,dis_middle[d])
+        
         
     except :        
         ### 오류처리
         msg = """
             <script type='text/javascript'>
-                alert('오류발생{},{},{},{},{}');
-                history.go(-1);
+                alert('오류발생{}{}');
             </script>
-        """.format(email, password, age, gender, stress)   
+        """
+        return HttpResponse(msg)
+    
+    ### 정상처리
+    msg = """
+        <script type='text/javascript'>
+            alert('정상적으로 입력되었습니다!!');
+            history.go(-1);
+        </script>
+    """   
+    return HttpResponse(msg)
+
+
+def dis_add(request):
+    try:
+        user_dis   = request.POST.getlist("user_dis","")
+        user_id   = request.POST.get("user_id","")
+        dis_middle   = request.POST.get("dis_middle","")
+        if user_dis != "":
+            for i in range(len(user_dis)):
+                sign_in.ud_dis(user_id ,user_dis[i])
+        if dis_middle != "":
+            for i in range(len(dis_middle)):
+                sign_in.ud_dis(user_id , dis_middle[i])
+    except :        
+        ### 오류처리
+        msg = """
+            <script type='text/javascript'>
+                alert('오류발생{}/{}');
+            </script>
+        """.format(user_dis, user_id)  
         return HttpResponse(msg)
     
     ### 정상처리
@@ -119,43 +161,6 @@ def sign(request):
             location.href='/recom/';
         </script>
     """   
-    return HttpResponse(msg)
-
-def sign_dis(request):
-    try :
-        id   = request.POST.get("email")
-        dis_id   = request.POST.getlist("dis_id")
-        dis_id2   = request.POST.getlist("dis_id2")
-        dis_middle   = request.POST.getlist("dis_middle")
-
-        # 두 리스트를 합칩니다
-        total_dis_id = dis_id + dis_id2
-
-        # 중복 항목을 제거하기 위해 set으로 변환하고, 다시 list로 변환합니다
-        sum_dis = list(set(total_dis_id))
-        dis_middle = list(set(dis_middle))
-        
-        for i in range(len(sum_dis)):
-            sign_in.ud_dis(id ,sum_dis[i])
-            
-        for d in range(len(dis_middle)):
-            sign_in.middle(id ,dis_middle[d])
-        
-    except :        
-        ### 오류처리
-        msg = """
-            <script type='text/javascript'>
-                alert('오류발생{},{},{},{}');
-            </script>
-        """.format(id, dis_id,dis_id2, dis_middle)   
-        return HttpResponse(msg)
-    
-    ### 정상처리
-    msg = """
-        <script type='text/javascript'>
-            alert('정상적으로 입력되었습니다!!{},{},{},{}');
-        </script>
-    """.format(id, dis_id,dis_id2, dis_middle)
     return HttpResponse(msg)
 
 
@@ -168,6 +173,75 @@ def Recom(request):
     return render(request,
                   "mainapp/recom.html",
                   {})
+
+def Recom_dis(request):
+    id = request.GET.get("id", "")
+    recom_pill = recom.user_info(id)
+    recom_pill2 = recom.user_info2(id)
+    
+    merged_list = recom_pill
+    for pill in recom_pill2:
+        if pill not in merged_list:
+            merged_list.append(pill)
+    
+    return render(request,
+                  "mainapp/recom_dis.html",
+                  {"merged_list": merged_list})
+
+
+def prodprod(request):
+    prod_name = request.GET.get("prod_name", "")
+    prod_info = recom.prod_info(prod_name)
+    
+    return render(request,
+                  "mainapp/prodprod.html",
+                  {"prod_info": prod_info})
+
+def naver(request):
+    id = request.GET.get("id", "")
+    
+    naver_info = recom.naver(id)
+    
+    return render(request,
+                  "mainapp/naver.html",
+                  {"naver_info": naver_info})
+
+##질병 추가하기 함수
+def Insert_view(request):
+    id = request.GET.get("id", "")
+    dis_all = disease.dis_list()
+    
+    if id != "" :
+        dis_id = recom.insert_dis(id)
+    
+    else :
+        dis_id = dis_id
+     # dis_id 리스트에서 'ud_dis' 키의 값을 추출하여 새 리스트 생성
+    dis_id_values = [dis['ud_dis'] for dis in dis_id]
+
+    # Create a new list containing only elements of dis_all that are not in dis_id_values
+    dis_new = [dis for dis in dis_all if dis['dis_id'] not in dis_id_values]
+
+    return render(request, "mainapp/insert_dis.html", {"dis_list": dis_id,
+                                                       "dis_new" : dis_new})
+    
+def Insert_view2(request):
+    id = request.GET.get("id", "")
+    dis_all = disease.dis_middle()
+    
+    if id != "" :
+        dis_id = recom.insert_middle(id)
+    
+    else :
+        dis_id = dis_id
+     # dis_id 리스트에서 'ud_dis' 키의 값을 추출하여 새 리스트 생성
+     
+    dis_id_values = [dis['md_middle'] for dis in dis_id]
+     
+    dis_new = [dis for dis in dis_all if dis['dis_middle'] not in dis_id_values]
+
+    return render(request, "mainapp/insert_dis2.html", {"dis_list": dis_id,
+                                                       "dis_new" : dis_new})
 
 def Statistic(request):
     return render(request,

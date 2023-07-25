@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+        <title>My Website</title>
+        <script>
+        </script>
+    </head>
+    <body>
+        <div>
+            <label>연령대 별 네이버 트랜드:</label>
+            <select onchange="" id = "naver_prod" name = "naver_prod">
+                {% for dis in naver_info %}
+                <option value="{{dis.naver_info}}">{{dis.rank}}{{dis.keyword}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {{id}}
+    </body>
+</html>
+

@@ -19,11 +19,22 @@ urlpatterns = [
     # - https://127.0.0.1:8000/register1/
     path('register1/', views.Register1),
     path('sign_in/', views.sign),
-    path('sign_dis/', views.sign_dis),
     # - https://127.0.0.1:8000//
     path('data_info/', views.Data_info),
     # - https://127.0.0.1:8000//
     path('recom/', views.Recom),
+    # - https://127.0.0.1:8000//
+    path('recom_dis/', views.Recom_dis),
+    # - https://127.0.0.1:8000//
+    path('dis_add/', views.dis_add),
+    # - https://127.0.0.1:8000//
+    path('insert_view/', views.Insert_view),
+    # - https://127.0.0.1:8000//
+    path('insert_view2/', views.Insert_view2),
+    # - https://127.0.0.1:8000//
+    path('prodprod/', views.prodprod),
+    # - https://127.0.0.1:8000//
+    path('naver/', views.naver),
     # - https://127.0.0.1:8000//
     path('statistic/', views.Statistic),
 ]
