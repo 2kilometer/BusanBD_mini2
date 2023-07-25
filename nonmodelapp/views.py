@@ -240,4 +240,5 @@ def naver(request):
     
     return render(request,
                   "nonmodealapp/naver.html",
-                  {"naver_info": naver_info})
+                  {"naver_info": naver_info,
+                   "id" : id})
