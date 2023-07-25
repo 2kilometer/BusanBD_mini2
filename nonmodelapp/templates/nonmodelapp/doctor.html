@@ -58,7 +58,11 @@
                     <a class="nav-link" href="/nonmodel/about/">통계</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/nonmodel/treatment/">건강식품</a>
+                    {% if request.session.ses_user_id == None %}
+                      <a class="nav-link" href="/nonmodel/login/">건강식품</a>
+                    {% else %}
+                      <a class="nav-link" href="/nonmodel/treatment/">건강식품</a>
+                    {% endif %}
                   </li>
                   <li class="nav-item active">
                     <a class="nav-link" href="/nonmodel/doctor/">프로젝트 멤버</a>
