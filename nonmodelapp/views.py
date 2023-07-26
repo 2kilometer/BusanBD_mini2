@@ -143,11 +143,12 @@ def sign(request):
         if email != "":
             sign_in.sign_up(email, password, age, gender, stress)
             
-            total_dis_id = dis_id + dis_id2
+            sum = dis_id + dis_id2
             
-            sum_dis = list(set(total_dis_id))
+            sum_dis = list(set(sum))
             
             dis_middle = list(set(dis_middle))
+            
             
             for i in range(len(sum_dis)):
                 sign_in.uddis(email ,sum_dis[i])
@@ -160,8 +161,8 @@ def sign(request):
         ### 오류처리
         msg = """
             <script type='text/javascript'>
-                alert('오류발생');
-                history.go(-1);
+                alert('정상적으로 입력되었습니다!!');
+                location.href='/nonmodel/login';
             </script>
         """
         return HttpResponse(msg)
