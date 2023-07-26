@@ -160,7 +160,7 @@ def sign(request):
         ### 오류처리
         msg = """
             <script type='text/javascript'>
-                alert('오류발생{}{}');
+                alert('오류발생');
             </script>
         """
         return HttpResponse(msg)
