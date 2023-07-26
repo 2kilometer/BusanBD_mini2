@@ -33,8 +33,6 @@ ALLOWED_HOSTS = ['127.0.0.1']
 ### 새로운 앱이 생성되면 이곳에 등록해 주기...
 INSTALLED_APPS = [
     'nonmodelapp',
-    'oracleapp',
-    'frontapp',
     'mainapp',
     
     'django.contrib.admin',
@@ -105,7 +103,6 @@ DATABASES = {
 DATABASE_ROUTERS = [
     ### 앱이름.router파일이름.클래스이름(클래스이름은 바뀔수 있음)
     # 예시 : 'firstapp.router.DBRouter',
-    'oracleapp.router.DBRouter',
     'mainapp.router.DBRouter',
 ]
 
