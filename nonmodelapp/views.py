@@ -8,6 +8,11 @@ from django.core.paginator import Paginator
 from .models import Users, Userdis, Prod, Disease
 
 ####  함수 작성 ####
+def signUpView (request) :
+    return render (request,
+                   "nonmodelapp/contact copy.html",
+                   {})
+
 def login_chk (request) :
     user_id = request.POST.get("user_id","")
     user_pw = request.POST.get("user_pw","")
