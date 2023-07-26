@@ -26,7 +26,7 @@
     <body>
         <div>
             <label>취약 질병:</label>
-            <select id="dis_id2" name="dis_id2" multiple>
+            <select id="dis_id2" name="dis_id2" class ="dis_id2" multiple >
                 {% for dis in dis_age %}
                 <option value="{{dis.dis_id}}">{{dis.dis_id}}</option>
                 {% endfor %}
