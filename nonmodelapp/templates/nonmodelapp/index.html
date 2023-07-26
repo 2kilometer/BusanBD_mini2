@@ -124,9 +124,11 @@
                     <p>
                       저희는 사용자의 정보(나이,성별,질병)에 따라 건강 기능 식품을 추천해주는 사이트 입니다.
                     </p>
-                    <a href="/nonmodel/treatment/">
-                      식품 추천 바로가기
-                    </a>
+                    {% if request.session.ses_user_id == None %}
+                      <a  href="/nonmodel/login/">식품 추천 바로가기</a>
+                    {% else %}
+                      <a  href="/nonmodel/treatment/">식품 추천 바로가기</a>
+                    {% endif %}
                   </div>
                 </div>
                 <div class="col-md-6">
