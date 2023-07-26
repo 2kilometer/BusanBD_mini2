@@ -114,6 +114,9 @@
               $("#load_view").load(`/nonmodel/register1/?age=${age}&gender=${gender}`);
           });
       });
+
+
+
       
   </script>
 </head>
@@ -180,6 +183,7 @@
   </div>
   <!-- contact section -->
   <section class="contact_section layout_padding-bottom">
+    <br>
     <div class="container">
       <div class="heading_container">
         <h2>
@@ -189,7 +193,7 @@
       <div class="row">
         <div class="col-md-7">
           <div class="form_container">
-            <form id="fm" name="fm" method="post" action="#">
+            <form id="fm" name="fm" method="post" action="#" onsubmit="go_sign()">
               {% csrf_token %}    
               <div>
                 <input type="email" id="email" name="email" required placeholder="Email을 입력하세요"/>
@@ -247,11 +251,9 @@
                 </div>
                 <br />
               </div>
-                <div class="btn_box">
-                  <button onclick="go_sign()">
-                    가입하기
-                  </button>
-              </div>
+                  <div class="btn_box">
+                      <button type="submit">가입하기</button>
+                  </div>
             </form>         
           </div>
         </div>

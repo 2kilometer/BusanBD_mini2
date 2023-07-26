@@ -161,6 +161,7 @@ def sign(request):
         msg = """
             <script type='text/javascript'>
                 alert('오류발생');
+                history.go(-1);
             </script>
         """
         return HttpResponse(msg)
@@ -169,7 +170,7 @@ def sign(request):
     msg = """
         <script type='text/javascript'>
             alert('정상적으로 입력되었습니다!!');
-            history.go(-1);
+            location.href='/nonmodel/login';
         </script>
     """   
     return HttpResponse(msg)
