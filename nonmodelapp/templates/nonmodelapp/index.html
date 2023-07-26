@@ -102,11 +102,7 @@
       </div>
     </header>
     <!-- slider section -->
-<<<<<<< HEAD
     <section class="slider_section layout_padding">
-=======
-    <section class="slider_section ">
->>>>>>> f995756ce3db4eb5ece163a52d746b35aaafd8f2
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -115,7 +111,6 @@
                 <div class="col-md-6">
                   <div class="detail-box">
                     <h1>
-<<<<<<< HEAD
                       2019-2022년 <br>
                       <span>
                         성별 건강기능식품 인지도
@@ -124,21 +119,6 @@
                     <p>
                       2019-2022년간 연도별 성별 건강기능식품 인지도 및 건강식품과의 차이점 인식도에 대한 조사 자료
                     </p>
-=======
-                      4조 <br>
-                      <span>
-                        건강기능 식품 추천사이트
-                      </span>
-                    </h1>
-                    <p>
-                      저희는 사용자의 정보(나이,성별,질병)에 따라 건강 기능 식품을 추천해주는 사이트 입니다.
-                    </p>
-                    {% if request.session.ses_user_id == None %}
-                      <a  href="/nonmodel/login/">식품 추천 바로가기</a>
-                    {% else %}
-                      <a  href="/nonmodel/treatment/">식품 추천 바로가기</a>
-                    {% endif %}
->>>>>>> f995756ce3db4eb5ece163a52d746b35aaafd8f2
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -149,7 +129,7 @@
               </div>
             </div>
           </div>
-          {% comment %} <div class="carousel-item">
+          <div class="carousel-item">
             <div class="container ">
               <div class="row">
                 <div class="col-md-6">
@@ -172,7 +152,6 @@
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
           </div>
           <div class="carousel-item">
             <div class="container ">
@@ -417,20 +396,16 @@
               </div>
             </div>
           </div>
-=======
-          </div> {% endcomment %}
-          
->>>>>>> f995756ce3db4eb5ece163a52d746b35aaafd8f2
         </div>
         <div class="carousel_btn-box">
-          {% comment %} <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
+          <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
             <img src="/static/nonmodelapp/images/prev.png" alt="">
             <span class="sr-only">Previous</span>
-          </a> {% endcomment %}
-          {% comment %} <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
+          </a>
+          <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
             <img src="/static/nonmodelapp/images/next.png" alt="">
             <span class="sr-only">Next</span>
-          </a> {% endcomment %}
+          </a>
         </div>
       </div>
     </section>
