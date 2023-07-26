@@ -38,8 +38,6 @@ urlpatterns = [
     #             : include가 실행되는 순간
     #               해당 파일의 코드에서 처리가 됨
     path('', include('mainapp.urls')),
-    path('oracle/', include('oracleapp.urls')),
-    path('front/', include('frontapp.urls')),
     path('nonmodel/', include('nonmodelapp.urls')),
     
     

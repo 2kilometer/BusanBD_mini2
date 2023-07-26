@@ -904,10 +904,10 @@ a:focus {
   border: none;
   text-transform: uppercase;
   display: inline-block;
-  padding: 15px 65px;
-  background-color: #00c6a9;
+  padding: 15px 12px;
+  background-color: #02180d;
   color: #ffffff;
-  border-radius: 0;
+  border-radius: 10px;
   font-weight: bold;
 }
 

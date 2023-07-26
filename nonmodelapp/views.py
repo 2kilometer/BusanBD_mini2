@@ -8,6 +8,11 @@ from django.core.paginator import Paginator
 from .models import Users, Userdis, Prod, Disease
 
 ####  함수 작성 ####
+def signUpView (request) :
+    return render (request,
+                   "nonmodelapp/contact copy.html",
+                   {})
+
 def login_chk (request) :
     user_id = request.POST.get("user_id","")
     user_pw = request.POST.get("user_pw","")
@@ -145,7 +150,7 @@ def sign(request):
             dis_middle = list(set(dis_middle))
             
             for i in range(len(sum_dis)):
-                sign_in.ud_dis(email ,sum_dis[i])
+                sign_in.uddis(email ,sum_dis[i])
             
             for d in range(len(dis_middle)):
                 sign_in.middle(email ,dis_middle[d])
@@ -155,7 +160,8 @@ def sign(request):
         ### 오류처리
         msg = """
             <script type='text/javascript'>
-                alert('오류발생{}{}');
+                alert('오류발생');
+                history.go(-1);
             </script>
         """
         return HttpResponse(msg)
@@ -164,7 +170,7 @@ def sign(request):
     msg = """
         <script type='text/javascript'>
             alert('정상적으로 입력되었습니다!!');
-            history.go(-1);
+            location.href='/nonmodel/login';
         </script>
     """   
     return HttpResponse(msg)
@@ -188,13 +194,13 @@ def dis_add(request):
     try:
         user_dis   = request.POST.getlist("user_dis","")
         user_id   = request.POST.get("user_id","")
-        dis_middle   = request.POST.get("dis_middle","")
+        dis_middle   = request.POST.getlist("dis_middle","")
         if user_dis != "":
             for i in range(len(user_dis)):
-                sign_in.ud_dis(user_id ,user_dis[i])
+                sign_in.uddis(user_id ,user_dis[i])
         if dis_middle != "":
             for i in range(len(dis_middle)):
-                sign_in.ud_dis(user_id , dis_middle[i])
+                sign_in.middle(user_id , dis_middle[i])
     except :        
         ### 오류처리
         msg = """

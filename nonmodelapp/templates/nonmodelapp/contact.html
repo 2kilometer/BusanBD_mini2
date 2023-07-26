@@ -37,6 +37,12 @@
       #showlist {
         display: none;
     }
+    .dis_middle{
+      height: 100px !important;
+    }
+    .dis_id2{
+      height: 100px !important;
+    }
   </style>
 
   <!-- 자바스크립트 처리시작 -->
@@ -108,6 +114,9 @@
               $("#load_view").load(`/nonmodel/register1/?age=${age}&gender=${gender}`);
           });
       });
+
+
+
       
   </script>
 </head>
@@ -174,6 +183,7 @@
   </div>
   <!-- contact section -->
   <section class="contact_section layout_padding-bottom">
+    <br>
     <div class="container">
       <div class="heading_container">
         <h2>
@@ -183,7 +193,7 @@
       <div class="row">
         <div class="col-md-7">
           <div class="form_container">
-            <form id="fm" name="fm" method="post" action="#">
+            <form id="fm" name="fm" method="post" action="#" onsubmit="go_sign()">
               {% csrf_token %}    
               <div>
                 <input type="email" id="email" name="email" required placeholder="Email을 입력하세요"/>
@@ -240,13 +250,11 @@
                     </select>
                 </div>
                 <br />
-            </div>
-            </form>
-            <div class="btn_box">
-              <button onclick="go_sign()">
-                가입하기
-              </button>
-            </div>
+              </div>
+                  <div class="btn_box">
+                      <button type="submit">가입하기</button>
+                  </div>
+            </form>         
           </div>
         </div>
         <div class="col-md-5">

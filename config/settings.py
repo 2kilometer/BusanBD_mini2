@@ -33,8 +33,6 @@ ALLOWED_HOSTS = ['127.0.0.1']
 ### 새로운 앱이 생성되면 이곳에 등록해 주기...
 INSTALLED_APPS = [
     'nonmodelapp',
-    'oracleapp',
-    'frontapp',
     'mainapp',
     
     'django.contrib.admin',
