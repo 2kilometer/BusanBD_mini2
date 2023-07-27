@@ -1,8 +1,11 @@
-DROP TABLE IF EXISTS prod;
-DROP TABLE IF EXISTS userdis;
-DROP TABLE IF EXISTS disease;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS usermiddle;
+DROP TABLE disease;
+DROP TABLE prod;
+DROP TABLE users;
+DROP TABLE userdis;
+DROP TABLE usermiddle;
+DROP TABLE naver_table;
+
+
 
 CREATE TABLE users(
     user_id VARCHAR2(50) not null,
@@ -54,7 +57,8 @@ CREATE TABLE Prod (
     prod_min VARCHAR2(300),
     prod_unit VARCHAR2(10),
     prod_warn VARCHAR2(900),
-    prod_middle VARCHAR2(500)
+    prod_middle VARCHAR2(500),
+    CONSTRAINT prod_pk PRIMARY KEY (prod_name, prod_m_num)
 );
 
 CREATE TABLE naver_table (
@@ -65,43 +69,3 @@ CREATE TABLE naver_table (
     age3 VARCHAR2(255)
 );
 
-
-
-
-ALTER TABLE prod
-ADD CONSTRAINT prod_pk PRIMARY KEY (prod_name, prod_m_num);
-
-commit;
-INSERT INTO usermiddle(md_id, md_middle) 
-VALUES('{}','{}');
-
-select *
-from userdis;
-
-select *
-from usermiddle;
-
-
-select user_age
-from prod
-where user_id = 'sungsam97@naver.com';
-
-select ud_dis 
-from userdis
-where ud_id = 'sungsam97@naver.com';
-
-select dis_middle 
-from disease
-where dis_id = '치아및지지구조의기타장애';
-
-select prod_name
-from prod
-where prod_middle = '구강(치아)';
-
-
-select ud_dis
-from userdis
-where ud_id = '{}';
-
-INSERT INTO userdis(ud_id, ud_dis) 
-VALUES('sungsam97@naver.com' ,'기타급성상기도감염');
