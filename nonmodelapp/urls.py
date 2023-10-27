@@ -4,8 +4,8 @@ from django.urls import path
 # - 라이브러리 읽어들이는 것과 동일
 from . import views
 urlpatterns = [
-    # - https://127.0.0.1:8000/nonmodel/signup/
-    path('signup/', views.signUpView),
+    # - https://127.0.0.1:8000/nonmodel/temp/
+    path('temp/', views.tempView),
     # - https://127.0.0.1:8000/nonmodel/login_chk/
     path('login_chk/', views.login_chk),
     # - https://127.0.0.1:8000/nonmodel/logout_chk/

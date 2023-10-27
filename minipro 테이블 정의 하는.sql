@@ -46,7 +46,6 @@ CREATE TABLE usermiddle (
     CONSTRAINT usermiddle_fk_user FOREIGN KEY (md_id) REFERENCES users(user_id)
 );
 
-DROP TABLE prod;
 
 
 CREATE TABLE Prod (

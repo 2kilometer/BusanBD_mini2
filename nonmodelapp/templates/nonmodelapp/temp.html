@@ -1,145 +1,1256 @@
+
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
-<html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>Multi Step Form | CodingNepal</title>
-      <link rel="stylesheet" href="style.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-   </head>
-   <body>
-      <div class="container">
-         <header>Signup Form</header>
-         <div class="progress-bar">
-            <div class="step">
-               <p>
-                  Name
-               </p>
-               <div class="bullet">
-                  <span>1</span>
-               </div>
-               <div class="check fas fa-check"></div>
+<html lang="ko" class="">
+<head>
+	<script>
+		var IS_MOBILE = false;
+		var UPLOAD_URL = '/upload/';
+		var CDN_UPLOAD_URL = 'https://cdn.imweb.me/upload/';
+		var IS_MAIN = true;
+		var ROOT_PATH = '/home/doznut/html/main/kr';
+		var BROWSER_LANGUAGE = 'kr';
+		/* 프로아라 에디터사용을 위해 common.js 로드할때 필요함 */
+		var IS_ANDROID_APP = 'N';
+        var IS_IOS_APP = 'N';
+        var IS_APP = IS_ANDROID_APP == "Y" || IS_IOS_APP == "Y";
+		var FROALA_VERSION = 311;
+		var FROALA_KEY = '6LF5g1B3D3F3C6C3E2F-11SLJCKHXOSLMc1YGSGb1ZXHSe1CgB5A4D4C3E3C2A13A19B7B2==';
+	</script>
+    <script>
+      var TEST_SERVER = false;
+    </script>
+    <script type="text/javascript">
+    if(TEST_SERVER){
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "gy49b26ww7");
+    }else{
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "gy3ywfkr1h");
+    }
+    </script>
+  <title>아임웹</title>
+<link rel='canonical' href='https://imweb.me/social_setting'>
+<link rel='alternate' href='https://imweb.me/social_setting' hreflang='ko-KR'>
+<link rel='alternate' href='https://imweb.me/tw/social_setting' hreflang='zh-TW'>
+<meta property="og:title" content="아임웹">
+<meta name="description" content="쉽지만 완벽하게, 쇼핑몰은 아임웹! 복잡한 과정은 줄이고 매출을 올려보세요. 브랜드 성장의 모든 것.">
+<meta property="og:description" content="쉽지만 완벽하게, 쇼핑몰은 아임웹! 복잡한 과정은 줄이고 매출을 올려보세요. 브랜드 성장의 모든 것.">
+<meta property="og:image" content="https://vendor-cdn.imweb.me/images/main/newblue_imweb_og_logo.png?v1">
+<meta charset="utf-8">
+<meta name="naver-site-verification" content="fc57c0e1f2e6ef6d7535e05a7a3ee6f176d3a79f"/>
+<meta name="google-site-verification" content="FHvZu3i5B6ZvO3kv3YXx0CkS0JEiyUb08ri2_nSQYIQ" />
+<meta name="author" content="(주)아임웹">
+<meta name="content-language" content="kr">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10,user-scalable=no">
+<link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/bootstrap.css?1630317764"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/owl.carousel.css?1577682282"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/swiper.min.css?1652070481"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/black-tie.css?1608189400"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/fonts/im-icon/style.css?1671430692"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/fonts/pretendard/web/variable/pretendardvariable.css?1669875619"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/fonts/pretendard/web/static/pretendard.css?1669875619"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/fonts/froala-emoji-tap/style.css?1669163161"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/codemirror.css?1577682282"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/simple-line-icons.css?1608179394"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/lightgallery.css?1577682282"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/nexongothic.css?1604904459"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/nanumSquare.css?1639644764"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/bm_dohyeon.css?1682980342"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/campton.css?1638947354"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/font-awesome.min.css?1626931454"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/material-design-iconic-font.css?1626931454"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/chosen.css?1617331870"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/animate.css?1577682282"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/ii.css?1577682282"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/im_component.css?1636689958"/><script  src="https://vendor-cdn.imweb.me/js/jquery.js?1627517460"></script><script  src="https://vendor-cdn.imweb.me/js/jquery-ui.js?1627517457"></script><script  src="https://vendor-cdn.imweb.me/js/bootstrap.min.js?1630317768"></script><script  src="https://vendor-cdn.imweb.me/js/lodash.min.js?1656295899"></script><script  src="https://vendor-cdn.imweb.me/js/owl.carousel.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/swiper-bundle.min.js?1669875597"></script><script  src="https://vendor-cdn.imweb.me/js/masonry.pkgd.min.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/codemirror.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/im_component.js?1636940317"></script><script  src="https://vendor-cdn.imweb.me/js/main_common.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/jquery.fileupload.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/jquery.chosen.js?1619084781"></script><script  src="https://vendor-cdn.imweb.me/js/imagesloaded.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/lightgallery-all.min.js?1596595980"></script><script  src="https://vendor-cdn.imweb.me/js/nprogress.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/ThreeCanvas.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/jquery-scrolltofixed-min.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/isotope.pkgd.min.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/jquery.lazyload.min.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/js/snow.js?1577682292"></script><script  src="https://vendor-cdn.imweb.me/dist/fe-common.min.js?1671431247"></script><script  src="https://vendor-cdn.imweb.me/js/axios.min.js?1689048978"></script><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/froala_editor.css?1669163161"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/froala_style.css?1607673118"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/froala_editor.pkgd.css?1669163161"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/froala_editor.min.css?1669163161"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/froala_style.min.css?1669163161"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/char_counter.min.css?1607673118"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/code_view.min.css?1607673118"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/colors.min.css?1607673118"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/draggable.min.css?1607673118"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/emoticons.min.css?1669163161"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/file.min.css?1607673119"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/fullscreen.min.css?1607673119"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/image_manager.min.css?1607673119"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/image.min.css?1607673119"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/line_breaker.min.css?1607673119"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/quick_insert.min.css?1607673119"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/table.min.css?1607673119"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/froala_311/css/plugins/video.min.css?1607673119"/><script  src="https://vendor-cdn.imweb.me/froala_311/js/froala_editor.min.js?1608673099"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/font_size.min.js?1607673170"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/colors.min.js?1607673167"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/align.min.js?1607673165"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/paragraph_format.min.js?1607673174"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/table.min.js?1607673177"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/char_counter.min.js?1607673165"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/code_beautifier.min.js?1607673167"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/code_view.min.js?1608643124"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/draggable.min.js?1607673168"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/emoticons.min.js?1669163161"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/entities.min.js?1607673170"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/file.min.js?1607673170"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/font_family.min.js?1607673170"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/forms.min.js?1607673170"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/fullscreen.min.js?1607673170"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/image.min.js?1607673172"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/image_manager.min.js?1607673172"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/inline_style.min.js?1607673173"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/line_breaker.min.js?1607673173"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/line_height.min.js?1607673173"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/link.min.js?1607673173"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/lists.min.js?1607673174"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/paragraph_style.min.js?1607673174"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/quote.min.js?1607673174"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/save.min.js?1607673174"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/url.min.js?1607673177"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/plugins/video.min.js?1625125569"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/third_party/font_awesome.min.js?1607673192"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/languages/ko.js?1669875597"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/languages/ja.js?1669875597"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/languages/zh_cn.js?1669875597"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/languages/zh_tw.js?1669875597"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/languages/es.js?1669875597"></script><script  src="https://vendor-cdn.imweb.me/froala_311/js/languages/vi.js?1669875597"></script><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/froala/custom-theme-v3.css?1669163161"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/font-awesome5.min.css?1669163183"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/main/main.css?1689021234"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/main/price.css?1686791343"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/main/style.css?1687941647"/><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/main/style_kokr.css?1578006662"/><script  src="https://vendor-cdn.imweb.me/js/froala_with_emoticon.js?1669875619"></script><script  src="https://vendor-cdn.imweb.me/js/common.js?1689021244"></script><link rel="stylesheet" type="text/css"  href="https://vendor-cdn.imweb.me/css/tailwind.css?1689126958"/><script  src="/js/global.js?1689021234"></script><script  src="/js/my.js?1689061043"></script><script  src="/js/support.js?1687393494"></script><script  src="/js/service.js?1677564584"></script><script  src="/js/member_inactive.js?1671654693"></script><script  src="/js/event.js?1666824024"></script><script  src="/js/appstore.js?1666824024"></script><script  src="/js/auth_service.js?1689021233"></script><script  src="/js/education.js?1669067469"></script><script  src="/js/photographic_counsel.js?1666824024"></script><script  src="/js/make_logo.js?1666824024"></script><script  src="/js/theme.js?1666824024"></script><script  src="/js/mobile_slide_navigation.js?1666824024"></script><script  src="/js/trace/ga4.js?1666824024"></script><script  src="/js/mixpanel.js?1687829180"></script>	<link rel="shortcut icon" href="https://vendor-cdn.imweb.me/images/main/imweb-favicon-32x32.ico?v1">
+	<link rel="icon" type="image/png" href="https://vendor-cdn.imweb.me/images/main/imweb-favicon-32x32.png?v1" sizes="32x32"/>
+	<link rel="icon" type="image/png" href="https://vendor-cdn.imweb.me/images/main/imweb-favicon-16x16.png?v1" sizes="16x16"/>
+	<link rel="icon" type="image/png" href="https://vendor-cdn.imweb.me/images/main/imweb-favicon-96x96.png?v1" sizes="96x96"/>
+	<link rel="apple-touch-icon-precomposed" href="https://vendor-cdn.imweb.me/images/main/imweb-favicon-120x120.png?v1" sizes="120x120"/>
+	<link rel="apple-touch-icon-precomposed" href="https://vendor-cdn.imweb.me/images/main/imweb-favicon-180x180.png?v1" sizes="180x180"/>
+	<link rel="icon" type="image/png" href="https://vendor-cdn.imweb.me/images/main/imweb-favicon-192x192.png?v1" sizes="192x192"/>
+
+	<script src="/js/localize.cm?kr_1690353768"></script>
+              <script>
+            window.dataLayer = window.dataLayer || [];
+            dataLayer.push({
+                'event': 'Pageview',
+                'kr-user': 'M20230726759ace1d63226',
+                'imwebUserId': 'KRM20230726759ace1d63226',
+            });
+        </script>
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-P68765D');</script>
+        <!-- End Google Tag Manager -->
+    
+        <!-- Facebook Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1300116850041141');
+            fbq('track', 'PageView');
+        </script>
+    
+        <noscript>
+            <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1300116850041141&ev=PageView&noscript=1"/>
+        </noscript>
+        <!-- End Facebook Pixel Code -->
+        <!-- Google Optimize -->
+        <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MPWMFSB"></script>
+  
+	<!-- Anti-flicker snippet (recommended) 깜빡임방지 스니펫  -->
+	<style>.async-hide { opacity: 0 !important} </style>
+	<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+			h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+			(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+		})(window,document.documentElement,'async-hide','dataLayer',4000,
+			{'OPT-MPWMFSB':true});
+	</script>
+	<script>
+		(function(){
+			/* Bootstrap Sanitizer Custom */
+			var customTooltipAllowList = $.fn.tooltip.Constructor.DEFAULTS.whiteList;
+			customTooltipAllowList.table = [];
+			customTooltipAllowList.thead = [];
+			customTooltipAllowList.tbody = [];
+			customTooltipAllowList.tr = [];
+			customTooltipAllowList.td = ["rowspan", "colspan"];
+			customTooltipAllowList.th = [];
+			customTooltipAllowList.caption = [];
+			customTooltipAllowList["*"].push("style");
+			/* End Bootstrap Sanitizer Custom */
+		})();
+	</script>
+</head>
+<body id="snowfall">
+
+<div class="ch-btn" style="display: none;">
+	<a href="javascript:;"></a>
+</div>
+<div id="loader" class="se-pre-con style-gray" style="display: none;">
+	<div class="page-loader-spinner">
+		<div class="double-bounce1"></div>
+		<div class="double-bounce2"></div>
+	</div>
+	<div class="loader-text text-semi-bold text-24 _loader_text">사이트를 구성 중입니다. 잠시만 기다려주세요.</div>
+</div>
+
+<nav id="imweb-navbar" class="navbar navbar-default navbar-white" aria-label="Navigation" itemscope="" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="container-fluid">
+		<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed _nav_btn" onclick="MOBILE_SLIDE_NAVIGATION.slideNavToggle();">
+				<span class="sr-only">Toggle navigation</span>
+				<i class="btl bt-bars"></i>
+			</button>
+						<a class="navbar-brand" href="/" title="I'm web." rel="home">
+				<img class="img-responsive _brand_white brand-white" src="https://vendor-cdn.imweb.me/images/main/imweb_new_logo_white_88.png" alt="아임웹">
+				<img class="img-responsive scroll_logo" src="https://vendor-cdn.imweb.me/images/main/imweb_new_logo_blue_88.png" alt="아임웹">
+				<span class="sr-only">아임웹</span>
+			</a>
+		</div>
+		<div class="navbar-wrap" id="imweb-navbar-wrap">
+			<div class="collapse navbar-collapse" id="imweb-navbar-collapse" aria-expanded="true">
+				<ul class="nav navbar-nav nav_center_container"><li role="menuitem" class="hidden-sm hidden-xs"><div class="dropdown menu"><a class="menu_btn " role="button" href="/features" title="" itemprop="url" role="button">
+					<span class="nav-item-name">주요기능</span><i class="menu_icon icon-arrow-down"></i>
+				</a><div class="dropdown-menu "><ul><li><a class="dropdown-item " href="/features"  role="menuitem" tabindex="-1" itemprop="url"><span style="">웹사이트</span></a></li><li><a class="dropdown-item " href="/features#section3"  role="menuitem" tabindex="-1" itemprop="url"><span style="">쇼핑몰</span></a></li><li><a class="dropdown-item " href="/global_shopping"  role="menuitem" tabindex="-1" itemprop="url"><span style="">글로벌 판매</span></a></li><li><a class="dropdown-item " href="/appstore"  role="menuitem" tabindex="-1" itemprop="url"><span style="">앱스토어</span></a></li></ul></div></div></li><li role="menuitem" class="hidden-sm hidden-xs"><div class="dropdown menu"><a class="menu_btn " role="button" href="/theme" title="" itemprop="url" role="button">
+					<span class="nav-item-name">템플릿</span>
+				</a></div></li><li role="menuitem" class="hidden-sm hidden-xs"><div class="dropdown menu"><a class="menu_btn " role="button" href="/best_production_list" title="" itemprop="url" role="button">
+					<span class="nav-item-name">고객사례</span><i class="menu_icon icon-arrow-down"></i>
+				</a><div class="dropdown-menu "><ul><li><a class="dropdown-item " href="/best_production_list"  role="menuitem" tabindex="-1" itemprop="url"><span style="">고객사례</span></a></li><li><a class="dropdown-item " href="/interview"  role="menuitem" tabindex="-1" itemprop="url"><span style="">고객 인터뷰</span></a></li><li><a class="dropdown-item " href="/find_designer"  role="menuitem" tabindex="-1" itemprop="url"><span style="">디자이너 찾기</span></a></li></ul></div></div></li><li role="menuitem" class="hidden-sm hidden-xs"><div class="dropdown menu"><a class="menu_btn " role="button" href="/price" title="" itemprop="url" role="button">
+					<span class="nav-item-name">요금</span>
+				</a></div></li><li role="menuitem" class="hidden-sm hidden-xs"><div class="dropdown menu"><a class="menu_btn " role="button" href="/find_designer" title="" itemprop="url" role="button">
+					<span class="nav-item-name">디자이너 찾기</span><i class="menu_icon icon-arrow-down"></i>
+				</a><div class="dropdown-menu "><ul><li><a class="dropdown-item " href="/find_designer"  role="menuitem" tabindex="-1" itemprop="url"><span style="">디자이너 찾기</span></a></li><li><a class="dropdown-item " href="/reseller"  role="menuitem" tabindex="-1" itemprop="url"><span style="">리셀러</span></a></li></ul></div></div></li><li role="menuitem" class="hidden-sm hidden-xs"><div class="dropdown menu"><a class="menu_btn " role="button" href="/customer" title="" itemprop="url" role="button">
+					<span class="nav-item-name">고객지원</span><i class="menu_icon icon-arrow-down"></i>
+				</a><div class="dropdown-menu "><ul><li><a class="dropdown-item " href="/faq"  role="menuitem" tabindex="-1" itemprop="url"><span style="">가이드</span></a></li><li><a class="dropdown-item " href="/edu"  role="menuitem" tabindex="-1" itemprop="url"><span style="font-weight: bold; color: #1a6dff;">온라인 교육</span></a></li><li><a class="dropdown-item " href="/video_lecture"  role="menuitem" tabindex="-1" itemprop="url"><span style="">동영상 강의</span></a></li><li><a class="dropdown-item " href="/blog"  role="menuitem" tabindex="-1" itemprop="url"><span style="">블로그<span class="badge badge-new">NEW</span></span></a></li><li><a class="dropdown-item " href="/notice"  role="menuitem" tabindex="-1" itemprop="url"><span style="">아임웹 소식</span></a></li><li><a class="dropdown-item " href="/qna"  role="menuitem" tabindex="-1" itemprop="url"><span style="">FAQ/문의하기</span></a></li></ul></div></div></li></ul>				<ul class="nav navbar-nav nav_center_container"><li id="nav-item-navbar-left-more" class="nav-item-more mobile hidden-lg hidden-md" style="display: block;" role="menuitem" aria-hidden="false"><div id="navbar-more-container-mobile" class="imweb-navbar-more mobile"><div class="container"><ul class="page-nav" id="navWrap"><li class="page-nav-item" id='heading1'><a href="javascript:;" role="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">주요기능<i class="page-nav-icon icon-arrow-down"></i></a><ul class="page-nav-sub collapse" id="collapse1" aria-labelledby="heading1" data-parent="#navWrap"><li class="page-nav-sub-item"><a style="display: inline-block" href="/features"  role="button">웹사이트</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/features#section3"  role="button">쇼핑몰</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/global_shopping"  role="button">글로벌 판매</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/appstore"  role="button">앱스토어</a></li></ul></li><li class="page-nav-item"><a href="/theme" role="button">템플릿</a></li><li class="page-nav-item" id='heading2'><a href="javascript:;" role="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapse2">고객사례<i class="page-nav-icon icon-arrow-down"></i></a><ul class="page-nav-sub collapse" id="collapse2" aria-labelledby="heading2" data-parent="#navWrap"><li class="page-nav-sub-item"><a style="display: inline-block" href="/best_production_list"  role="button">고객사례</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/interview"  role="button">고객 인터뷰</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/find_designer"  role="button">디자이너 찾기</a></li></ul></li><li class="page-nav-item"><a href="/price" role="button">요금</a></li><li class="page-nav-item" id='heading3'><a href="javascript:;" role="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapse3">디자이너 찾기<i class="page-nav-icon icon-arrow-down"></i></a><ul class="page-nav-sub collapse" id="collapse3" aria-labelledby="heading3" data-parent="#navWrap"><li class="page-nav-sub-item"><a style="display: inline-block" href="/find_designer"  role="button">디자이너 찾기</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/reseller"  role="button">리셀러</a></li></ul></li><li class="page-nav-line"></li><li class="page-nav-item" id='heading4'><a href="javascript:;" role="button" data-toggle="collapse" data-target="#collapse4" aria-expanded="false" aria-controls="collapse4">고객지원<i class="page-nav-icon icon-arrow-down"></i></a><ul class="page-nav-sub collapse" id="collapse4" aria-labelledby="heading4" data-parent="#navWrap"><li class="page-nav-sub-item"><a style="display: inline-block" href="/faq"  role="button">가이드</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/edu"  role="button">온라인 교육</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/video_lecture"  role="button">동영상 강의</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/blog"  role="button">블로그<span class="badge badge-new">NEW</span></a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/notice"  role="button">아임웹 소식</a></li><li class="page-nav-sub-item"><a style="display: inline-block" href="/qna"  role="button">FAQ/문의하기</a></li></ul></li><li class="page-nav-item"><a href="/mysite" role="button">내사이트</a></li></ul></div></div></li></ul>			</div>
+		</div>
+		
+		<ul id="navbar-right" class="nav navbar-nav navbar-right" role="menubar">
+			<li role="menuitem" class="hidden-sm hidden-xs btn_mysite ">
+				<div class="dropdown">
+					<a class="menu_btn" role="button" href="/mysite" title="" itemprop="url">
+						<span class="nav-item-name">내사이트</span>
+					</a>
+				</div>
+			</li>				<li id="nav-item-navbar-right-account" class="nav-item" role="menuitem">
+					<div class="btn-group profile">
+						<div class="dropdown-toggle profile-info" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div class="avatar"><img src="https://cdn.imweb.me/thumbnail/20230726/c9f39a7ca1e17.png" id="top_profile_img_thumb"></div>
+						</div>
+						<ul class="dropdown-menu profile">
+							<li class="dropdown-profile">
+								<a href="/mysite" class="profile-link">
+									<div class="avatar"><img src="https://cdn.imweb.me/thumbnail/20230726/c9f39a7ca1e17.png" id="top_profile_img"></div>
+									<div class="name">
+										<div style="margin-bottom:5px;" id="top_profile_name">심현우</div>
+										<small class="text-gray">roehd1020@gmail.com</small>
+									</div>
+								</a>
+							</li>
+														<li class="profile-btns">
+								<div class="btn-group-justified">
+																														<a href="/mysite" class="btn">내사이트</a>
+											<a href="/mypage" class="btn">마이페이지</a>
+																												<a href="javascript:logout('','')" class="btn">로그아웃</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+						</ul>
+			</div>
+	<div class="headline-overlay"></div>
+</nav>
+<section class="section-login">
+    <input type="hidden" id="gtk" name="gtk"/>
+    <input type="checkbox" name="complete_auth" id="complete_auth" class="tw-hidden" />
+    <div class="container">
+        <div class="login-wrap">
+            <header class="margin-bottom-xxxxxl">
+                <h3 class="margin-bottom-xxl text-center">계정 설정</h3>
+                <p class="text-gray">추가 정보를 입력하여 계정 설정을 마무리해주세요.</p>
+            </header>
+            <div class="login">
+                <div class="">
+
+                    <div
+                            class="msg_box_warp tw-grid tw-gap-[20px] tw-text-[14px]"
+                            id="form"
+                    >
+                        <div class="_msg_box tw-grid tw-gap-[8px]" id="msg_box_nickname">
+                            <label class="tw-m-0" for="txt_nickname">
+                                <div class="im-io-label-text ">닉네임</div>
+                            </label>
+                            <div
+                                class="im-io-input-text-box"
+                                id="inputBox"
+                            >
+                                <input
+                                    id="txt_nickname"
+                                    type="text"
+                                    class="im-io-input-text"
+                                    style="opacity: 1"
+                                    value="심현우"
+                                />
+                            </div>
+                            <div id="msg_wrap_nickname" class="tw-hidden">
+                                <div
+                                    class="tw-mt-[-1px] tw-hidden tw-text-[12px] tw-text-danger-600"
+                                    id="error_msg_nickname"
+                                ></div>
+                            </div>
+                        </div>
+                        <div class="_msg_box tw-grid tw-gap-[8px]" id="msg_box_email">
+                            <label class="tw-m-0" for="txt_email">
+                                <div class="im-io-label-text">이메일</div>
+                            </label>
+                            <div
+                                    class="im-io-input-text-box disabled"
+                                    id="inputBox"
+                            >
+								<label class="social-icon google"></label>
+                                <input
+                                        type="email"
+                                        class="im-io-input-text"
+                                        value="roehd1020@gmail.com"
+                                        disabled
+                                />
+                            </div>
+                        </div>
+                        <div class="_msg_box tw-grid tw-gap-[8px]" id="msg_box_pass">
+                            <input type="checkbox" id="show-password_pass" hidden/>
+                            <label class="tw-m-0" for="txt_pass">
+                                <div class="m-io-label-text">비밀번호</div>
+                            </label>
+                            <div
+                                    class="im-io-input-text-box"
+                                    id="inputBox"
+                            >
+                                <input
+                                        type="password"
+                                        class="im-io-input-text"
+                                        placeholder="비밀번호를 입력해주세요."
+                                        autocomplete="off"
+                                        autocapitalize="off"
+                                        autocorrect="off"
+                                        required
+                                        id="txt_pass"
+                                />
+                                <label
+                                        for="show-password_pass"
+                                        id="showPasswordBtn"
+                                        class="h-full _showPasswordBtn tw-m-0 tw-flex tw-cursor-pointer tw-items-center tw-fill-[#888888]"
+                                >
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 48 48"
+                                            width="18"
+                                            height="18"
+                                            class="svg-toggle-password"
+                                            title="Toggle Password Security"
+                                    >
+                                        <title>Hide/Show Password</title>
+                                        <path
+                                                d="M24,9A23.654,23.654,0,0,0,2,24a23.633,23.633,0,0,0,44,0A23.643,23.643,0,0,0,24,9Zm0,25A10,10,0,1,1,34,24,10,10,0,0,1,24,34Zm0-16a6,6,0,1,0,6,6A6,6,0,0,0,24,18Z"
+                                        />
+                                        <rect
+                                                x="20.133"
+                                                y="2.117"
+                                                height="44"
+                                                transform="translate(23.536 -8.587) rotate(45)"
+                                                class="closed-eye"
+                                        />
+                                        <rect
+                                                x="22"
+                                                y="3.984"
+                                                width="4"
+                                                height="44"
+                                                transform="translate(25.403 -9.36) rotate(45)"
+                                                style="fill: #fff"
+                                                class="closed-eye"
+                                        />
+                                    </svg>
+                                </label>
+                            </div>
+                            <div class="tw-relative tw-hidden" id="msg_wrap_pass">
+                            </div>
+                        </div>
+                        <div
+                                class="_msg_box tw-grid tw-gap-[8px]"
+                                id="msg_box_pass_confirm"
+                        >
+                            <input type="checkbox" id="show-password_pass_confirm" hidden/>
+                            <label class="tw-m-0" for="txt_pass_confirm">
+                                <div class="im-io-label-text">
+                                    비밀번호 확인
+                                </div>
+                            </label>
+                            <div
+                                    class="im-io-input-text-box"
+                                    id="inputBox"
+                            >
+                                <input
+                                        type="password"
+                                        class="im-io-input-text"
+                                        placeholder="비밀번호를 다시 입력해주세요."
+                                        autocomplete="off"
+                                        autocapitalize="off"
+                                        autocorrect="off"
+                                        required
+                                        id="txt_pass_confirm"
+                                        password
+                                />
+                                <label
+                                        for="show-password_pass_confirm"
+                                        id="showPasswordBtn"
+                                        class="h-full _showPasswordBtn tw-m-0 tw-flex tw-cursor-pointer tw-items-center tw-fill-[#888888]"
+                                >
+                                    <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 48 48"
+                                            width="18"
+                                            height="18"
+                                            class="svg-toggle-password"
+                                            title="Toggle Password Security"
+                                    >
+                                        <title>Hide/Show Password</title>
+                                        <path
+                                                d="M24,9A23.654,23.654,0,0,0,2,24a23.633,23.633,0,0,0,44,0A23.643,23.643,0,0,0,24,9Zm0,25A10,10,0,1,1,34,24,10,10,0,0,1,24,34Zm0-16a6,6,0,1,0,6,6A6,6,0,0,0,24,18Z"
+                                        />
+                                        <rect
+                                                x="20.133"
+                                                y="2.117"
+                                                height="44"
+                                                transform="translate(23.536 -8.587) rotate(45)"
+                                                class="closed-eye"
+                                        />
+                                        <rect
+                                                x="22"
+                                                y="3.984"
+                                                width="4"
+                                                height="44"
+                                                transform="translate(25.403 -9.36) rotate(45)"
+                                                style="fill: #fff"
+                                                class="closed-eye"
+                                        />
+                                    </svg>
+                                </label>
+                            </div>
+                            <div class="tw-relative tw-hidden" id="msg_wrap_pass_confirm">
+                                <div
+                                        class="tw-mt-[-1px] tw-hidden tw-text-[12px] tw-text-danger-600"
+                                        id="error_msg_pass_confirm"
+                                ></div>
+                                <div
+                                        id="success_msg_pass_confirm"
+                                        class="tw-hidden tw-top-0 tw-mt-[-1px] tw-h-[calc(100%+2px)] tw-w-full tw-bg-white tw-text-[12px] tw-text-primary-500"
+                                ></div>
+                            </div>
+                        </div>
+                        <div class="_msg_box tw-grid tw-gap-[8px] tw-hidden" id="NameWrap">
+                            <label class="tw-m-0" for="AuthorizedName">
+                                <div class="im-io-label-text">이름</div>
+                            </label>
+                            <div
+                                class="tw-flex tw-gap-[18px] tw-rounded-[4px] tw-border tw-border-solid tw-border-[#d3d3d3] tw-px-[18px] tw-bg-[#F8F9FB]"
+                                id="inputBox"
+                            >
+                                <input
+                                    type="text"
+                                    class="tw-h-[48px] tw-w-[100%] tw-border-none tw-py-[6px] tw-text-[14px] tw-leading-[1.43] tw-text-[#3B4859] tw-outline-none tw-outline-1 placeholder:tw-text-[#3B4859] placeholder:tw-text-opacity-40 tw-bg-[#F8F9FB] disabled:tw-text-opacity-40 disabled:tw-cursor-not-allowed"
+                                    value=""
+                                    id="AuthorizedName"
+                                    readonly
+                                    disabled
+                                />
+                            </div>
+                            <input type="hidden" id="AuthorizedBirthday" name="birthday" value="">
+                        </div>
+                        <div class="_msg_box tw-grid tw-gap-[8px] tw-hidden" id="PhoneNumberWrap">
+                            <label class="tw-m-0" for="AuthorizedPhoneNumber">
+                                <div class="im-io-label-text">휴대전화번호</div>
+                            </label>
+                            <div
+                                class="tw-flex tw-gap-[18px] tw-rounded-[4px] tw-border tw-border-solid tw-border-[#d3d3d3] tw-px-[18px] tw-bg-[#F8F9FB]"
+                                id="inputBox"
+                            >
+                                <input
+                                    type="text"
+                                    class="tw-h-[48px] tw-w-[100%] tw-border-none tw-py-[6px] tw-text-[14px] tw-leading-[1.43] tw-text-[#3B4859] tw-outline-none tw-outline-1 placeholder:tw-text-[#3B4859] placeholder:tw-text-opacity-40 tw-bg-[#F8F9FB] disabled:tw-text-opacity-40 disabled:tw-cursor-not-allowed"
+                                    value=""
+                                    id="AuthorizedPhoneNumber"
+                                    readonly
+                                    disabled
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group tw-mt-[12px] tw-mb-[40px]">
+                            <button
+                                type="button"
+                                 onclick="AUTH_SERVICE.openCOMBINATIONAUTHTYPESWindow('imwebiasT2','20230726154248634622','https://imweb.me/auth_service/auth_service_result.cm?return_data=eyJtb2RlIjoic29jaWFsX2FjY291bnRfc2V0dGluZyIsIm5hbWUiOiJjb21iaW5hdGlvbiIsInRrIjoiQWJiNTRjOWI5Zjc4ZWEiLCJtZW1iZXJfbm8iOjAsIm9yaWdpbiI6Imh0dHBzOlwvXC9pbXdlYi5tZSJ9','005381733f335b14ca5e89d94cde2313823222fe77f1b248078ccde9961da2c6','');"                                 class="tw-text-[#1A6DFF] tw-border-[#1A6DFF] tw-border tw-rounded-[4px] tw-py-[16px]  tw-leading-[16px] tw-text-[16px] tw-bg-white btn-block"
+                            >
+                                본인인증
+                            </button>
+                            <p class="tw-text-center tw-mt-[9px] tw-mb-[6px] tw-text-[#7f8a98] tw-text-[14px]">본인인증이 어려우신가요?
+                                <a href="javascript:;" class="text-gray-light" role="button" style="margin-right:14px;" data-toggle="popover" tabindex="0" data-trigger="focus" data-placement="top" title="" data-html="true" data-content="휴대전화번호로 인증이 어려운 경우 화면 우측 하단의 채널톡 문의를 통해 접수해주시면 가입 진행을 도와드리겠습니다." data-original-title="본인인증이 어려우신가요?"><i class="btm bt-question-circle"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="checkbox-inline checkbox-styled" style="margin-bottom: 8px">
+                    <label class="">
+                        <input type="checkbox" value="ok" id="checkall"/>
+                        <span>전체 동의</span>
+                    </label>
+                </div>
+                <div class="border-group">
+                    <div class="item-wrap">
+                        <div class="item">
+                            <div class="checkbox-inline checkbox-styled">
+                                <label class="">
+                                    <input type="checkbox" value="ok" name="chk" id="chk_terms"/>
+                                    <span>이용약관 동의</span>
+                                </label>
+                            </div>
+                            <a
+                                    href="#"
+                                    data-toggle="modal"
+                                    data-target="#imweb-policy"
+                                    class="text-primary pull-right"
+                            >전문보기</a
+                            >
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item">
+                            <div class="checkbox-inline checkbox-styled">
+                                <label class="">
+                                    <input
+                                            type="checkbox"
+                                            value="ok"
+                                            name="chk"
+                                            id="chk_privacy"
+                                    />
+                                    <span>개인정보취급 동의</span>
+                                </label>
+                            </div>
+                            <a
+                                    href="#"
+                                    data-toggle="modal"
+                                    data-target="#imweb-privacy"
+                                    class="text-primary pull-right"
+                            >전문보기</a
+                            >
+                        </div>
+                    </div>
+                    <div class="item-wrap">
+                        <div class="item">
+                            <div class="checkbox-inline checkbox-styled">
+                                <label class="">
+                                    <input
+                                            type="checkbox"
+                                            value="ok"
+                                            name="chk"
+                                            id="chk_agree_email"
+                                    />
+                                    <span>마케팅 메일 수신 동의 (선택)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group margin-bottom-xxxl">
+                    <button
+                            type="button"
+                            onclick="submit()"
+                            class="
+                            tw-leading-[38px]
+                            tw-py-[6px]
+                            btn btn-block 
+                            tw-border-primary-500 
+                            tw-bg-primary-500 
+                            tw-text-white 
+                            hover:tw-border-[#0053D9] 
+                            hover:tw-bg-[#0053D9] 
+                            hover:tw-text-white 
+                            disabled:tw-border-none 
+                            disabled:tw-bg-[#ddd] 
+                            disabled:hover:tw-text-white
+                            "
+                            id="submit"
+                            disabled
+                    >
+                        확인
+                    </button>
+                </div>
             </div>
-            <div class="step">
-               <p>
-                  Contact
-               </p>
-               <div class="bullet">
-                  <span>2</span>
-               </div>
-               <div class="check fas fa-check"></div>
+        </div>
+    </div>
+</section>
+<div
+        class="modal fade"
+        id="imweb-policy"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                >
+                    <span aria-hidden="true"><i class="btl bt-times"></i></span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">이용약관</h4>
             </div>
-            <div class="step">
-               <p>
-                  Birth
-               </p>
-               <div class="bullet">
-                  <span>3</span>
-               </div>
-               <div class="check fas fa-check"></div>
+            <div class="modal-body">
+                <h4>제1조 (목적)</h4>
             </div>
-            <div class="step">
-               <p>
-                  Submit
-               </p>
-               <div class="bullet">
-                  <span>4</span>
-               </div>
-               <div class="check fas fa-check"></div>
+        </div>
+    </div>
+</div>
+
+<div
+        class="modal fade"
+        id="imweb-privacy"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                >
+                    <span aria-hidden="true"><i class="btl bt-times"></i></span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">개인정보처리방침</h4>
             </div>
-         </div>
-         <div class="form-outer">
-            <form action="#">
-               <div class="page slide-page">
-                  <div class="title">
-                     Basic Info:
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        First Name
-                     </div>
-                     <input type="text">
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Last Name
-                     </div>
-                     <input type="text">
-                  </div>
-                  <div class="field">
-                     <button class="firstNext next">Next</button>
-                  </div>
-               </div>
-               <div class="page">
-                  <div class="title">
-                     Contact Info:
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Email Address
-                     </div>
-                     <input type="text">
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Phone Number
-                     </div>
-                     <input type="Number">
-                  </div>
-                  <div class="field btns">
-                     <button class="prev-1 prev">Previous</button>
-                     <button class="next-1 next">Next</button>
-                  </div>
-               </div>
-               <div class="page">
-                  <div class="title">
-                     Date of Birth:
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Date
-                     </div>
-                     <input type="text">
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Gender
-                     </div>
-                     <select>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                     </select>
-                  </div>
-                  <div class="field btns">
-                     <button class="prev-2 prev">Previous</button>
-                     <button class="next-2 next">Next</button>
-                  </div>
-               </div>
-               <div class="page">
-                  <div class="title">
-                     Login Details:
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Username
-                     </div>
-                     <input type="text">
-                  </div>
-                  <div class="field">
-                     <div class="label">
-                        Password
-                     </div>
-                     <input type="password">
-                  </div>
-                  <div class="field btns">
-                     <button class="prev-3 prev">Previous</button>
-                     <button class="submit">Submit</button>
-                  </div>
-               </div>
-            </form>
-         </div>
-      </div>
-      <script src="script.js"></script>
-   </body>
+            <div class="modal-body">
+            </div>
+<div class="collapse" id="collapsePrivacy">
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const elRoot = document.querySelector("#form");
+    const editName = new SubscribeInput({
+        elRoot,
+        type: "nickname",
+        errorMessage: {
+            default: "닉네임을 입력해주세요.",
+        },
+    });
+    editName.init();
+    const signupPass = new PasswordValidationInput({
+        elRoot,
+        isImwebSiteOwner: 'Y',
+        type: "pass",
+        errorMessage: {
+            default: "",
+        },
+        successMessage: "사용가능한 비밀번호 입니다.",
+        validations: [
+            {
+                id: 'textCase',
+                name: '영문 대+소문자',
+            },
+            {
+                id: 'number',
+                name: '숫자',
+            },
+            {
+                id: 'specialChar',
+                name: '특수문자',
+            },
+            {
+                id: 'passwordLength',
+                name: '8~20자',
+            },
+        ]
+    });
+    signupPass.init();
+    const signupPassConfirm = new PasswordConfirm({
+        elRoot,
+        type: "pass_confirm",
+        errorMessage: {
+            default: "비밀번호가 일치하지 않습니다.",
+            empty: "비밀번호를 다시 입력해주세요.",
+        },
+        elForm: document.querySelector("#form"),
+        successMessage: "비밀번호가 일치합니다.",
+    });
+    signupPassConfirm.init();
+    const _signupSubmit = new SignupSubmit({
+        elInputs: [
+            // signupName.elInput,
+            // signupEmail.elInput,
+            signupPass.elInput,
+            signupPassConfirm.elInput,
+            // signupPhoneNumber.elInput,
+        ],
+        elSubmit: document.querySelector("#submit"),
+        isChecker: [
+            document.querySelector("#chk_terms"),
+            document.querySelector("#chk_privacy"),
+        ],
+    });
+    _signupSubmit.init();
+
+    $(document).ready(function () {
+        $("#checkall").click(function () {
+            if ($("#checkall").prop("checked")) {
+                $("input[name=chk]").prop("checked", true);
+                $("input[name=chk]").attr("checked", true);
+            } else {
+                $("input[name=chk]").prop("checked", false);
+                $("input[name=chk]").attr("checked", false);
+            }
+        });
+        $("input[name=chk]").each(function (index, item) {
+            $(item).change(function (event) {
+                $(this).attr("checked", $(this)[0].checked);
+                $("#checkall").prop("checked", $("input[name=chk]").length === $("input[name=chk]:checked").length);
+            });
+        });
+    });
+
+    function submit()
+    {
+        $.ajax({
+            type: "POST",
+            data: {
+                'nickname': $('#txt_nickname').val(),
+                'name': $('#AuthorizedName').val(),
+                'phone': $('#AuthorizedPhoneNumber').val(),
+                'birthday': $('#AuthorizedBirthday').val(),
+                'change_pass1': $('#txt_pass').val(),
+                'change_pass2': $('#txt_pass_confirm').val(),
+            },
+            url: "../backpg/change_social_password.cm",
+            dataType: "json",
+            async: false,
+            cache: false,
+            success: function (res) {
+                if (res.result == "SUCCESS") {
+                    window.prevent_unload = false;
+                    location.href = "/join_complete";
+                } else {
+                    if(typeof res.result === "string"){
+                        alert(res.message);
+                    } else {
+                        alert(LOCALIZE.잘못된접근입니다());
+                    }
+                }
+            },
+        });
+    }
+    /**
+     * setVisualize
+     * 본인인증 input element 관련 css 조작 부분
+     */
+    const setVisualize = () => {
+        if($('#AuthorizedPhoneNumber').val()){
+            $('#PhoneNumberWrap').removeClass('tw-hidden');
+        }
+        if($('#AuthorizedName').val()){
+            $('#NameWrap').removeClass('tw-hidden');
+        }
+    }
+    EDIT_INFORMATION.IdentityVerification(setVisualize);
+
+    (function(){
+        /* 수정 내역이 있다면 화면 벗어남 방지 */
+        window.prevent_unload = false;
+        $('#form').find('input').on("change", function (e) {
+            window.prevent_unload = true;
+        });
+
+        window.addEventListener('beforeunload', function (e) {
+            if(window.prevent_unload){
+                var confirmationMessage = '사이트에서 나가시겠습니까? 변경사항이 저장되지 않을 수 있습니다.';
+                (e || window.event).returnValue = confirmationMessage;
+                return confirmationMessage;
+            }
+        });
+    })();
+
+</script>
+<!-- Channel Script -->
+<script type='text/javascript'>
+window.channelPluginSettings = {"pluginKey":"6a8aaaf7-8e2f-400b-9946-491b9354592f","language":"ko","zIndex":1000,"memberId":"M20230726759ace1d63226","profile":{"name":"\uc2ec\ud604\uc6b0","mobileNumber":"","email":"roehd1020@gmail.com","joinTime":"2023-07-26 15:42:05","avatarUrl":"https:\/\/cdn.imweb.me\/thumbnail\/20230726\/c9f39a7ca1e17.png","memberType":"\uc0ac\uc774\ud2b8 \ubbf8\uac1c\uc124","educationApplication":"N","visitsCount":1,"usingConsulting":"","siteVersion":"\uc0ac\uc774\ud2b8 \ubbf8\uac1c\uc124"}};
+(function() {
+	var w = window;
+	if (w.ChannelIO) {
+		return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+	}
+	var d = window.document;
+	var ch = function() {
+		ch.c(arguments);
+	};
+	ch.q = [];
+	ch.c = function(args) {
+		ch.q.push(args);
+	};
+	w.ChannelIO = ch;
+	function l() {
+		if (w.ChannelIOInitialized) {
+			return;
+		}
+		w.ChannelIOInitialized = true;
+		var s = document.createElement('script');
+		s.style.zIndex = 1100; 
+		s.type = 'text/javascript';
+		s.async = true;
+		s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+		s.charset = 'UTF-8';
+		var x = document.getElementsByTagName('script')[0];
+		x.parentNode.insertBefore(s, x);
+	}
+	if (document.readyState === 'complete') {
+		l();
+	} else if (window.attachEvent) {
+		window.attachEvent('onload', l);
+	} else {
+	window.addEventListener('DOMContentLoaded', l, false);
+	window.addEventListener('load', l, false);
+	}
+})();
+</script>	<section class="resellerapply_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h3 class="text-bright">시작이 어려우신가요?</h3>
+					<h5 class="text-bright opacity-75 margin-bottom-xxxxl">교육 받아보시면 쉽습니다.</h5>
+					<p class="text-center"><a class="btn btn-white-primary" href="/edu" title="EduApply" style="max-width:300px; width: 100%;">온라인 교육 바로가기</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section-event first">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center margin-bottom-xxxxxl">
+				<h3 class="no-margin-top">한 번 이용하면 팬이 됩니다.</h3>
+				<h5 class="opacity-60">아임웹에서 당신의 생각을 표현해보세요.</h5>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-12 text-center">
+				<div class="h1 text-primary no-margin-top">937.4K</div>
+				<h5>누적 사이트 이용 수</h5>
+				<footer class="text-gray">이미 수만 명이 아임웹 팬이 되어<br>각자의 생각을 표현하고 있습니다.</footer>
+				<div class="height-1 hidden-sm hidden-md hidden-lg"></div>
+			</div>
+
+			<div class="col-md-4 col-sm-4 col-xs-12 text-center">
+				<div class="h1 text-primary no-margin-top ">315</div>
+				<h5>일 평균 사이트 개설 수</h5>
+				<footer class="text-gray">지금 이 순간에도 매일<br>새로운 브랜드가 소개되고 있습니다.</footer>
+				<div class="height-1 hidden-sm hidden-md hidden-lg"></div>
+			</div>
+			<div class="col-md-4 col-sm-4 col-xs-12 text-center">
+				<div class="h1 text-primary no-margin-top">2K</div>
+				<h5>전국 파트너/리셀러 수</h5>
+				<footer class="text-gray">1인 프리랜서부터 전문 에이전시까지<br>다양한 업체들이 활동 중입니다.</footer>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section-event">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center margin-bottom-xxxxxl">
+				<h3 class="no-margin-top">아임웹과 함께하는 제휴사</h3>
+				<h5 class="opacity-60">아임웹은 페이팔, KG이니시스, 네이버, KCP, 나이스페이, 이지페이, 엑심베이 공식파트너입니다.</h5>
+			</div>
+		</div>
+	</div>
+    <div class="tw-container xl:tw-max-w-[1250px] tw-mx-auto">
+        <div class="tw-flex tw-flex-wrap tw-gap-x-[34px] max-[1250px]:gap-y[20px] tw-w-full tw-justify-center tw-items-center">
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="naver" src="https://vendor-cdn.imweb.me/images/main/naver_bi_100.png" width="100" alt="네이버">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="naver_pay" src="https://vendor-cdn.imweb.me/images/main/npay_bi_logo_bg_transparent.png" width="88"  alt="네이버페이">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="metapartner" src="https://vendor-cdn.imweb.me/images/main/mbp_logo.png?v3" width="164" alt="Meta Business Partners">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="naver" src="https://vendor-cdn.imweb.me/images/main/kakao_ci_90.png" width="90"  alt="카카오">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="channel" src="https://vendor-cdn.imweb.me/images/main/kakaopay_140.png" width="140"  alt="카카오페이">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="awspartner" src="https://vendor-cdn.imweb.me/images/main/aws_bi_logo_bg_transparent.png" width="136" alt="AWS">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="channel" src="https://vendor-cdn.imweb.me/images/main/channel_129.png" width="129" alt="채널톡">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="laplace_logo tw-w-[90px] max-md:tw-w-[60px]" src="https://vendor-cdn.imweb.me/images/main/laplace.png" alt="라플라스">
+                </div>
+            </div>
+            <div class="max-[1250px]:tw-hidden tw-w-full tw-h-[20px]"></div>
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="kcp" src="https://vendor-cdn.imweb.me/images/main/KCP_small_new.png" width="120"  alt="NHN KCP">
+                </div>
+            </div>
+            <!--
+				<div class="text-center">
+					<a  class="blocked section-event-link" href="/pg_event">
+						<img class="payco_logo" src="https://vendor-cdn.imweb.me/images/main/payco_logo_footer.png" width="84">
+					</a>
+				</div>
+				-->
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="acecounter_logo" src="https://vendor-cdn.imweb.me/images/main/easywinner_bi.png" width="150" alt="이지위너">
+                </div>
+            </div>
+            <div class="text-center">
+                <div class="blocked section-event-link">
+                    <img class="acecounter_logo" src="https://vendor-cdn.imweb.me/images/main/acecounter_logo.png" width="155" alt="에이스카운터">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="palyauto_logo" src="https://vendor-cdn.imweb.me/images/main/playauto_logo.png" width="147" alt="플레이오토">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="eximbay_logo" src="https://vendor-cdn.imweb.me/images/main/eximbay-logo.svg" width="172" alt="엑심베이">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="paypal" src="https://vendor-cdn.imweb.me/images/main/paypal_122.png" width="122"  alt="Paypal">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="fassto_logo" src="https://vendor-cdn.imweb.me/images/main/fassto_146.png" width="146" alt="파스토">
+                </div>
+            </div>
+            <div class="max-[1250px]:tw-hidden tw-w-full tw-h-[20px]"></div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="kg_inicis" src="https://vendor-cdn.imweb.me/images/main/ini_bi_logo_bg_transparent.png" width="105" alt="KG이니시스">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="kg_inicis" src="https://vendor-cdn.imweb.me/images/main/goodsflow_94.png" width="94" alt="굿스플로">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="sabangnet_logo" src="https://vendor-cdn.imweb.me/images/main/sabangnet_184.png" width="184" alt="사방넷">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="eximbay_logo" src="https://vendor-cdn.imweb.me/images/main/logo-sellmate.png" width="140" alt="셀메이트" style="margin-top: -3px;">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="ecpay_logo" src="https://vendor-cdn.imweb.me/images/main/ecpay_106.png" width="106" alt="ECPay">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="nicepay_logo" src="https://vendor-cdn.imweb.me/images/main/nicepay_logo.png" width="128" alt="나이스페이">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="tosspayments_logo" src="https://vendor-cdn.imweb.me/images/main/tosspayments_logo.png" width="174" alt="토스페이먼츠">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="danal_logo tw-w-[94.8px] max-md:tw-w-[70px]" src="https://vendor-cdn.imweb.me/images/main/danal_logo.png" alt="danal">
+                </div>
+            </div>
+            <div class="text-center footer_logo_second">
+                <div class="blocked section-event-link">
+                    <img class="samsung_logo tw-w-[179px] max-md:tw-w-[90px]" src="https://vendor-cdn.imweb.me/images/main/samsung_logo.png" alt="samsungpay">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="main-footer">
+	<div class="container">
+				<div class="row footer-container hidden-xs">
+			<div class="col-md-10 col-sm-12">
+				<ul class="page-nav clearfix">
+					<li class="page-nav-item"><a href="/features" ><span class="page-nav-title" style="opacity: 1">주요기능</span></a><ul class="page-nav-links"><li class="page-nav-links-item"><a href="/features" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">웹사이트</span>
+                                </a><a href="/features#section3" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">쇼핑몰</span>
+                                </a><a href="/global_shopping" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">글로벌 판매</span>
+                                </a><a href="/appstore" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">앱스토어</span>
+                                </a><a href="/price" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">요금</span>
+                                </a></li></ul></li><li class="page-nav-item"><a href="/theme" ><span class="page-nav-title" style="opacity: 1">둘러보기</span></a><ul class="page-nav-links"><li class="page-nav-links-item"><a href="/theme" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">템플릿</span>
+                                </a><a href="/best_production_list" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">고객사례</span>
+                                </a><a href="/interview" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">고객 인터뷰</span>
+                                </a></li></ul></li><li class="page-nav-item"><a href="/find_designer" ><span class="page-nav-title" style="opacity: 1">컨설팅</span></a><ul class="page-nav-links"><li class="page-nav-links-item"><a href="/find_designer" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">디자이너 찾기</span>
+                                </a><a href="/reseller" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">리셀러</span>
+                                </a><a href="https://salessupport.imweb.me/" role="menuitem" tabindex="-1" itemprop="url" target="_blank">
+                                    <span class="dropdown-menu-item-label" itemprop="name">사이트 이전 문의</span>
+                                </a></li></ul></li><li class="page-nav-item"><a href="/customer" ><span class="page-nav-title" style="opacity: 1">고객지원</span></a><ul class="page-nav-links"><li class="page-nav-links-item"><a href="/faq" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">가이드</span>
+                                </a><a href="/edu" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">온라인 교육</span>
+                                </a><a href="/video_lecture" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">동영상 강의</span>
+                                </a><a href="/blog" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">블로그<span class="badge badge-new">NEW</span></span>
+                                </a><a href="/notice" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">아임웹 소식</span>
+                                </a><a href="/qna" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">FAQ/문의하기</span>
+                                </a><a href="/notice?category=update" role="menuitem" tabindex="-1" itemprop="url" >
+                                    <span class="dropdown-menu-item-label" itemprop="name">업데이트 소식</span>
+                                </a><a href="https://developers.imweb.me" role="menuitem" tabindex="-1" itemprop="url" target="_blank">
+                                    <span class="dropdown-menu-item-label" itemprop="name">개발자 문서 (API)</span>
+                                </a></li></ul></li><li class="page-nav-item"><a href="https://team.imweb.me" target="_blank"><span class="page-nav-title" style="opacity: 1">기업소개</span></a><ul class="page-nav-links"><li class="page-nav-links-item"><a href="https://team.imweb.me" role="menuitem" tabindex="-1" itemprop="url" target="_blank">
+                                    <span class="dropdown-menu-item-label" itemprop="name">소개</span>
+                                </a><a href="https://team.imweb.me/alliance" role="menuitem" tabindex="-1" itemprop="url" target="_blank">
+                                    <span class="dropdown-menu-item-label" itemprop="name">제휴문의</span>
+                                </a><a href="https://team.imweb.me/patent" role="menuitem" tabindex="-1" itemprop="url" target="_blank">
+                                    <span class="dropdown-menu-item-label" itemprop="name">특허/인증서</span>
+                                </a><a href="https://career.imweb.me/" role="menuitem" tabindex="-1" itemprop="url" target="_blank">
+                                    <span class="dropdown-menu-item-label" itemprop="name">채용<span class="badge badge-progress">진행중</span></span>
+                                </a></li></ul></li>				</ul>
+			</div>
+			<div class="col-md-2 col-sm-12 text-right order-1 social-nav-wrap no-padding-left">
+				<div class="social-nav inline-blocked">
+					<a href="https://www.facebook.com/imwebme/" target="_blank" class="facebook" title="페이스북 페이지"><i class="ii ii-facebook"></i></a>
+					<a href="https://www.instagram.com/imweb.me/" target="_blank" class="instagram" title="인스타그램"><i class="ii ii-instagram"></i></a>
+					<a href="http://cafe.naver.com/imwebcomm/" target="_blank" class="naver" title="네이버카페"><i class="ii ii-naver"></i></a>
+                    <a href="https://www.youtube.com/@imweb_me" target="_blank" class="youtube" title="유튜브"><i class="ii ii-youtube"></i></a>
+				</div>
+			</div>
+		</div>
+		
+				<div class="row visible-xs">
+			<div class="col-md-12">
+				<div id="navbar-more-container-mobile-foot" class="imweb-navbar-more mobile">
+					<div class="container">
+						<ul class="page-nav clearfix" id="navWrap">
+							<li class="page-nav-item" id="footHeading1"><a href="javascript:;" role="button" data-toggle="collapse" data-target="#collapseFoot1" aria-expanded="false" aria-controls="collapseFoot1">주요기능<i class="page-nav-icon icon-arrow-down"></i></a><ul class="page-nav-sub collapse" id="collapseFoot1" aria-labelledby="heading1" data-parent="#navWrap"><li class="page-nav-sub-item"><a href="/features" role="button" >웹사이트</a></li><li class="page-nav-sub-item"><a href="/features#section3" role="button" >쇼핑몰</a></li><li class="page-nav-sub-item"><a href="/global_shopping" role="button" >글로벌 판매</a></li><li class="page-nav-sub-item"><a href="/appstore" role="button" >앱스토어</a></li><li class="page-nav-sub-item"><a href="/price" role="button" >요금</a></li></ul></li><li class="page-nav-line"></li><li class="page-nav-item" id="footHeading2"><a href="javascript:;" role="button" data-toggle="collapse" data-target="#collapseFoot2" aria-expanded="false" aria-controls="collapseFoot2">둘러보기<i class="page-nav-icon icon-arrow-down"></i></a><ul class="page-nav-sub collapse" id="collapseFoot2" aria-labelledby="heading2" data-parent="#navWrap"><li class="page-nav-sub-item"><a href="/theme" role="button" >템플릿</a></li><li class="page-nav-sub-item"><a href="/best_production_list" role="button" >고객사례</a></li><li class="page-nav-sub-item"><a href="/interview" role="button" >고객 인터뷰</a></li></ul></li><li class="page-nav-line"></li><li class="page-nav-item" id="footHeading3"><a href="javascript:;" role="button" data-toggle="collapse" data-target="#collapseFoot3" aria-expanded="false" aria-controls="collapseFoot3">컨설팅<i class="page-nav-icon icon-arrow-down"></i></a><ul class="page-nav-sub collapse" id="collapseFoot3" aria-labelledby="heading3" data-parent="#navWrap"><li class="page-nav-sub-item"><a href="/find_designer" role="button" >디자이너 찾기</a></li><li class="page-nav-sub-item"><a href="/reseller" role="button" >리셀러</a></li><li class="page-nav-sub-item"><a href="https://salessupport.imweb.me/" role="button" target="_blank">사이트 이전 문의</a></li></ul></li><li class="page-nav-line"></li><li class="page-nav-item" id="footHeading4"><a href="javascript:;" role="button" data-toggle="collapse" data-target="#collapseFoot4" aria-expanded="false" aria-controls="collapseFoot4">고객지원<i class="page-nav-icon icon-arrow-down"></i></a><ul class="page-nav-sub collapse" id="collapseFoot4" aria-labelledby="heading4" data-parent="#navWrap"><li class="page-nav-sub-item"><a href="/faq" role="button" >가이드</a></li><li class="page-nav-sub-item"><a href="/edu" role="button" >온라인 교육</a></li><li class="page-nav-sub-item"><a href="/video_lecture" role="button" >동영상 강의</a></li><li class="page-nav-sub-item"><a href="/blog" role="button" >블로그<span class="badge badge-new">NEW</span></a></li><li class="page-nav-sub-item"><a href="/notice" role="button" >아임웹 소식</a></li><li class="page-nav-sub-item"><a href="/qna" role="button" >FAQ/문의하기</a></li><li class="page-nav-sub-item"><a href="/notice?category=update" role="button" >업데이트 소식</a></li><li class="page-nav-sub-item"><a href="https://developers.imweb.me" role="button" target="_blank">개발자 문서 (API)</a></li></ul></li><li class="page-nav-line"></li><li class="page-nav-item" id="footHeading5"><a href="javascript:;" role="button" data-toggle="collapse" data-target="#collapseFoot5" aria-expanded="false" aria-controls="collapseFoot5">기업소개<i class="page-nav-icon icon-arrow-down"></i></a><ul class="page-nav-sub collapse" id="collapseFoot5" aria-labelledby="heading5" data-parent="#navWrap"><li class="page-nav-sub-item"><a href="https://team.imweb.me" role="button" target="_blank">소개</a></li><li class="page-nav-sub-item"><a href="https://team.imweb.me/alliance" role="button" target="_blank">제휴문의</a></li><li class="page-nav-sub-item"><a href="https://team.imweb.me/patent" role="button" target="_blank">특허/인증서</a></li><li class="page-nav-sub-item"><a href="https://career.imweb.me/" role="button" target="_blank">채용<span class="badge badge-progress">진행중</span></a></li></ul></li><li class="page-nav-line"></li>						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
+		<!-- // 모바일용 footer 네비게이션 -->
+		<div class="row m-flex">
+			<div class="col-md-9 foot-desc order-1">
+				<div class="foot-desc-wrap">
+					<div class="hidden-md hidden-sm hidden-lg text-right social-nav-wrap">
+						<div class="social-nav inline-blocked no-padding">
+							<a href="https://www.facebook.com/imwebme/" target="_blank" class="facebook" title="페이스북 페이지"><i class="ii ii-facebook"></i></a>
+							<a href="https://www.instagram.com/imweb.me/" target="_blank" class="instagram" title="인스타그램"><i class="ii ii-instagram"></i></a>
+							<a href="http://cafe.naver.com/imwebcomm/" target="_blank" class="naver" title="네이버카페"><i class="ii ii-naver"></i></a>
+                            <a href="https://www.youtube.com/@imweb_me" target="_blank" class="youtube" title="유튜브"><i class="ii ii-youtube"></i></a>
+						</div>
+					</div>
+					<address class="co_address">
+						상호명 (주)아임웹
+						<span class="bar"></span>
+						대표이사 : 이수모
+						<span class="bar break-mobile"></span>
+						개인정보책임자 : 박재완
+						<span class="bar break-mobile"></span>
+						사업자등록번호 : 105-87-83592
+						<p class="no-margin"><a href="http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1058783592" target="_blank" onclick="window.open('http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1058783592', 'bizCommPop', 'width=750, height=700, top=200, left=500;');return false" class="company-number">통신판매업신고번호 : 제 2023-서울강남-02377</a></p>
+                        <p class="no-margin">본사 : 서울 강남구 테헤란로 501 VPLEX</p>
+
+
+                        <span class="text-bright"><a href="/customer">고객지원</a></span> : <a href="/customer"  style="color:#3B4859;">문의 게시판</a> 또는 <a href="javascript:;" onclick="if(typeof ChannelIO != 'undefined'){ChannelIO('showMessenger');}" style="color:#3B4859;" >실시간 채팅</a>
+						<span class="break-desktop break-mobile"></span>
+					</address>
+					<p>
+                        <a href="/terms">이용약관</a>
+                        <span class="bar margin-left-xl margin-right-xl"></span><a href="/privacy"><strong>개인정보처리방침</strong></a>
+                        <span class="bar margin-left-xl margin-right-xl"></span><a href="/reseller">리셀러 소개</a>
+                    </p>
+					<p class="margin-bottom-xxl margin-bottom-10-xs">
+						<span class="made-by"><span class="made">Made by<i class="fa fa-heart"></i></span><a target="_blank" href="https://team.imweb.me"><span>Imweb Corp.</span></a></span>
+					</p>
+				</div>
+			</div>
+			<div class="col-md-3 text-right text-left-sm text-13 order-2">
+				<div class="foot-desc-wrap">
+					<a href="/kr" title="한국어" class="margin-right-xxl margin-right-14-xs">한국어</a>
+					<a href="/tw" title="台灣(中文)">台灣(中文)</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+</footer>
+
+<span itemscope="" itemtype="http://schema.org/Organization">
+	<link itemprop="url" href="http://www.imweb.me">
+	<a itemprop="sameAs" href="https://www.facebook.com/imwebme"></a>
+	<a itemprop="sameAs" href="http://cafe.naver.com/imwebcomm"></a>
+	<a itemprop="sameAs" href="https://www.instagram.com/imweb.me"></a>
+	<a itemprop="sameAs" href="https://www.youtube.com/@imweb_me"></a>
+</span>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P68765D" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <script>
+        $( window ).scroll(function() {
+            topMenuMovePostionByScrollPostion();
+        });
+    
+        $(document).ready(function() {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+    <script src="https://wcs.naver.net/wcslog.js"></script>
+    <script>
+        if(!wcs_add) var wcs_add = {};
+        wcs_add["wa"] = "s_36b497ae818b";
+        if (!_nasa) var _nasa={};
+        wcs.inflow("imweb.me");
+        wcs_do(_nasa);
+    </script>
+    <script >
+        /* <![CDATA[ */
+        var google_conversion_id = 854709164;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script  src="//www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/854709164/?guid=ON&amp;script=0"/>
+        </div>
+    </noscript>
+<div class="modal" id="cocoaModal" role="dialog" >
+	<div class="modal-dialog">
+		<div class="modal-content"></div>
+	</div>
+</div>
+
+<div class="modal submodal"  role="dialog"  id="cocoaSubModal"  style="z-index: 17001">
+	<div class="modal-dialog">
+		<div class="modal-content"></div>
+	</div>
+</div>
+<iframe name="hidden_frame" id="hidden_frame" style="position: absolute; left: -9999px; width: 1px; height: 1px; top:-9999px;" style="display:none"></iframe><!--임시로 넣어둠-->
+<script>
+$(function(){
+	if(typeof fbq != 'undefined'){
+		fbq('track', 'Search');
+	}
+});
+</script>
+
+<script>
+    // getCookie override
+    function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+	var $owl_container = $('#owl-carousel');
+	var $nav = $('#imweb-navbar');
+	var $nav_sub = $('#navbar_top_menu');
+	var $banner = $('._shop_banner');
+	var window_width = $(window).width();
+	var before_position = $(window).scrollTop();
+
+	if(window_width < 767){
+		var is_sticky = '';
+        is_sticky = (new URL(document.URL))
+            .pathname
+            .replace('/', '') // 첫번째 / 를 제거
+            .split('/')[0] // ex. features global_shopping ...
+
+		//스크롤에 따른 이벤트
+		function headerScrollEvent(){
+			$(window).scroll(function(){
+				var after_position = $(window).scrollTop();
+				if(before_position > after_position){
+					$nav.css({top : 0,});
+				}
+				if(before_position < after_position){
+					$nav.css({top : -51,});
+				}
+				before_position = after_position;
+			});
+		}
+
+        // join_complete 스크롤에 따른 이벤트
+        function joinHeaderScrollEvent() {
+            if (getCookie('NO_SHOP_BANNER') !== 'Y') {
+                window.navBarAnimation = gsap.to(document.querySelector('#imweb-navbar'), {
+                    position: 'absolute',
+                    top: 80,
+                    scrollTrigger: {
+                        trigger: document.querySelector('._shop_banner'),
+                        toggleActions: "complete reset complete reset"
+                    }
+                })
+            }
+        }
+
+		switch(is_sticky){
+			case 'features':
+			case 'appstore':
+				$nav.css({position : 'absolute', top : '80px',});
+				break;
+			case 'global_shopping':
+            case 'best_production_list':
+			case 'notice':
+			case 'blog':
+				$nav.css({position : 'relative', top : '0px',});
+				break;
+            case 'find_designer':
+                $nav.css({position : 'sticky', top : '0px', transition : '0.1s'});
+                break;
+            case 'join_complete':
+				$nav.css({position : 'fixed', top : '0',});
+                joinHeaderScrollEvent();
+                break;
+          default:
+				$nav.css({position : 'sticky', top : '-51px', transition : '0.1s'});
+				headerScrollEvent();
+				break;
+		}
+	}
+	$owl_container.owlCarousel({
+		items:1,
+		dots: true,
+		nav: true,
+		loop: true,
+		animateOut: 'fadeOut',
+		autoplay: true,
+        autoplayHoverPause: true
+		,
+		onInitialize : function(e){
+			$banner.toggleClass('shop-banner', true);
+		}
+	});
+	$owl_container.on('changed.owl.carousel', function(e){
+		var $item = e.page.index;
+        		if ( $item === 2 || $item === 8 || $item === 9 ) {
+            $banner.toggleClass('dark-banner', true);
+            $banner.toggleClass('mp-banner', false);
+            $banner.toggleClass('custom-banner', false);
+        } else if ( $item === 0 ){
+            $banner.toggleClass('dark-banner', false);
+            $banner.toggleClass('mp-banner', true);
+            $banner.toggleClass('custom-banner', false);
+        } else {
+            $banner.toggleClass('dark-banner', false);
+            $banner.toggleClass('mp-banner', false);
+            $banner.toggleClass('custom-banner', false);
+        }
+	});
+    
+	$(window).load(function(){
+        if(window_width >= 767){
+            if ( $nav_sub.length < 1 ) {
+                var limit = 0;
+            } else {
+                var limit = $nav_sub.offset().top - $nav.height();
+            }
+
+            $nav.scrollToFixed({
+                limit: limit
+            });
+        }
+	});
+
+</script>
+<script type="text/javascript">
+    mixpanel.init('a4939111ea54962dbf95fe89a992eab3', {debug: false});
+    mixpanel.identify('M20230726759ace1d63226');
+    MIXPANEL.init();
+</script>
+</body>
 </html>

@@ -16,7 +16,7 @@ class Users (models.Model) :
     
     class Meta :
         db_table = "users"
-        app_label = "mainapp"
+        app_label = "nonmodelapp"
         managed = False
         
 class Disease (models.Model) :
@@ -33,7 +33,7 @@ class Disease (models.Model) :
     
     class Meta :
         db_table = "disease"
-        app_label = "mainapp"
+        app_label = "nonmodelapp"
         managed = False
         
 class Prod (models.Model) :
@@ -48,7 +48,7 @@ class Prod (models.Model) :
     
     class Meta :
         db_table = "prod"
-        app_label = "mainapp"
+        app_label = "nonmodelapp"
         managed = False
         
 class Userdis (models.Model) :
@@ -58,5 +58,5 @@ class Userdis (models.Model) :
     
     class Meta :
         db_table = "userdis"
-        app_label = "mainapp"
+        app_label = "nonmodelapp"
         managed = False
