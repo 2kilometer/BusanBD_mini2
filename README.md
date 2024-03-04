@@ -22,10 +22,10 @@
     - 국내 건강기능식품 시장은 2018년 부터 2022년까지 계속 상승세를 이어오고 있으며, 22년도에는 전년대비 15% 성장률 달성
     - 성별 및 연도별 복용 추이는 공통적으로 코로나 19 발현 연도인 2020년에 증가했다가 2022년에 하락하는 추세가 보임
     - **[결론]** 코로나 19의 영향으로 높아진 건강의 관심도가 이어지고 있지 않음으로 판단됨
-      <img src="jupyter_notebook/data_visual/시장규모.png" alt="market" style="width: 40%;">
+      <img src="jupyter_notebook/data_visual/시장규모.png" alt="market" style="width: 50%;">
       <div style="display: flex;">
-        <img src="jupyter_notebook/data_visual/연도별_연령대별_건강기능식품_복용여부_추이.png" alt="check_age" style="width: 40%;">
-        <img src="jupyter_notebook/data_visual/연도별_성별_건강기능식품_복용여부_추이.png" alt="check_sex" style="width: 40%;">
+        <img src="jupyter_notebook/data_visual/연도별_성별_건강기능식품_복용여부_추이.png" alt="check_sex">
+        <img src="jupyter_notebook/data_visual/연도별_연령대별_건강기능식품_복용여부_추이.png" alt="check_age">
       </div>
     
   - **가설 ② : _다빈도 약국 처방 질병과 건강기능식품 소비에 연관성이 있다_**
