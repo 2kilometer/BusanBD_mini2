@@ -24,8 +24,8 @@
     - **[결론]** 코로나 19의 영향으로 높아진 건강의 관심도가 이어지고 있지 않음으로 판단됨
       <img src="jupyter_notebook/data_visual/시장규모.png" alt="market" style="width: 50%;">
       <div style="display: flex;">
-        <img src="jupyter_notebook/data_visual/연도별_성별_건강기능식품_복용여부_추이.png" alt="check_sex">
-        <img src="jupyter_notebook/data_visual/연도별_연령대별_건강기능식품_복용여부_추이.png" alt="check_age">
+        <img src="jupyter_notebook/data_visual/연도별_성별_건강기능식품_복용여부_추이.png" alt="check_sex" style="width: 30%;">
+        <img src="jupyter_notebook/data_visual/연도별_연령대별_건강기능식품_복용여부_추이.png" alt="check_age" style="width: 60%;">
       </div>
     
   - **가설 ② : _다빈도 약국 처방 질병과 건강기능식품 소비에 연관성이 있다_**
